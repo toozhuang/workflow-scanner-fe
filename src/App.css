@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
 }
@@ -26,6 +28,11 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Transfer-list{
+  padding: 50px;
+  width:80%
 }
 
 @keyframes App-logo-spin {
