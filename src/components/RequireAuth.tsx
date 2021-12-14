@@ -5,6 +5,9 @@ import {AuthContext} from "../App";
 
 function RequireAuth({children}: { children: JSX.Element }) {
     let auth = React.useContext(AuthContext)
+    // @ts-ignore
+    // const hh = JSON.parse(Cookie.get('user'))
+    // console.log('hhhhh',hh  )
     let location = useLocation();
 
     if (!auth.user) {
@@ -13,6 +16,7 @@ function RequireAuth({children}: { children: JSX.Element }) {
         // along to that page after they login, which is a nicer user experience
         // than dropping them off on the home page.
         return <Navigate to="/login" state={{from: location}}/>;
+        // return children
     }
 
     return children;
