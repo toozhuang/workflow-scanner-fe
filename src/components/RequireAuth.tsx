@@ -4,10 +4,12 @@ import {AuthContext} from "../App";
 
 
 function RequireAuth({children}: { children: JSX.Element }) {
+    // 通过 context 中是否有 user 来看是否用户能够登录
+    // 这里涉及到的问题就是， 我们不需要在这里进行强判断
+    // 只有在 token 过期来以后， 才需要确定是否要重新登录
+    // 而我们的 token 过期就由 API 触发就好
+    // 不需要每一个地方都进行判断
     let auth = React.useContext(AuthContext)
-    // @ts-ignore
-    // const hh = JSON.parse(Cookie.get('user'))
-    // console.log('hhhhh',hh  )
     let location = useLocation();
 
     if (!auth.user) {

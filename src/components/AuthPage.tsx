@@ -1,23 +1,28 @@
 /**
  *  该页面目前就当作登录界面；
  *  不需要注册功能
+ *  Note: 有考虑是否这部分可以抽离成一个独立的hook
+ *  但细想以后，感觉不需要
  */
-import React, {useEffect} from 'react'
-import {useLocation, useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {AuthContext} from "../App";
 import {Form, Input, Button, Checkbox} from 'antd';
 
 import './AuthPage.scss'
 import {FundOutlined} from '@ant-design/icons';
-import Cookies from 'js-cookie';
+import AuthHook from '../common/AuthHook';
+
+export interface loginForm {
+    email: string;
+    password: string;
+    remember: boolean;
+}
 
 
 const AuthPage = () => {
 
-    const [form] = Form.useForm();
-
-    let userYa:string = Cookies.get('user')||""
-
+    const [{isError, isLoading}] = AuthHook();
 
     let navigate = useNavigate();
     let location = useLocation();
@@ -25,27 +30,28 @@ const AuthPage = () => {
 
     let from = location.state?.from?.pathname || "/";
 
-    const handleSubmit = (value: any) => {
+
+
+    const onFinish = (value: loginForm) => {
+        // setLoading(true)
         auth.signIn(value, () => {
-            navigate(from, {replace: true});
+            // setLoading(false)
+            navigate('/', {replace: true});
         })
-
-    }
-
-    const onFinish = (values: any) => {
-        console.log('Success:', values, form);
-        handleSubmit(values)
     };
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
 
-    useEffect(() => {
-        if(userYa&&userYa!==''){
-            navigate('/', {replace: true});
-        }
-    }, [userYa,navigate])
+    // 下面的两种跳转逻辑都 OK
+    if(!isError&&!isLoading){
+        // navigate('/', {replace: true});
+        return <Navigate to="/" state={{from: location}}/>;
+
+    }
+
+
 
     return (
         <div className="loginPage">
@@ -55,6 +61,9 @@ const AuthPage = () => {
                 UMP 传输监控
             </div>
 
+            {/* 看起来 react ant design 的 form 默认有 event prevent default 的方法
+                提交事件以后， 并不会刷新页面
+            */}
             <Form
                 name="basic"
                 className="loginForm"
@@ -88,7 +97,8 @@ const AuthPage = () => {
                 </Form.Item>
 
                 <Form.Item wrapperCol={{offset: 0, span: 24}}>
-                    <Button type="primary" htmlType="submit">
+                    {/*loading={loading}*/}
+                    <Button  type="primary" htmlType="submit">
                         Submit
                     </Button>
                 </Form.Item>
