@@ -1,5 +1,5 @@
 import React, {MouseEventHandler, useEffect, useState,} from 'react';
-import {Table, Tooltip, Button, Space, Avatar, Popconfirm, Menu, Dropdown, Spin} from 'antd';
+import {Table, Tooltip, Space, Avatar, Popconfirm, Menu, Dropdown} from 'antd';
 import {getTransferList, updateTransfer} from "../api/transfer.api";
 import {TransferInterface} from "./dto/transfer.interface";
 
@@ -85,7 +85,6 @@ function TransferPage() {
                 return item;
             })
             setData(data)
-            console.log(' 设置 data 后肯定充值')
         }
         getList().then()
 
@@ -132,6 +131,8 @@ function TransferPage() {
     const navi = useNavigate();
     const confirmOut = () => {
         auth.signOut(() => {
+            Cookies.remove('user')
+            Cookies.remove('ticket')
             navi('/login', {replace: true});
         })
     }
