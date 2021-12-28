@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/AuthHook.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.env.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.prod.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/login.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/login.api.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/transfer.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/transfer.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TransferPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransferPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -73,7 +66,9 @@
       <workItem from="1639361027960" duration="9135000" />
       <workItem from="1639383445324" duration="14410000" />
       <workItem from="1639454845511" duration="14502000" />
-      <workItem from="1639707091140" duration="3591000" />
+      <workItem from="1639707091140" duration="9691000" />
+      <workItem from="1639981385219" duration="1531000" />
+      <workItem from="1640065731268" duration="7476000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -82,7 +77,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639464214376</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat：抽离了 AuthHook， 用来做用户登录的交互">
+      <created>1639713427563</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639713427563</updated>
+    </task>
+    <task id="LOCAL-00003" summary="config：配置全局的 Env">
+      <created>1639713447200</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1639713447200</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +111,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat：监控/更新 transfer item 功能完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat：监控/更新 transfer item 功能完成" />
+    <MESSAGE value="feat：抽离了 AuthHook， 用来做用户登录的交互" />
+    <MESSAGE value="config：配置全局的 Env" />
+    <option name="LAST_COMMIT_MESSAGE" value="config：配置全局的 Env" />
   </component>
 </project>

@@ -1,5 +1,5 @@
 import React, {MouseEventHandler, useEffect, useState,} from 'react';
-import {Table, Tooltip, Space, Avatar, Popconfirm, Menu, Dropdown} from 'antd';
+import {Table, Tooltip, Space, Avatar, Popconfirm, Menu, Dropdown, message} from 'antd';
 import {getTransferList, updateTransfer} from "../api/transfer.api";
 import {TransferInterface} from "./dto/transfer.interface";
 
@@ -86,7 +86,15 @@ function TransferPage() {
             })
             setData(data)
         }
-        getList().then()
+        getList().then().catch(error=>{
+
+            const customMessgaeFromBackend = error.response.data.error
+            console.log(customMessgaeFromBackend)
+            const displayError = () => {
+                message.error(customMessgaeFromBackend);
+            };
+            displayError()
+        })
 
     }, [])
 
@@ -113,6 +121,7 @@ function TransferPage() {
         setLoading(true)
 
         updateTransfer(selectedRowKeys[0],selecteAction.key).then(value => {
+
             const getList = async () => {
                 const {data} = await getTransferList();
                 data.map((item: TransferInterface) => {
@@ -122,7 +131,20 @@ function TransferPage() {
                 setData(data)   // 用了 setData 本身就会重新刷新页面
                 setLoading(false)
             }
-            getList().then()  // todo： 确定一下是否真的会刷新
+
+                // // todo： 确定一下是否真的会刷新
+                getList().then()
+                    .catch(error=>{
+                        setLoading(false)})
+
+
+        }).catch(error=>{
+            const customMessgaeFromBackend = error.response.data.message
+            const displayError = () => {
+                message.error(customMessgaeFromBackend);
+            };
+            displayError()
+            setLoading(false)
         })
 
     }
@@ -140,9 +162,9 @@ function TransferPage() {
 
     const menu = (
         <Menu onClick={action}>
-            <Menu.Item key="complete"> Complete</Menu.Item>
-            <Menu.Item key="error"> Error</Menu.Item>
-            <Menu.Item key="pending"> Pending</Menu.Item>
+            <Menu.Item key="complete"> 完成</Menu.Item>
+            <Menu.Item key="error"> 错误</Menu.Item>
+            <Menu.Item key="restarting"> 重启</Menu.Item>
         </Menu>
     );
 
@@ -165,7 +187,7 @@ return (
             <Dropdown.Button
                 type="primary"
                 disabled={!hasSelected || transferList.length === 0}
-                overlay={menu} onClick={action}>Complete</Dropdown.Button>
+                overlay={menu} onClick={action}>完成</Dropdown.Button>
         </Space>
 
 

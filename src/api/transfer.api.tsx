@@ -17,5 +17,8 @@ export const getTransferList = () => {
 }
 
 export const updateTransfer = (transferId: string,status:string='complete') => {
-    return axios.post(`${URL}/transfer-service/${transferId}`,{status})
+    return axios.post(`${URL}/transfer-service/${transferId}`,
+        {status},
+        {withCredentials: true,}
+    )
 }
