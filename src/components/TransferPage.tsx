@@ -170,17 +170,17 @@ function TransferPage() {
 
 return (
     <div className="Transfer-list">
-        <Popconfirm
-            placement="bottomRight"
-            title={"确定要登出吗？"}
-            onConfirm={confirmOut}
-            okText="登出"
-            cancelText="取消"
-        >
-            <Avatar className="avatar-container" style={{cursor: "pointer"}}>
-                {user.name}
-            </Avatar>
-        </Popconfirm>
+        {/*<Popconfirm*/}
+        {/*    placement="bottomRight"*/}
+        {/*    title={"确定要登出吗？"}*/}
+        {/*    onConfirm={confirmOut}*/}
+        {/*    okText="登出"*/}
+        {/*    cancelText="取消"*/}
+        {/*>*/}
+        {/*    <Avatar className="avatar-container" style={{cursor: "pointer"}}>*/}
+        {/*        {user.name}*/}
+        {/*    </Avatar>*/}
+        {/*</Popconfirm>*/}
 
 
         <Space align={"end"} style={{float: "right", marginBottom: "20px"}}>

@@ -31,7 +31,6 @@ const AuthPage = () => {
     let from = location.state?.from?.pathname || "/";
 
 
-
     const onFinish = (value: loginForm) => {
         // setLoading(true)
         auth.signIn(value, () => {
@@ -45,64 +44,70 @@ const AuthPage = () => {
     };
 
     // 下面的两种跳转逻辑都 OK
-    if(!isError&&!isLoading){
+    if (!isError && !isLoading) {
         // navigate('/', {replace: true});
         return <Navigate to="/" state={{from: location}}/>;
 
     }
 
 
-
     return (
-        <div className="loginPage">
 
-            <div className="title">
-                <FundOutlined/>
-                UMP 传输监控
-            </div>
+        <div className="App">
+            <div className='container'>
+                <div className="
+        loginPage">
 
-            {/* 看起来 react ant design 的 form 默认有 event prevent default 的方法
+                    <div className="title">
+                        <FundOutlined/>
+                        {/* TODO： 后期支持语言内部文字化*/}
+                        Phoneix TV Web Tools
+                    </div>
+
+                    {/* 看起来 react ant design 的 form 默认有 event prevent default 的方法
                 提交事件以后， 并不会刷新页面
             */}
-            <Form
-                name="basic"
-                className="loginForm"
-                labelCol={{span: 4}}
-                wrapperCol={{span: 20}}
-                initialValues={{remember: true}}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="off"
-            >
-                <Form.Item
-                    label="邮箱"
-                    name="email"
-                    rules={[
-                        {type: 'email', message: '请输入正确的邮箱格式!'},
-                        {required: true, message: '请输入你的邮箱!'}]}
-                >
-                    <Input/>
-                </Form.Item>
+                    <Form
+                        name="basic"
+                        className="loginForm"
+                        labelCol={{span: 4}}
+                        wrapperCol={{span: 20}}
+                        initialValues={{remember: true}}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
+                        autoComplete="off"
+                    >
+                        <Form.Item
+                            label="邮箱"
+                            name="email"
+                            rules={[
+                                {type: 'email', message: '请输入正确的邮箱格式!'},
+                                {required: true, message: '请输入你的邮箱!'}]}
+                        >
+                            <Input/>
+                        </Form.Item>
 
-                <Form.Item
-                    label="密码"
-                    name="password"
-                    rules={[{required: true, message: '请输入你的密码!'}]}
-                >
-                    <Input.Password/>
-                </Form.Item>
+                        <Form.Item
+                            label="密码"
+                            name="password"
+                            rules={[{required: true, message: '请输入你的密码!'}]}
+                        >
+                            <Input.Password/>
+                        </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked" wrapperCol={{offset: 0, span: 24}}>
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
+                        <Form.Item name="remember" valuePropName="checked" wrapperCol={{offset: 0, span: 24}}>
+                            <Checkbox>Remember me</Checkbox>
+                        </Form.Item>
 
-                <Form.Item wrapperCol={{offset: 0, span: 24}}>
-                    {/*loading={loading}*/}
-                    <Button  type="primary" htmlType="submit">
-                        Submit
-                    </Button>
-                </Form.Item>
-            </Form>
+                        <Form.Item wrapperCol={{offset: 0, span: 24}}>
+                            {/*loading={loading}*/}
+                            <Button type="primary" htmlType="submit">
+                                Submit
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </div>
+            </div>
         </div>
     );
 };

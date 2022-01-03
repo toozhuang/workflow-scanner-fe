@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/transfer.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/transfer.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TransferPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransferPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +68,7 @@
       <workItem from="1639454845511" duration="14502000" />
       <workItem from="1639707091140" duration="9691000" />
       <workItem from="1639981385219" duration="1531000" />
-      <workItem from="1640065731268" duration="7476000" />
+      <workItem from="1640065731268" duration="11351000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -91,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639713447200</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: 添加 error catch">
+      <created>1640670339948</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640670339948</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +120,7 @@
     <MESSAGE value="feat：监控/更新 transfer item 功能完成" />
     <MESSAGE value="feat：抽离了 AuthHook， 用来做用户登录的交互" />
     <MESSAGE value="config：配置全局的 Env" />
-    <option name="LAST_COMMIT_MESSAGE" value="config：配置全局的 Env" />
+    <MESSAGE value="feat: 添加 error catch" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 添加 error catch" />
   </component>
 </project>
