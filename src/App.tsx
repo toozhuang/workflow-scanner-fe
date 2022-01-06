@@ -1,25 +1,22 @@
 import React, {useState} from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import {Layout, Menu, Breadcrumb} from 'antd';
-import {
-    DesktopOutlined,
-    PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
-    UserOutlined,
-} from '@ant-design/icons';
+import Cookies from 'js-cookie';
+import {BrowserRouter, Routes, Route, useNavigate, Navigate} from "react-router-dom"
 
 
 import './App.css';
 import TransferPage from "./components/TransferPage";
-import AuthPage, {loginForm} from "./components/AuthPage";
-import RequireAuth from "./components/RequireAuth";
-import AuthProvider from "./components/AuthProvider";
-import Cookies from 'js-cookie';
+import AuthPage from "./components/AuthPage";
+
+import {loginForm} from './components/dto/login.interface';
+import SrtPage from "./components/srt/SrtPage";
+import ContentPage from "./pages/layout/ContentPage";
+import {AuthProvider, useAuthState} from "./context/context";
 
 
-const {Header, Content, Footer, Sider} = Layout;
-const {SubMenu} = Menu;
+import routes, {RouteType} from "./config/routes";
+import LoginPage from "./pages/login";
+import _ from "lodash";
+import {Link} from 'react-router-dom';
 
 
 export interface AuthContextType {
@@ -31,61 +28,61 @@ export interface AuthContextType {
 export const AuthContext = React.createContext<AuthContextType>(null!);
 
 function App() {
-
-    const [collapsed, onCollapse] = useState(false)
-
-    console.log(process.env)
-
-    const  LoginFragement = ()=> <Layout style={{minHeight: '100vh'}}>
-        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-            <div className="logo"/>
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                <Menu.Item key="1" icon={<PieChartOutlined/>}>
-                    Option 1
-                </Menu.Item>
-                <Menu.Item key="2" icon={<DesktopOutlined/>}>
-                    Option 2
-                </Menu.Item>
-                <SubMenu key="sub1" icon={<UserOutlined/>} title="User">
-                    <Menu.Item key="3">Tom</Menu.Item>
-                    <Menu.Item key="4">Bill</Menu.Item>
-                    <Menu.Item key="5">Alex</Menu.Item>
-                </SubMenu>
-                <SubMenu key="sub2" icon={<TeamOutlined/>} title="Team">
-                    <Menu.Item key="6">Team 1</Menu.Item>
-                    <Menu.Item key="8">Team 2</Menu.Item>
-                </SubMenu>
-                <Menu.Item key="9" icon={<FileOutlined/>}>
-                    Files
-                </Menu.Item>
-            </Menu>
-        </Sider>
-        <Layout className="site-layout">
-            <Content style={{margin: '0 16px'}}>
-                <Breadcrumb style={{margin: '16px 0'}}>
-                    <Breadcrumb.Item>User</Breadcrumb.Item>
-                    <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                </Breadcrumb>
-                <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
-                    <div className="App">
-                        <div className='container'>
-                            <RequireAuth><TransferPage/></RequireAuth>
-                        </div>
-                    </div>
-                </div>
-            </Content>
-            <Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>
-        </Layout>
-    </Layout>
-
+    const userDetail = useAuthState()
+    /**
+     * 根据用户对象和cookie 来决定是否跳转到对应的地方去
+     */
     return (
-        <AuthProvider userO={Cookies.get('user') || '{}'}>
+
+        <AuthProvider>
             <BrowserRouter>
                 <Routes>
+                    {
+                        // TODO: 重新整理这里的逻辑
+                        routes.map((route: RouteType) => {
+                            // 公开 path 直接可以访问
+                            if(!route.isPrivate){
+                                return <Route path={route.path}
+                                       element={
+                                           (() => {
+                                               return <route.component/>
+                                           })()
+                                       }
+                                >
+                                </Route>
+                            }
 
-                    <Route path="/" element={<LoginFragement></LoginFragement>}/>
-                    <Route path="/login" element={<AuthPage/>}/>
+                            // 非公开 path ， 判断是否具有 token cookie
+                            else if(_.isEmpty(userDetail.user) || _.isNull(userDetail.cookie)) {
+
+                                return <Route path={route.path} element={(()=>
+                                {
+                                    return <Navigate to="/login"/>
+                                })()}/>
+
+
+                            }
+                            else{
+                                return (<Route path={route.path}
+                                               element={
+                                                   (() => {
+                                                       return <route.component/>
+                                                   })()
+                                               }
+                                    >
+                                    </Route>
+                                )
+                            }
+
+                        })
+                    }
                 </Routes>
+                {/*<Routes>*/}
+                {/*    <Route path="/" element={<ContentPage><SrtPage/></ContentPage>}/>*/}
+                {/*    <Route path="/srt" element={<ContentPage><SrtPage/></ContentPage>}/>*/}
+                {/*    <Route path="/transfer" element={<ContentPage><TransferPage/></ContentPage>}/>*/}
+                {/*    <Route path="/login" element={<AuthPage/>}/>*/}
+                {/*</Routes>*/}
             </BrowserRouter>
         </AuthProvider>
     );
