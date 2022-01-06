@@ -2,31 +2,41 @@ import React from 'react'
 
 import LoginPage from '../pages/login'
 import AsrPage from "../pages/asr";
+import RequireAuth from "../components/RequireAuth";
+import ContentPage from "../pages/layout/ContentPage";
 
 
-export type RouteType ={
+export type RouteType = {
     path: string,
-    component: ()=>JSX.Element,
+    component: () => JSX.Element,
     isPrivate: boolean
 }
 
-const routes:RouteType[] = [
-
+const routes: RouteType[] = [
     {
-        path:'/',
-        component: AsrPage,
-        isPrivate: true
-    },
-    {
-        path:'/login',
-        component: LoginPage,
+        path: '/login',
+        component: () => <LoginPage/>,
         isPrivate: false
     },
     {
-        path:'/asr',
-        component: AsrPage,
+        path: '/',
+        component: () => <RequireAuth>
+            <ContentPage>
+                <AsrPage></AsrPage>
+            </ContentPage>
+        </RequireAuth>,
         isPrivate: true
-    }
+    },
+    {
+        path: '/asr',
+        component: () => <RequireAuth>
+            <ContentPage>
+                <AsrPage></AsrPage>
+            </ContentPage>
+        </RequireAuth>,
+        isPrivate: true
+    },
+
 
 ]
 
