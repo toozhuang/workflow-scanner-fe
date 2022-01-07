@@ -1,6 +1,7 @@
 
 const config:any = {
     apiService:{
+        baseURL:'http://localhost:3000',
         transferScannerService:'http://localhost:3000'
     }
 }

@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react"
-import {auth} from "../api/login.api"
+import {auth} from "../api/authentication.api"
 
 /**
  * 验证是否登录的 Hook；
+ * 传入当前的用户的 cookie 来决定
+ * 该用户是否登录成功
  * 该原理就是cookie + get
  * 看是否有正确的对象返回
  * 可以在任何地方使用

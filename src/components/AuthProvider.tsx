@@ -3,32 +3,30 @@
  */
 
 import React, { useState} from 'react'
-import {login} from "../api/login.api";
+import {login} from "../api/authentication.api";
 import {AuthContext} from '../App';
 import Cookies from 'js-cookie'
+import { loginForm } from './dto/login.interface';
 
 
 function AuthProvider({userO, children}: { userO: any, children: JSX.Element }) {
 
     let [user, setUser] = useState<any>(null);
 
-    const signIn = (newUser: any, callback: VoidFunction) => {
-        return login(newUser).then(value => {
-            // 设定 User 状态
-            const token = value.data.data.token;
-            const userFromServer = value.data.data.userInfo;
-            delete userFromServer.team
-            delete userFromServer.detail
-
-            userFromServer.ticket = token;
-            setUser(userFromServer)
-            // Note: Todo: 有一个问题是如果这个string太长了，cookie 存储是失败的
-            Cookies.set('user',JSON.stringify(userFromServer))
-            Cookies.set('ticket',token)
-
-            // 全局 rolad 的时候可以直接用
-            callback()
-        })
+    const signIn = async (newUser: loginForm, callback: VoidFunction) => {
+        const value = await login(newUser);
+        // 设定 User 状态
+        const token = value.data.data.token;
+        const userFromServer = value.data.data.userInfo;
+        delete userFromServer.team;
+        delete userFromServer.detail;
+        userFromServer.ticket = token;
+        setUser(userFromServer);
+        // Note: Todo: 有一个问题是如果这个string太长了，cookie 存储是失败的
+        Cookies.set('user', JSON.stringify(userFromServer));
+        Cookies.set('ticket', token);
+        // 全局 rolad 的时候可以直接用
+        callback();
     }
 
     const signOut = (callback:VoidFunction)=>{

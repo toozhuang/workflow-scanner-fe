@@ -6,41 +6,49 @@
  */
 import React, {useEffect, useState} from 'react'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
-import {AuthContext} from "../App";
 import {Form, Input, Button, Checkbox} from 'antd';
 
-import './AuthPage.scss'
+import './login.scss'
 import {FundOutlined} from '@ant-design/icons';
-import AuthHook from '../common/AuthHook';
-import { loginForm } from './dto/login.interface';
+
+import AuthHook from "../../common/AuthHook";
+import {AuthContext} from "../../App";
+import {loginForm} from "../../components/dto/login.interface";
+import {useAuthDispatch, useAuthState} from "../../context/context";
+import {loginUser} from "../../context/action";
+import _ from "lodash";
 
 
 
-const AuthPage = () => {
+const LoginPage = () => {
 
-    const [{isError, isLoading}] = AuthHook();
+    const userDetail = useAuthState()
 
     let navigate = useNavigate();
     let location = useLocation();
-    let auth = React.useContext(AuthContext)
+    let auth = useAuthDispatch();
 
     let from = location.state?.from?.pathname || "/";
 
 
-    const onFinish = (value: loginForm) => {
+    const onFinish = async (value: loginForm) => {
         // setLoading(true)
-        auth.signIn(value, () => {
-            // setLoading(false)
-            navigate('/', {replace: true});
-        })
+        console.log(value)
+        const user = await loginUser(auth, value)
+        navigate('/asr',{replace: true})
+        // auth.signIn(value, () => {
+        //     // setLoading(false)
+        //     navigate('/', {replace: true});
+        // })
     };
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
 
+    console.log('见证跳转的时刻： ',userDetail)
     // 下面的两种跳转逻辑都 OK
-    if (!isError && !isLoading) {
+    if (!(_.isEmpty(userDetail.user)) ) {
         // navigate('/', {replace: true});
         return <Navigate to="/" state={{from: location}}/>;
 
@@ -57,7 +65,7 @@ const AuthPage = () => {
                     <div className="title">
                         <FundOutlined/>
                         {/* TODO： 后期支持语言内部文字化*/}
-                        Phoenix TV Web Tools
+                        Phoneix TV Web Tools
                     </div>
 
                     {/* 看起来 react ant design 的 form 默认有 event prevent default 的方法
@@ -108,4 +116,4 @@ const AuthPage = () => {
     );
 };
 
-export default AuthPage
+export default LoginPage

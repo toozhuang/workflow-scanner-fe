@@ -1,6 +1,7 @@
 import React from 'react';
 import {useLocation, Navigate} from "react-router-dom";
-import {AuthContext} from "../App";
+import {useAuthState} from "../context/context";
+import _ from "lodash";
 
 
 function RequireAuth({children}: { children: JSX.Element }) {
@@ -9,10 +10,10 @@ function RequireAuth({children}: { children: JSX.Element }) {
     // 只有在 token 过期来以后， 才需要确定是否要重新登录
     // 而我们的 token 过期就由 API 触发就好
     // 不需要每一个地方都进行判断
-    let auth = React.useContext(AuthContext)
+    let auth = useAuthState()
     let location = useLocation();
-
-    if (!auth.user) {
+    console.log('auth: ',auth)
+    if ((_.isEmpty(auth.user)) ) {
         // Redirect them to the /login page, but save the current location they were
         // trying to go to when they were redirected. This allows us to send them
         // along to that page after they login, which is a nicer user experience

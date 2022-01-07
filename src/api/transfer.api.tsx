@@ -1,15 +1,9 @@
-import axios from 'axios';
-
-import dev_env from '../config.env'
-import prod_env from '../config.prod'
-
-
-const isDev = process.env.NODE_ENV === 'development';
-const URL = isDev ? dev_env.apiService.transferScannerService : prod_env.apiService.transferScannerService
+import axios from './axios/api'
 
 
 export const getTransferList = () => {
-    return axios.get(`${URL}/transfer-service/result?status=dealing`, {
+    return axios.getReq(
+        `/transfer-service/result?status=dealing`, {
         withCredentials: true,
         headers: {
         }
@@ -17,8 +11,9 @@ export const getTransferList = () => {
 }
 
 export const updateTransfer = (transferId: string,status:string='complete') => {
-    return axios.post(`${URL}/transfer-service/${transferId}`,
+    return axios.postReq(`/transfer-service/${transferId}`,
         {status},
         {withCredentials: true,}
     )
+
 }

@@ -2,15 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/authentication.api.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dto/login.interface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/srt/SrtPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/login/login.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/login.api.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/transfer.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/transfer.api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/AuthHook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/AuthHook.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransferPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransferPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/reducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,6 +54,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="NamedScopeManager">
+    <scope name="TooZhuang" pattern="" />
+  </component>
   <component name="ProjectId" id="225LO55NYiR2fMVjjzSlS1BrqMx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,18 +70,19 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/login" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/login" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
@@ -68,7 +100,12 @@
       <workItem from="1639454845511" duration="14502000" />
       <workItem from="1639707091140" duration="9691000" />
       <workItem from="1639981385219" duration="1531000" />
-      <workItem from="1640065731268" duration="11351000" />
+      <workItem from="1640065731268" duration="14452000" />
+      <workItem from="1641198729844" duration="23000" />
+      <workItem from="1641198790964" duration="346000" />
+      <workItem from="1641199174670" duration="27742000" />
+      <workItem from="1641448261187" duration="11000" />
+      <workItem from="1641482977992" duration="12618000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -98,7 +135,35 @@
       <option name="project" value="LOCAL" />
       <updated>1640670339948</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add: 引入 ant design layout； 添加侧边栏UI">
+      <created>1641195523379</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641195523379</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add： 简单封装 axios">
+      <created>1641368568364</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1641368568365</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add: 引入 context, reducer 配合 route 实现动态auth校验">
+      <created>1641441400431</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1641441400432</updated>
+    </task>
+    <task id="LOCAL-00008" summary="bug: 重写 route， 修复跳转异常">
+      <created>1641452804473</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1641452804473</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +186,14 @@
     <MESSAGE value="feat：抽离了 AuthHook， 用来做用户登录的交互" />
     <MESSAGE value="config：配置全局的 Env" />
     <MESSAGE value="feat: 添加 error catch" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 添加 error catch" />
+    <MESSAGE value="add: 引入 ant design layout； 添加侧边栏UI" />
+    <MESSAGE value="add： 简单封装 axios" />
+    <MESSAGE value="add: 引入 context, reducer 配合 route 实现动态auth校验" />
+    <MESSAGE value="bug: 重写 route， 修复跳转异常" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug: 重写 route， 修复跳转异常" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
