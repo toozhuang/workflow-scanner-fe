@@ -11,7 +11,8 @@ const TransfromAsr = (inPros:any)=>{
 
     return (
         <>
-        我是大帅比
+            <p></p><p></p><p></p>
+            <h3>开始运翻译</h3>
             <Button onClick={diao}>我是个按钮</Button>
         </>
     )

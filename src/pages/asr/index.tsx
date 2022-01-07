@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+import './asr.scss'
 
 import {Upload, message, Input, Button, Progress, Steps} from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
@@ -82,7 +83,9 @@ const AsrPage = ()=>{
         },
         {
             title: 'Last',
-            content: 'Last-content',
+            content: <div>
+                x
+            </div>,
         },
     ];
 
@@ -91,30 +94,33 @@ const AsrPage = ()=>{
     return (
         <div>
             <h2> 语音转字幕服务 </h2>
-            {/*current={current}*/}
-            <Steps >
-                {steps.map(item => (
-                    <Step key={item.title} status="wait" title={item.title} />
-                ))}
-            </Steps>
-            <div className="steps-content">{steps[current].content}</div>
-            <div className="steps-action">
-                {current < steps.length - 1 && (
-                    <Button type="primary" onClick={() => next()}>
-                        Next
-                    </Button>
-                )}
-                {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                        Done
-                    </Button>
-                )}
-                {current > 0 && (
-                    <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-                        Previous
-                    </Button>
-                )}
+            <div className="asr-container">
+                {/*current={current}*/}
+                <Steps >
+                    {steps.map(item => (
+                        <Step key={item.title} status="wait" title={item.title} />
+                    ))}
+                </Steps>
+                <div className="steps-content">{steps[current].content}</div>
+                <div className="steps-action">
+                    {current < steps.length - 1 && (
+                        <Button type="primary" onClick={() => next()}>
+                            Next
+                        </Button>
+                    )}
+                    {current === steps.length - 1 && (
+                        <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                            Done
+                        </Button>
+                    )}
+                    {current > 0 && (
+                        <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+                            Previous
+                        </Button>
+                    )}
+                </div>
             </div>
+
 
 
 
