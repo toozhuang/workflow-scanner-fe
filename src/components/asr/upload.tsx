@@ -26,6 +26,7 @@ const AsrUpload = (inProps: any) => {
     useEffect(() => {
 
         const getDetail = async () => {
+            console.log('看看来了几次')
             try {
                 const {data} = await retrieveNewToken()
                 console.log('嗷嗷叫的来了', data)
@@ -38,6 +39,11 @@ const AsrUpload = (inProps: any) => {
         }
 
         getDetail()
+
+        return ()=>{
+            console.log('这个是 return了')
+            // getDetail()
+        }
     }, [setDetails])
 
     const props = {
@@ -77,7 +83,8 @@ const AsrUpload = (inProps: any) => {
 
 
     return (<>
-        <h4>1. 上传语音文件</h4>
+        <p></p><p></p><p></p>
+        <h3>上传语音文件</h3>
         <p></p>
         <Dragger {...props}>
             <p className="ant-upload-drag-icon">
