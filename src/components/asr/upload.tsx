@@ -11,62 +11,65 @@ const {Dragger} = Upload;
 const AsrUpload = (inProps: any) => {
     console.log(inProps)
     const [details, setDetails] = useState({
+        actionEndPoint:'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com',
+        key:'',
         OriginPolicy:'',
         Policy:'',
         Signature:'',
     })
 
-    const preUpload = async () => {
+    const preUpload = async (file:any) => {
         // 这里可以对比一下 detail 中的时间戳和当前的时间戳
         // 来决定要不要在这里上传
+        console.log(file)
+        const name = file.name;
         const {data: detail} = await retrieveNewToken();
-        setDetails(detail)
+        setDetails({
+            actionEndPoint:'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com',
+            key:name,...detail})
     }
 
     useEffect(() => {
 
         const getDetail = async () => {
-            console.log('看看来了几次')
             try {
                 const {data} = await retrieveNewToken()
-                console.log('嗷嗷叫的来了', data)
                 setDetails(data)
-                console.log('看看 detail', details)
             } catch (error) {
-                console.log('error 就这里： ', error)
+                // TODO: error hook here
             }
 
         }
 
-        getDetail()
+        getDetail().then()
 
         return ()=>{
             console.log('这个是 return了')
             // getDetail()
         }
     }, [setDetails])
-
+// TODO: 这里要设置文件的类型； 类型限制
     const props = {
         name: 'file',
         multiple: true,
-        action: 'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com',
+        action: details.actionEndPoint,
         data: {
-            key: 'audios',
+            key: details.key,
             'x-obs-acl': 'public-read',
             'content-type': 'audio/mpeg',
             policy: details.Policy,
             AccessKeyId: 'IMRYXZQOICTZIAAXM3EI',
             signature: details.Signature
         },
-        beforeUpload: () => {
+        beforeUpload: async (file:any) => {
             console.log('我是大帅比')
-            preUpload()
+            await preUpload(file)
         },
         onChange(info: any) {
             const {status} = info.file;
             if (status !== 'uploading') {
                 console.log(info.file, info.fileList,info);
-                inProps.upload('https://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com/audios')
+                inProps.upload(`${details.actionEndPoint}/${details.key}`)
             }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);

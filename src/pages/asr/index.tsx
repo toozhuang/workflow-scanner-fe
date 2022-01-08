@@ -6,12 +6,11 @@ import {Upload, message, Input, Button, Progress, Steps} from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import AsrUpload from "../../components/asr/upload";
 import TransfromAsr from "../../components/asr/transform";
+import TransformStatusStep from "../../components/asr/status";
 
 const { Dragger } = Upload;
 
 const { Step } = Steps;
-
-const DEMOURL = 'https://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com/audios'
 
 /**
  * 字幕服务的主入口
@@ -25,37 +24,10 @@ const DEMOURL = 'https://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.co
 const AsrPage = ()=>{
 
 
-    const [inputValue,setValue] = useState('https://fengshows-transcodedone.obs.cn-east-2.myhuaweicloud.com/transcodedone/feng-online-sound.mp3')
-    const props = {
-        name: 'file',
-        multiple: true,
-        action: 'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com',
-        data:{
-            key:'dashuaibi',
-            'x-obs-acl':'public-read',
-            'content-type':'text/plain',
-            policy:'eyJleHBpcmF0aW9uIjoiMjAyMi0wMS0wN1QwNjo1NzowOVoiLCAiY29uZGl0aW9ucyI6W3sieC1vYnMtYWNsIjoicHVibGljLXJlYWQifSx7ImNvbnRlbnQtdHlwZSI6InRleHQvcGxhaW4ifSxbInN0YXJ0cy13aXRoIiwgIiRidWNrZXQiLCAiIl0sWyJzdGFydHMtd2l0aCIsICIka2V5IiwgIiJdLF19',
-            AccessKeyId:'IMRYXZQOICTZIAAXM3EI',
-            signature:'Lqlg7zRvnIl/z9OwY0CdcoCU1XM='
-        },
-        onChange(info:any) {
-            const { status } = info.file;
-            if (status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
-            if (status === 'done') {
-                message.success(`${info.file.name} file uploaded successfully.`);
-            } else if (status === 'error') {
-                message.error(`${info.file.name} file upload failed.`);
-            }
-        },
-        onDrop(e:any) {
-            console.log('Dropped files', e.dataTransfer.files);
-        },
-    };
 
     const [current, setCurrent] = React.useState(0);
-    const [fileUrls, setFileUrls] = useState([])
+    const [fileUrls, setFileUrls] = useState('')
+    const [taskId, setTaskId] = useState(0)
 
     const next = () => {
         setCurrent(current + 1);
@@ -76,16 +48,19 @@ const AsrPage = ()=>{
         {
             title: 'Second',
             content: <div>
-                <TransfromAsr url={DEMOURL}>
-
+                {/*fileUrls*/}
+                <TransfromAsr url={
+                    'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com/PMHDHKSSPERSPECTIVES267(NEW)_7C49BACA-AA9F-4C0C-A499-C72D1C5A748F_aff2b4f2-83dd-4adc-b7eb-3bb5edfe42c2.mp3'}
+                    setTaskId = {setTaskId}>
                 </TransfromAsr>
             </div>,
         },
         {
             title: 'Last',
-            content: <div>
-                x
-            </div>,
+            content:
+               <TransformStatusStep
+               taskId={taskId}
+               ></TransformStatusStep>,
         },
     ];
 

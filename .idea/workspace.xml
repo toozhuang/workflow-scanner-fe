@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/asr/asr.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../workflow-scanner-service/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../workflow-scanner-service/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workflow-scanner-service/src/asr-service/asr.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../workflow-scanner-service/src/asr-service/asr.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -92,7 +91,7 @@
       <workItem from="1641199174670" duration="27742000" />
       <workItem from="1641448261187" duration="11000" />
       <workItem from="1641482977992" duration="12618000" />
-      <workItem from="1641568819391" duration="1285000" />
+      <workItem from="1641568819391" duration="10599000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -150,7 +149,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641452804473</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="bug: fix useEffect 没有返回清楚副作用的">
+      <created>1641570558135</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1641570558135</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add: UI微调">
+      <created>1641570576824</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1641570576824</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +191,9 @@
     <MESSAGE value="add： 简单封装 axios" />
     <MESSAGE value="add: 引入 context, reducer 配合 route 实现动态auth校验" />
     <MESSAGE value="bug: 重写 route， 修复跳转异常" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug: 重写 route， 修复跳转异常" />
+    <MESSAGE value="bug: fix useEffect 没有返回清楚副作用的" />
+    <MESSAGE value="add: UI微调" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: UI微调" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -5,8 +5,9 @@ import {createASRTask} from "../../api/asr.api";
 const TransfromAsr = (inPros:any)=>{
 
     const diao = async ()=>{
-        const result = await createASRTask(inPros.url)
-        console.log(result)
+        const {data:{Data:data}} = await createASRTask(inPros.url)
+        console.log(data.TaskId,inPros) //TaskId
+        inPros.setTaskId(data.TaskId)
     }
 
     return (

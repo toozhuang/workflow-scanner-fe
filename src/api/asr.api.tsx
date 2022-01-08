@@ -7,3 +7,8 @@ export const createASRTask = (fileUrl: string) => {
         {withCredentials: true,}
     )
 }
+
+export const getASRStatus = (taskId:string)=>{
+    console.log(`upload/status/${taskId}`)
+    return axios.getReq(`/asr-service-api/upload/status/${taskId}`,{withCredentials: true,})
+}
