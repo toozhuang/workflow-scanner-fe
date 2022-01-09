@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/status.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../workflow-scanner-service/src/asr-service/asr.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../workflow-scanner-service/src/asr-service/asr.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +92,7 @@
       <workItem from="1641199174670" duration="27742000" />
       <workItem from="1641448261187" duration="11000" />
       <workItem from="1641482977992" duration="12618000" />
-      <workItem from="1641568819391" duration="10599000" />
+      <workItem from="1641568819391" duration="13644000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -163,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641570576824</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add: 上传文件-提交任务-获取状态流程跑通">
+      <created>1641656712968</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641656712968</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +201,8 @@
     <MESSAGE value="bug: 重写 route， 修复跳转异常" />
     <MESSAGE value="bug: fix useEffect 没有返回清楚副作用的" />
     <MESSAGE value="add: UI微调" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: UI微调" />
+    <MESSAGE value="add: 上传文件-提交任务-获取状态流程跑通" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: 上传文件-提交任务-获取状态流程跑通" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

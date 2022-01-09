@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" filepath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../workflow-scanner-service/.idea/workflow-scanner-service.iml" filepath="$PROJECT_DIR$/../workflow-scanner-service/.idea/workflow-scanner-service.iml" />
     </modules>
   </component>
 </project>

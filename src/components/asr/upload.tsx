@@ -51,7 +51,7 @@ const AsrUpload = (inProps: any) => {
 // TODO: 这里要设置文件的类型； 类型限制
     const props = {
         name: 'file',
-        multiple: true,
+        multiple: false,
         action: details.actionEndPoint,
         data: {
             key: details.key,
@@ -89,7 +89,7 @@ const AsrUpload = (inProps: any) => {
         <p></p><p></p><p></p>
         <h3>上传语音文件</h3>
         <p></p>
-        <Dragger {...props}>
+        <Dragger {...props} style={{minHeight:'300px',display:"flex",alignContent:"center",justifyContent:"center",flexDirection:"column"}}>
             <p className="ant-upload-drag-icon">
                 <InboxOutlined/>
             </p>

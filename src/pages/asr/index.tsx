@@ -7,6 +7,7 @@ import { InboxOutlined } from '@ant-design/icons';
 import AsrUpload from "../../components/asr/upload";
 import TransfromAsr from "../../components/asr/transform";
 import TransformStatusStep from "../../components/asr/status";
+import {take} from "lodash";
 
 const { Dragger } = Upload;
 
@@ -26,22 +27,38 @@ const AsrPage = ()=>{
 
 
     const [current, setCurrent] = React.useState(0);
+    const [buttonClickable,setButtonClickable] = useState(false)
     const [fileUrls, setFileUrls] = useState('')
-    const [taskId, setTaskId] = useState(0)
+    const [taskId, setTaskId] = useState('')
 
     const next = () => {
         setCurrent(current + 1);
+        setButtonClickable(true)
     };
 
     const prev = () => {
         setCurrent(current - 1);
+        setButtonClickable(true)
     };
+
+    const setUpload = (url:string)=>{
+        // 设置 url ok
+        setFileUrls(url)
+        // 设置 button clickable
+        setButtonClickable(false)
+    }
+
+    const setTransform = (taskId:string)=>{
+        setTaskId(taskId)
+        setButtonClickable(false)
+    }
+
 
     const steps = [
         {
             title: '第一步',
             content:  <div>
-                <AsrUpload urls={fileUrls} upload={setFileUrls}></AsrUpload>
+                <AsrUpload urls={fileUrls} upload={setUpload}></AsrUpload>
             </div>
             ,
         },
@@ -51,7 +68,7 @@ const AsrPage = ()=>{
                 {/*fileUrls*/}
                 <TransfromAsr url={
                     'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com/PMHDHKSSPERSPECTIVES267(NEW)_7C49BACA-AA9F-4C0C-A499-C72D1C5A748F_aff2b4f2-83dd-4adc-b7eb-3bb5edfe42c2.mp3'}
-                    setTaskId = {setTaskId}>
+                    setTaskId = {setTransform}>
                 </TransfromAsr>
             </div>,
         },
@@ -79,15 +96,15 @@ const AsrPage = ()=>{
                 <div className="steps-content">{steps[current].content}</div>
                 <div className="steps-action">
                     {current < steps.length - 1 && (
-                        <Button type="primary" onClick={() => next()}>
+                        <Button type="primary" disabled={buttonClickable} onClick={() => next()}>
                             Next
                         </Button>
                     )}
-                    {current === steps.length - 1 && (
-                        <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                            Done
-                        </Button>
-                    )}
+                    {/*{current === steps.length - 1 && (*/}
+                    {/*    <Button type="primary" onClick={() => message.success('Processing complete!')}>*/}
+                    {/*        Done*/}
+                    {/*    </Button>*/}
+                    {/*)}*/}
                     {current > 0 && (
                         <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
                             Previous

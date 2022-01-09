@@ -5,7 +5,7 @@
  */
 import React, {useEffect, useState} from 'react'
 import {getASRStatus} from "../../api/asr.api";
-import {Spin} from "antd";
+import {Button, Spin} from "antd";
 
 const TransformStatusStep = (inProps:any)=>{
 
@@ -57,13 +57,21 @@ const TransformStatusStep = (inProps:any)=>{
 
     },[isLoading,isFetch])
 
+    const generateAsrFile = ()=>{
+        console.log('会在这里创建文件')
+    }
+
     return (
         <div>
 
-             <h2> sssss</h2>
-            <Spin spinning={isLoading}>
-
+             <h2> 翻译文件生成状态 </h2>
+            <Spin spinning={isLoading} style={{margin:"40px"}}>
             </Spin>
+            {
+                !isLoading && <div>
+                    <Button style={{width:"130px"}} onClick={generateAsrFile}>下载文件</Button>
+                </div>
+            }
         </div>
     )
 }
