@@ -4,6 +4,7 @@ import LoginPage from '../pages/login'
 import AsrPage from "../pages/asr";
 import RequireAuth from "../components/RequireAuth";
 import ContentPage from "../pages/layout/ContentPage";
+import {AsrProvider} from "../context/context";
 
 
 export type RouteType = {
@@ -31,7 +32,9 @@ const routes: RouteType[] = [
         path: '/asr',
         component: () => <RequireAuth>
             <ContentPage>
-                <AsrPage></AsrPage>
+                <AsrProvider>
+                    <AsrPage></AsrPage>
+                </AsrProvider>
             </ContentPage>
         </RequireAuth>,
         isPrivate: true

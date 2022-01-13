@@ -4,7 +4,7 @@
  * 中放置 一个key
  */
 import React, {useEffect, useState} from 'react'
-import {getASRStatus} from "../../api/asr.api";
+import {fileDownload, getASRStatus} from "../../api/asr.api";
 import {Button, Spin} from "antd";
 
 const TransformStatusStep = (inProps:any)=>{
@@ -59,6 +59,7 @@ const TransformStatusStep = (inProps:any)=>{
 
     const generateAsrFile = ()=>{
         console.log('会在这里创建文件')
+        fileDownload(inProps.taskId).then()
     }
 
     return (

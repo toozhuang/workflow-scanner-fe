@@ -34,14 +34,14 @@ class Abstract{
                 withCredentials
             },).then(
                 (res:any)=>{
-                    console.log('统一有 res： ',res.data)
                     // 200:服务端业务处理正常结束
                     if (res.status === 200 || res.status===201) {
                         const apiStatus = res.data.status
                         // 在这个内部判断是否正确
-                        if (parseInt(apiStatus) > 0) {
+                        if (parseInt(apiStatus) >= 0) {
                             resolve({ status: true, message: 'success', data: res.data?.data, origin: res.data });
                         } else {
+                            console.log('来了吗？ ')
                             message.error(res.data.statusInfo.message)
                             resolve({ status: false, message: res.data?.statusInfo.message || (url + '请求失败'), data: res.data?.data, origin: res.data });
                         }
@@ -50,9 +50,10 @@ class Abstract{
                     }
                 }
             ).catch(err=>{
-                const message = err?.data?.errorMessage || err?.message || (url + '请求失败');
-                message.error({ type: 'error', message });
-                reject({ status: false, message, data: null});
+                console.log('怎么有错误了『？？？？ ',err)
+                const messageText = err?.data?.errorMessage || err?.message || (url + '请求失败');
+                message.error({ type: 'error', messageText });
+                reject({ status: false, message:messageText, data: null});
             })
         } );
     }

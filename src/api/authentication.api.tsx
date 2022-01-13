@@ -1,8 +1,10 @@
 import axios from './axios/api'
 import type { loginForm } from '../components/dto/login.interface';
 
-export const login = (userDetail: loginForm) => {
-    return axios.postReq(`/auth/login`, {userDetail})
+export const login = (userDetail: loginForm):any => {
+
+    // return axios.postReq('/auth/login', {userDetail})
+    return axios.postRequest({url:`/auth/login`, data:{userDetail}})
     // return null;
 }
 
@@ -17,6 +19,12 @@ export const auth = () => {
 /**
  * 返回最新的上传文件的token信息
  */
-export const retrieveNewToken = ()=>{
-    return axios.getReq('/asr-service-api/signature',{withCredentials: true,})
+export const retrieveNewToken:any = async()=>{
+
+    const result = await axios.getRequest({
+        url:'/asr-service-api/signature',
+        withCredentials: true,
+    })
+    console.log('aoaojiao', result)
+    return result
 }

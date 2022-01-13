@@ -1,32 +1,41 @@
 import React, {useEffect, useState} from "react";
 import {InboxOutlined} from "@ant-design/icons";
-import {Upload, message, Input, Button, Progress, Steps} from 'antd';
+import {Upload, message, Input, Button, Progress, Steps, Divider, UploadProps} from 'antd';
 import {retrieveNewToken} from "../../api/authentication.api";
+
+import './upload.scss'
+import {File} from "./file.dto";
+import {AsrUploadProps} from "../../pages/asr";
 
 const {Dragger} = Upload;
 
 
-
-
-const AsrUpload = (inProps: any) => {
+/**
+ * 使用 dispatch
+ * @param inProps
+ * @constructor
+ */
+const AsrUpload = (inProps:AsrUploadProps ) => {
     console.log(inProps)
+    const [uploaded, setUploaded] = useState(false)
     const [details, setDetails] = useState({
-        actionEndPoint:'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com',
-        key:'',
-        OriginPolicy:'',
-        Policy:'',
-        Signature:'',
+        actionEndPoint: '',
+        key: '',
+        OriginPolicy: '',
+        Policy: '',
+        Signature: '',
     })
 
-    const preUpload = async (file:any) => {
+    const preUpload = async (file: any) => {
         // 这里可以对比一下 detail 中的时间戳和当前的时间戳
         // 来决定要不要在这里上传
         console.log(file)
         const name = file.name;
         const {data: detail} = await retrieveNewToken();
         setDetails({
-            actionEndPoint:'http://fengshows-openapi-upload.obs.cn-east-2.myhuaweicloud.com',
-            key:name,...detail})
+            actionEndPoint: detail.endpoint,
+            key: name, ...detail
+        })
     }
 
     useEffect(() => {
@@ -43,9 +52,8 @@ const AsrUpload = (inProps: any) => {
 
         getDetail().then()
 
-        return ()=>{
-            console.log('这个是 return了')
-            // getDetail()
+        return () => {
+
         }
     }, [setDetails])
 // TODO: 这里要设置文件的类型； 类型限制
@@ -53,6 +61,9 @@ const AsrUpload = (inProps: any) => {
         name: 'file',
         multiple: false,
         action: details.actionEndPoint,
+        disabled: uploaded,
+        accept:'audio/*',
+        maxCount: 1,
         data: {
             key: details.key,
             'x-obs-acl': 'public-read',
@@ -61,15 +72,20 @@ const AsrUpload = (inProps: any) => {
             AccessKeyId: 'IMRYXZQOICTZIAAXM3EI',
             signature: details.Signature
         },
-        beforeUpload: async (file:any) => {
+        beforeUpload: async (file: any) => {
             console.log('我是大帅比')
             await preUpload(file)
         },
         onChange(info: any) {
             const {status} = info.file;
+            console.log(info)
             if (status !== 'uploading') {
-                console.log(info.file, info.fileList,info);
-                inProps.upload(`${details.actionEndPoint}/${details.key}`)
+                console.log(status, info.file, info.fileList, info);
+                inProps.upload({
+                    path: `${details.actionEndPoint}/${details.key}`,
+                    fileDetail: info.file
+                })
+
             }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
@@ -86,14 +102,26 @@ const AsrUpload = (inProps: any) => {
 
 
     return (<>
-        <p></p><p></p><p></p>
-        <h3>上传语音文件</h3>
-        <p></p>
-        <Dragger {...props} style={{minHeight:'300px',display:"flex",alignContent:"center",justifyContent:"center",flexDirection:"column"}}>
+
+
+        <Divider><h3>上传语音文件</h3></Divider>
+
+        <Dragger {...props} style={{
+            minHeight: '300px',
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
+            flexDirection: "column"
+        }}>
             <p className="ant-upload-drag-icon">
                 <InboxOutlined/>
             </p>
             <p className="ant-upload-text">点击或者拖拽来上传文件</p>
+            <div className="ant-upload-text upload-format-small">
+                <p className="upload-format-small ">
+                    (只能选择单个文件)
+                </p>
+            </div>
             <p className="ant-upload-hint">
             </p>
         </Dragger>
