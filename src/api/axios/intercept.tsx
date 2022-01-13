@@ -1,7 +1,6 @@
 import axios, {AxiosRequestConfig, Method} from 'axios';
 
 
-
 interface PendingType {
     url?: string;
     method?: Method;
@@ -10,14 +9,13 @@ interface PendingType {
     cancel: Function;
 }
 
-const pending: Array<PendingType> = []  ; // 全局 pending
+const pending: Array<PendingType> = []; // 全局 pending
 const CancelToken = axios.CancelToken;
 
 // 设置超时时间
 axios.defaults.timeout = 10000  // 10 s
 
 const httpService = axios.create({responseType: 'json'})
-
 
 
 // 当前的鉴权使用 cookie 就够了， 所以不需要拿取别的状态
@@ -29,7 +27,9 @@ const removePending = (config: AxiosRequestConfig) => {
         const item: number = +key;  //在这里进行 for 的 +1 操作
         const list: PendingType = pending[key];
         // 当前请求在数组中存在时执行函数体
-        if (list.url === config.url && list.method === config.method && JSON.stringify(list.params) === JSON.stringify(config.params) && JSON.stringify(list.data) === JSON.stringify(config.data)) {
+        if (list.url === config.url && list.method === config.method
+            && JSON.stringify(list.params) === JSON.stringify(config.params)
+            && JSON.stringify(list.data) === JSON.stringify(config.data)) {
             // 执行取消操作
             list.cancel('操作太频繁，请稍后再试');
             // 从数组中移除记录
@@ -68,7 +68,7 @@ httpService.interceptors.response.use(
         }
 
         return response;
-    } , error => {
+    }, error => {
         //    TODO： 后面接着看把 这里
         const response = error.response;
 
@@ -100,7 +100,7 @@ httpService.interceptors.response.use(
             config.__retryCount = config.__retryCount || 0;
             // 检查是否已经把重试的总数用完
             if (config.__retryCount >= RETRY_COUNT) {
-                return Promise.reject(response || { message: error.message });
+                return Promise.reject(response || {message: error.message});
             }
             // 增加重试计数
             config.__retryCount++;

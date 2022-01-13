@@ -1,8 +1,8 @@
 
 const config = {
     apiService:{
-        baseURL:'http://localhost:3000',
-        transferScannerService:'http://localhost:3000'
+        baseURL:'http://172.19.223.200:3230',
+        transferScannerService:'http://172.19.223.200:3230'
     }
 }
 export default config
