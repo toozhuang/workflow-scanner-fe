@@ -1,5 +1,5 @@
-import {login} from "../api/authentication.api";
-import {AUTH_COMMAND} from "./reducer";
+import {login, retrieveNewToken} from "../api/authentication.api";
+import {ASR_COMMAND, AUTH_COMMAND} from "./reducer";
 
 
 /**
@@ -22,5 +22,20 @@ export async function loginUser(dispatch:any, loginPayload:any) {
     }catch(e){
         dispatch({type: AUTH_COMMAND.LOGIN_ERROR})
     }
+
+}
+
+export async function getSignature(dispatch:any){
+    console.log('来了吗： getSignature')
+    // dispatch({type: ASR_COMMAND.REQUEST_SIGNATURE})
+    try{
+        dispatch({type: ASR_COMMAND.REQUEST_SIGNATURE})
+        const data = await retrieveNewToken();
+        console.log( 'get data: ',data)
+    }catch(e){
+        console.log('error: ',e)
+        dispatch({type: ASR_COMMAND.REQUEST_SIGNATURE_ERROR})
+    }
+
 
 }

@@ -23,7 +23,9 @@ const routes: RouteType[] = [
         path: '/',
         component: () => <RequireAuth>
             <ContentPage>
+                <AsrProvider>
                 <AsrPage></AsrPage>
+                </AsrProvider>
             </ContentPage>
         </RequireAuth>,
         isPrivate: true

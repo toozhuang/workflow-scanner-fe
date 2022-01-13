@@ -6,6 +6,8 @@ import {retrieveNewToken} from "../../api/authentication.api";
 import './upload.scss'
 import {File} from "./file.dto";
 import {AsrUploadProps} from "../../pages/asr";
+import {useAsrDispatch, useAsrState} from "../../context/context";
+import {getSignature} from "../../context/action";
 
 const {Dragger} = Upload;
 
@@ -16,7 +18,10 @@ const {Dragger} = Upload;
  * @constructor
  */
 const AsrUpload = (inProps:AsrUploadProps ) => {
-    console.log(inProps)
+
+    const value = useAsrState()
+    const dispatch = useAsrDispatch()   // 返回 asr 使用的 dispatch 在 async 中进行dispatch 操作
+
     const [uploaded, setUploaded] = useState(false)
     const [details, setDetails] = useState({
         actionEndPoint: '',
@@ -26,11 +31,10 @@ const AsrUpload = (inProps:AsrUploadProps ) => {
         Signature: '',
     })
 
-    const preUpload = async (file: any) => {
-        // 这里可以对比一下 detail 中的时间戳和当前的时间戳
-        // 来决定要不要在这里上传
-        console.log(file)
+    const preUpload = async (file: any,dispatch:any) => {
         const name = file.name;
+        const signature = await getSignature(dispatch)
+    return
         const {data: detail} = await retrieveNewToken();
         setDetails({
             actionEndPoint: detail.endpoint,
@@ -38,24 +42,24 @@ const AsrUpload = (inProps:AsrUploadProps ) => {
         })
     }
 
-    useEffect(() => {
-
-        const getDetail = async () => {
-            try {
-                const {data} = await retrieveNewToken()
-                setDetails(data)
-            } catch (error) {
-                // TODO: error hook here
-            }
-
-        }
-
-        getDetail().then()
-
-        return () => {
-
-        }
-    }, [setDetails])
+    // useEffect(() => {
+    //
+    //     const getDetail = async () => {
+    //         try {
+    //             const {data} = await retrieveNewToken()
+    //             setDetails(data)
+    //         } catch (error) {
+    //             // TODO: error hook here
+    //         }
+    //
+    //     }
+    //
+    //     getDetail().then()
+    //
+    //     return () => {
+    //
+    //     }
+    // }, [setDetails])
 // TODO: 这里要设置文件的类型； 类型限制
     const props = {
         name: 'file',
@@ -73,10 +77,11 @@ const AsrUpload = (inProps:AsrUploadProps ) => {
             signature: details.Signature
         },
         beforeUpload: async (file: any) => {
-            console.log('我是大帅比')
-            await preUpload(file)
+            console.log('before: ',dispatch )
+            await preUpload(file,dispatch)
         },
         onChange(info: any) {
+            return;
             const {status} = info.file;
             console.log(info)
             if (status !== 'uploading') {

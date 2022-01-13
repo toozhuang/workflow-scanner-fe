@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="add: 上传文件-提交任务-获取状态流程跑通">
-      <change afterPath="$PROJECT_DIR$/src/components/asr/upload.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/context/dto/asr.types.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/authentication.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/authentication.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/status.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/context/action.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
@@ -40,6 +34,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/asr/status.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/asr/asr.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/asr/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/asr/upload.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/api/asr.api.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/asr/transform.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -207,6 +209,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
