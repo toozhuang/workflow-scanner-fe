@@ -6,9 +6,7 @@
 import httpService from './intercept';
 import dev_env from '../../config.env'
 import prod_env from '../../config.prod'
-import {AxiosRequestConfig} from "axios";
 import {AxiosRequest} from "../dto/axios.type";
-import {log} from "util";
 import {message} from "antd";
 
 
@@ -41,7 +39,7 @@ class Abstract{
                         if (parseInt(apiStatus) >= 0) {
                             resolve({ status: true, message: 'success', data: res.data?.data, origin: res.data });
                         } else {
-                            console.log('来了吗？ ')
+
                             message.error(res.data.statusInfo.message)
                             resolve({ status: false, message: res.data?.statusInfo.message || (url + '请求失败'), data: res.data?.data, origin: res.data });
                         }
@@ -50,9 +48,8 @@ class Abstract{
                     }
                 }
             ).catch(err=>{
-                console.log('怎么有错误了『？？？？ ',err)
                 const messageText = err?.data?.errorMessage || err?.message || (url + '请求失败');
-                message.error({ type: 'error', messageText });
+                message.error( messageText );
                 reject({ status: false, message:messageText, data: null});
             })
         } );
