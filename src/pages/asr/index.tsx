@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import './asr.scss'
 
-import {Upload, message, Input, Button, Progress, Steps} from 'antd';
+import {Upload, message, Input, Button, Progress, Steps, Spin} from 'antd';
 import {InboxOutlined} from '@ant-design/icons';
 import AsrUpload from "../../components/asr/upload";
 import TransfromAsr from "../../components/asr/transform";
@@ -121,6 +121,9 @@ const AsrPage = () => {
      */
     return (
         <div>
+            <Spin spinning={asrState.loading}  >
+
+            </Spin>
             <h2> 语音转字幕服务 </h2>
             <div className="asr-container">
                 {/*current={current}*/}

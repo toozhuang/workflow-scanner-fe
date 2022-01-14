@@ -79,6 +79,7 @@ export const asrInitialState: AsrStateType = {
  * @constructor
  */
 export const AuthReducer = (initialState: StateType, action: ActionType) => {
+    console.log('难道是 auth reducer 吗 ')
     switch (action.type) {
         case AUTH_COMMAND.REQUEST_LOGIN:
             return {
@@ -115,6 +116,7 @@ export const AuthReducer = (initialState: StateType, action: ActionType) => {
 }
 
 export const AsrReducer = (initialState: AsrStateType, action: AsrActionType) => {
+    console.log('是你把？？ ')
     switch (action.type) {
         case ASR_COMMAND.REQUEST_SIGNATURE:
             return {

@@ -13,6 +13,7 @@ const AuthDispatchContext = React.createContext({}) //Dispatch<ActionType>
 // ASR 部分的全局 Context
 const AsrStateContext = React.createContext(asrInitialState); // 即使我现在在这个地方有了我们的state， 但其实最终
 // 在使用的时候， 还是从那个 reducer hook 中拿取 更快更简单更牛逼啊
+// {description:'这是 deafult reducer with nothing pass'} TODO: 强调确实需要找一下这个是要传入什么
 const AsrDispatchContext = React.createContext({})
 
 
@@ -30,7 +31,7 @@ export function useAsrState(){
 
 export function useAsrDispatch(){
     const context = React.useContext(AsrDispatchContext)
-
+    console.log('context: ',context)
     if(context === undefined){
         throw new Error('useAsrDispatch 必须在 AsrDispatchContext Provider中使用')
     }
@@ -89,7 +90,7 @@ export const AuthProvider = ({children}: { children: JSX.Element }) => {
  */
 export const AsrProvider = ({children}:{children:JSX.Element})=>{
     const [asrStore,dispatch] = useReducer(AsrReducer, asrInitialState)
-
+    console.log('Auth provider user: ', dispatch)
     return (
         <AsrStateContext.Provider value={asrStore}>
             <AsrDispatchContext.Provider value={dispatch}>
