@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="add: 上传文件-提交任务-获取状态流程跑通">
-      <change afterPath="$PROJECT_DIR$/src/components/asr/upload.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/context/dto/asr.types.tsx" afterDir="false" />
+    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/authentication.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/authentication.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/status.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/action.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/reducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +86,7 @@
       <workItem from="1641448261187" duration="11000" />
       <workItem from="1641482977992" duration="12618000" />
       <workItem from="1641568819391" duration="13644000" />
-      <workItem from="1641956698754" duration="18613000" />
+      <workItem from="1641956698754" duration="18830000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -191,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642060899041</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add: asr 翻译工作流引入store redux 体系">
+      <created>1642083992249</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642083992249</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +218,8 @@
     <MESSAGE value="add: 上传文件-提交任务-获取状态流程跑通" />
     <MESSAGE value="add: 封装 axios 方法, 添加错误拦截" />
     <MESSAGE value="add： 下载文件srt" />
-    <option name="LAST_COMMIT_MESSAGE" value="add： 下载文件srt" />
+    <MESSAGE value="add: asr 翻译工作流引入store redux 体系" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: asr 翻译工作流引入store redux 体系" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
