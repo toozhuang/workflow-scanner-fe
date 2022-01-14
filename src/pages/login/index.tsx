@@ -4,20 +4,17 @@
  *  Note: 有考虑是否这部分可以抽离成一个独立的hook
  *  但细想以后，感觉不需要
  */
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
-import {Form, Input, Button, Checkbox} from 'antd';
+import {Form, Input, Button, Checkbox, message} from 'antd';
 
 import './login.scss'
 import {FundOutlined} from '@ant-design/icons';
 
-import AuthHook from "../../common/AuthHook";
-import {AuthContext} from "../../App";
-import {loginForm} from "../../components/dto/login.interface";
+import {loginForm} from "../../components/dto/login.type";
 import {useAuthDispatch, useAuthState} from "../../context/context";
 import {loginUser} from "../../context/action";
 import _ from "lodash";
-
 
 
 const LoginPage = () => {
@@ -28,27 +25,25 @@ const LoginPage = () => {
     let location = useLocation();
     let auth = useAuthDispatch();
 
-    let from = location.state?.from?.pathname || "/";
-
-
     const onFinish = async (value: loginForm) => {
-        // setLoading(true)
-        console.log(value)
-        const user = await loginUser(auth, value)
-        navigate('/asr',{replace: true})
-        // auth.signIn(value, () => {
-        //     // setLoading(false)
-        //     navigate('/', {replace: true});
-        // })
+
+        try {
+            await loginUser(auth, value)
+            navigate('/asr', {replace: true})
+        } catch  {
+
+        }
+
+
     };
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
+    const onFinishFailed = () => {
+        message.error("请按照提示修改错误")
     };
 
-    console.log('见证跳转的时刻： ',userDetail)
+
     // 下面的两种跳转逻辑都 OK
-    if (!(_.isEmpty(userDetail.user)) ) {
+    if (!(_.isEmpty(userDetail.user))) {
         // navigate('/', {replace: true});
         return <Navigate to="/" state={{from: location}}/>;
 
@@ -65,7 +60,7 @@ const LoginPage = () => {
                     <div className="title">
                         <FundOutlined/>
                         {/* TODO： 后期支持语言内部文字化*/}
-                        Phoneix TV Web Tools
+                        Phoenix TV Web Tools
                     </div>
 
                     {/* 看起来 react ant design 的 form 默认有 event prevent default 的方法
