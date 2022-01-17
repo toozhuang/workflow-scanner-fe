@@ -7,7 +7,7 @@ import './upload.scss'
 import {File} from "./file.dto";
 import {AsrUploadProps} from "../../pages/asr";
 import {useAsrDispatch, useAsrState} from "../../context/context";
-import {getSignature} from "../../context/action";
+import {completeFileUpload, getSignature} from "../../context/action";
 
 const {Dragger} = Upload;
 
@@ -17,91 +17,57 @@ const {Dragger} = Upload;
  * @param inProps
  * @constructor
  */
-const AsrUpload = (inProps:AsrUploadProps ) => {
+const AsrUpload = (inProps: AsrUploadProps) => {
 
-    const value = useAsrState()
+    const globalStore = useAsrState()
     const dispatch = useAsrDispatch()   // 返回 asr 使用的 dispatch 在 async 中进行dispatch 操作
 
     const [uploaded, setUploaded] = useState(false)
-    const [details, setDetails] = useState({
-        actionEndPoint: '',
-        key: '',
-        OriginPolicy: '',
-        Policy: '',
-        Signature: '',
-    })
 
-    const preUpload = async (file: any,dispatch:any) => {
-        const name = file.name;
-        const signature = await getSignature(dispatch)
-    return
-        const {data: detail} = await retrieveNewToken();
-        setDetails({
-            actionEndPoint: detail.endpoint,
-            key: name, ...detail
-        })
-    }
+    // TODO : 这里要考虑获取 signature 失败的情况
+    const preUpload = async (file: any, dispatch: any) => await getSignature(dispatch)
 
-    // useEffect(() => {
-    //
-    //     const getDetail = async () => {
-    //         try {
-    //             const {data} = await retrieveNewToken()
-    //             setDetails(data)
-    //         } catch (error) {
-    //             // TODO: error hook here
-    //         }
-    //
-    //     }
-    //
-    //     getDetail().then()
-    //
-    //     return () => {
-    //
-    //     }
-    // }, [setDetails])
-// TODO: 这里要设置文件的类型； 类型限制
     const props = {
         name: 'file',
         multiple: false,
-        action: details.actionEndPoint,
+        action: globalStore.bucket.endpoint,
         disabled: uploaded,
-        accept:'audio/*',
+        accept: 'audio/*',
         maxCount: 1,
         data: {
-            key: details.key,
+            key: globalStore.bucket.key,
             'x-obs-acl': 'public-read',
             'content-type': 'audio/mpeg',
-            policy: details.Policy,
-            AccessKeyId: 'IMRYXZQOICTZIAAXM3EI',
-            signature: details.Signature
+            policy: globalStore.bucket.Policy,
+            AccessKeyId: 'IMRYXZQOICTZIAAXM3EI',  // TODO: 动态载入这个地方， 要从配置文件去拿取
+            signature: globalStore.bucket.Signature
         },
         beforeUpload: async (file: any) => {
-            console.log('before: ',dispatch )
-            await preUpload(file,dispatch)
+            await preUpload(file, dispatch)
         },
-        onChange(info: any) {
-            return;
+        onChange: async (info: any) => {
             const {status} = info.file;
-            console.log(info)
+
             if (status !== 'uploading') {
-                console.log(status, info.file, info.fileList, info);
-                inProps.upload({
-                    path: `${details.actionEndPoint}/${details.key}`,
-                    fileDetail: info.file
-                })
 
             }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
-                //    这个地方要确定一下上传的url
+
+                // 上传成功就要dispath 上传成功的 action 这个地方要确定一下上传的url
+                await completeFileUpload(
+                    {
+                        filePath: `${globalStore.bucket.endpoint}/${info.file.name}`,
+                        fileInfo: info.file
+                    }, dispatch)
 
             } else if (status === 'error') {
+                //TODO: 针对上传失败的 dispatch
                 message.error(`${info.file.name} file upload failed.`);
             }
         },
         onDrop(e: any) {
-            console.log('Dropped files', e.dataTransfer.files);
+            // console.log('Dropped files', e.dataTransfer.files);
         },
     };
 
