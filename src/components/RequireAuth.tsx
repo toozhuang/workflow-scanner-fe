@@ -12,7 +12,7 @@ function RequireAuth({children}: { children: JSX.Element }) {
     // 不需要每一个地方都进行判断
     let auth = useAuthState()
     let location = useLocation();
-    console.log('auth: ',auth)
+
     if ((_.isEmpty(auth.user)) ) {
         // Redirect them to the /login page, but save the current location they were
         // trying to go to when they were redirected. This allows us to send them

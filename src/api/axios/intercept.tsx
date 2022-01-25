@@ -1,7 +1,7 @@
 import axios, {AxiosRequestConfig, Method} from 'axios';
 
 
-interface PendingType {
+type PendingType ={
     url?: string;
     method?: Method;
     params: any;
@@ -10,7 +10,7 @@ interface PendingType {
 }
 
 const pending: Array<PendingType> = []; // 全局 pending
-const CancelToken = axios.CancelToken;
+// const CancelToken = axios.CancelToken; // TODO: 这个地方还要继续更改
 
 // 设置超时时间
 axios.defaults.timeout = 10000  // 10 s

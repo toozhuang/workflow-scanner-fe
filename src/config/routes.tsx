@@ -24,7 +24,7 @@ const routes: RouteType[] = [
         component: () => <RequireAuth>
             <ContentPage>
                 <AsrProvider>
-                <AsrPage></AsrPage>
+                    <AsrPage></AsrPage>
                 </AsrProvider>
             </ContentPage>
         </RequireAuth>,

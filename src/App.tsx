@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route, } from "react-router-dom"
 
 
 import './App.css';
-import {loginForm} from './components/dto/login.interface';
+import {loginForm} from './components/dto/login.type';
 import {AuthProvider} from "./context/context";
 
 
@@ -11,7 +11,7 @@ import routes, {RouteType} from "./config/routes";
 
 
 
-export interface AuthContextType {
+export type AuthContextType= {
     user: any;
     signIn: (user: loginForm, callback: VoidFunction) => void;
     signOut: (callback: VoidFunction) => void;

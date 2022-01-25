@@ -1,7 +1,7 @@
 import React, {MouseEventHandler, useEffect, useState,} from 'react';
 import {Table, Tooltip, Space, Avatar, Popconfirm, Menu, Dropdown, message} from 'antd';
 import {getTransferList, updateTransfer} from "../api/transfer.api";
-import {TransferInterface} from "./dto/transfer.interface";
+import {TransferType} from "./dto/transfer.type";
 
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration';
@@ -23,9 +23,9 @@ function TransferPage() {
     const auth = React.useContext(AuthContext)
 
     const [user] = useState<any>(userInfo)
-    const [transferList, setData] = useState<TransferInterface[]>([]);
+    const [transferList, setData] = useState<TransferType[]>([]);
 
-    const columns: ColumnsType<TransferInterface> = [
+    const columns: ColumnsType<TransferType> = [
         {
             title: 'Name',
             dataIndex: 'fileName',
@@ -80,7 +80,7 @@ function TransferPage() {
         // 试试直接在这里拿取context的值
         const getList = async () => {
             const {data} = await getTransferList();
-            data.map((item: TransferInterface) => {
+            data.map((item: TransferType) => {
                 item.type = _.capitalize(item.type)
                 return item;
             })
@@ -89,7 +89,7 @@ function TransferPage() {
         getList().then().catch(error=>{
 
             const customMessgaeFromBackend = error.response.data.error
-            console.log(customMessgaeFromBackend)
+
             const displayError = () => {
                 message.error(customMessgaeFromBackend);
             };
@@ -105,7 +105,7 @@ function TransferPage() {
     const hasSelected = selectedRowKeys.length > 0;
 
     const rowChangeYa = (value: any) => {
-        console.log(value);
+
         onSelectChange(value)
     }
 
@@ -124,7 +124,7 @@ function TransferPage() {
 
             const getList = async () => {
                 const {data} = await getTransferList();
-                data.map((item: TransferInterface) => {
+                data.map((item: TransferType) => {
                     item.type = _.capitalize(item.type)
                     return item;
                 })

@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
+    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="refactor: login 登录页面逻辑优化">
+      <change beforePath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/authentication.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/authentication.api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/intercept.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/intercept.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/dto/axios.type.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/dto/axios.type.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TransferPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransferPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/file.dto.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/file.dto.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/status.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dto/login.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dto/login.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dto/transfer.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dto/transfer.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/srt/SrtPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/srt/SrtPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/action.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/dto/asr.types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/dto/asr.types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/reducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +83,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -87,6 +115,10 @@
       <workItem from="1641482977992" duration="12618000" />
       <workItem from="1641568819391" duration="13644000" />
       <workItem from="1641956698754" duration="18830000" />
+      <workItem from="1642850896478" duration="593000" />
+      <workItem from="1642859806216" duration="275000" />
+      <workItem from="1642860104307" duration="9338000" />
+      <workItem from="1642988843882" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -186,11 +218,42 @@
       <option name="project" value="LOCAL" />
       <updated>1642083992249</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="bug: message.error() 参数为 string">
+      <created>1642132539720</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642132539720</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor: login 登录页面逻辑优化">
+      <created>1642134617707</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1642134617707</updated>
+    </task>
+    <task id="LOCAL-00017" summary="refactor: Upload 上传组件逻辑和Redux绑定">
+      <created>1642387852679</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1642387852679</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -219,7 +282,10 @@
     <MESSAGE value="add: 封装 axios 方法, 添加错误拦截" />
     <MESSAGE value="add： 下载文件srt" />
     <MESSAGE value="add: asr 翻译工作流引入store redux 体系" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: asr 翻译工作流引入store redux 体系" />
+    <MESSAGE value="bug: message.error() 参数为 string" />
+    <MESSAGE value="refactor: login 登录页面逻辑优化" />
+    <MESSAGE value="refactor: Upload 上传组件逻辑和Redux绑定" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Upload 上传组件逻辑和Redux绑定" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,4 +1,4 @@
-export interface File {
+export type File ={
     uid:              string;
     lastModified:     number;
     lastModifiedDate: string;
@@ -11,6 +11,6 @@ export interface File {
     response:         string;
 }
 
-export interface OriginFileObj {
+export type OriginFileObj ={
     uid: string;
 }

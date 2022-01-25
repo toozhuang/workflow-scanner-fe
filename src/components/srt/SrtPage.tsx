@@ -19,7 +19,7 @@ function SrtPage() {
         onChange(info:any) {
             const { status } = info.file;
             if (status !== 'uploading') {
-                console.log(info.file, info.fileList);
+                // console.log(info.file, info.fileList);
             }
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
@@ -28,14 +28,14 @@ function SrtPage() {
             }
         },
         onDrop(e:any) {
-            console.log('Dropped files', e.dataTransfer.files);
+            // console.log('Dropped files', e.dataTransfer.files);
         },
     };
 
     const submit = ()=>{
         const value = ref;
-        console.log(value)
-        console.log(value.current.state.value)
+        // console.log(value)
+        // console.log(value.current.state.value)
     }
 
     return (

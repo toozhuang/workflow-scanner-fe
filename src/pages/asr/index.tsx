@@ -1,16 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import './asr.scss'
 
 import {Upload, message, Input, Button, Progress, Steps, Spin} from 'antd';
-import {InboxOutlined} from '@ant-design/icons';
 import AsrUpload from "../../components/asr/upload";
-import TransfromAsr from "../../components/asr/transform";
+import TransformAsr from "../../components/asr/transform";
 import TransformStatusStep from "../../components/asr/status";
 import {File} from "../../components/asr/file.dto";
-import {useAsrState} from "../../context/context";
+import {useAsrDispatch, useAsrState} from "../../context/context";
+import {cleanUpAsrStore} from "../../context/action";
 
-const {Dragger} = Upload;
 
 const {Step} = Steps;
 
@@ -22,13 +21,13 @@ export type AsrUploadProps = {
 
 
 export type AsrTransformProps = {
-    url: uploadFile,
+    file: uploadFile,
     setTaskId: Function,
 }
 
 export type uploadFile = {
-    path: string,
-    fileDetail: File
+    filePath: string,
+    fileInfo: File
 }
 
 
@@ -43,12 +42,19 @@ export type uploadFile = {
 
 const AsrPage = () => {
 
+    const dispatch = useAsrDispatch();
+    const transformRef = useRef<any>()
+    const downloadRef = useRef<any>({isLoading: false})
     const asrState = useAsrState()
-    const [current, setCurrent] = React.useState(0);
-    const [buttonClickable, setButtonClickable] = useState(true) // 默认关闭下一步
+    const currentStep = asrState.currentStep;
+    const isLoading = asrState.loading;
+    const [downloadAble,setDownloadAble] = useState(false)
+    const file = asrState.file
+    const [current, setCurrent] = React.useState(0);    // 记录当前正确所处在的位置的 step
+    const [buttonDisabled, setButtonClickable] = useState(true) // 默认关闭下一步
     const [fileUrl, setFileUrl] = useState({
-        path: '',
-        fileDetail: {
+        filePath: '',
+        fileInfo: {
             uid: '',
             lastModified: 0,
             lastModifiedDate: '',
@@ -65,9 +71,24 @@ const AsrPage = () => {
     })
     const [taskId, setTaskId] = useState('')
 
-    const next = ({action:string}={action:'NONE'}) => {
+    useEffect(()=>{
+    })
+
+
+
+    const submitTask = async ()=>{
+        await transformRef.current.transformAsr()
+        next()
+    }
+
+    const reStartTask= async ()=>{
+        await cleanUpAsrStore(dispatch)
+        setCurrent(0)
+    }
+
+
+    const next = () => {
         setCurrent(current + 1);
-        // setButtonClickable(true)
     };
 
     const prev = () => {
@@ -92,14 +113,15 @@ const AsrPage = () => {
         {
             title: '选择录音文件',
             content: <div>
-                <AsrUpload uploadFile={fileUrl} upload={setUpload}></AsrUpload>
+                <AsrUpload />
             </div>
             ,
         },
         {
             title: '提交任务',
             content: <div>
-                <TransfromAsr url={fileUrl}
+                <TransformAsr file={file}
+                              ref={transformRef}
                               setTaskId={setTransform}/>
             </div>,
         },
@@ -107,13 +129,22 @@ const AsrPage = () => {
             title: '查询并下载',
             content:
                 <TransformStatusStep
-                    taskId={taskId}
-                ></TransformStatusStep>,
+                    setDownloadAble = {setDownloadAble}
+                    ref={downloadRef}
+                />,
         },
     ];
 
+    const generateStatus = (index:number)=>{
+        if(index === current){
+            return 'process'
+        }else if(index > current){
+            return 'wait'
+        }else if(index < current){
+            return 'finish'
+        }
+    }
 
-    console.log('显示一下 state： ', asrState)
 
     /**
      * 在 asr page 引入一个局部的 store
@@ -121,22 +152,42 @@ const AsrPage = () => {
      */
     return (
         <div>
-            <Spin spinning={asrState.loading}  >
+            <Spin spinning={asrState.loading}>
 
             </Spin>
             <h2> 语音转字幕服务 </h2>
             <div className="asr-container">
                 {/*current={current}*/}
                 <Steps size="small">
-                    {steps.map(item => (
-                        <Step key={item.title} status="finish" title={item.title}/>
+                    {steps.map((item,index) => (
+                        <Step key={item.title} status={generateStatus(index)} title={item.title}/>
                     ))}
                 </Steps>
                 <div className="steps-content">{steps[current].content}</div>
                 <div className="steps-action">
-                    {current < steps.length - 1 && (
-                        <Button type="primary" disabled={buttonClickable} onClick={() => next()}>
+                    {current < steps.length - 1&&current!==1 && (
+                        <Button type="primary" disabled={currentStep === current} onClick={() => next()}>
                             Next
+                        </Button>
+                    )}
+
+                    {current===1 && (
+                        <Button type="primary" disabled={currentStep !== current} onClick={() => submitTask()}>
+                            提交任务
+                        </Button>
+                    )}
+                    {current===2 && (
+                        <Button type="primary" disabled={!downloadAble}
+                                style={{margin: '0 20px'}}
+                                onClick={() => downloadRef.current.fileDownload()}>
+                            下载文件
+                        </Button>
+                    )}
+                    {current===2 && (
+                        <Button type="primary"
+                                style={{margin: '0 20px'}}
+                                disabled={isLoading} onClick={() => reStartTask()}>
+                            重新开始
                         </Button>
                     )}
                     {/* TODO: 完成什么时候 显示*/}
@@ -145,11 +196,12 @@ const AsrPage = () => {
                     {/*        Done*/}
                     {/*    </Button>*/}
                     {/*)}*/}
-                    {current > 0 && (
-                        <Button style={{margin: '0 8px'}} onClick={() => prev()}>
-                            Previous
-                        </Button>
-                    )}
+                    {/* TODO: 暂时禁用 previous 这个 */}
+                    {/*{current > 0 && (*/}
+                    {/*    <Button style={{margin: '0 8px'}} onClick={() => prev()}>*/}
+                    {/*        Previous*/}
+                    {/*    </Button>*/}
+                    {/*)}*/}
                 </div>
             </div>
 

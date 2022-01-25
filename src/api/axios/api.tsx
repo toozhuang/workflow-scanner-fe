@@ -3,7 +3,7 @@ import dev_env from '../../config.env'
 import prod_env from '../../config.prod'
 import {AxiosRequestConfig} from "axios";
 import Abstract from "./abstract";
-import {AxiosRequest} from "../dto/axios.type";
+import {AxiosRequest, CustomAxiosResponse} from "../dto/axios.type";
 
 const isDev = process.env.NODE_ENV === 'development';
 const BASEURL = isDev ? dev_env.apiService.baseURL : prod_env.apiService.baseURL;
@@ -15,8 +15,8 @@ const BASEURL = isDev ? dev_env.apiService.baseURL : prod_env.apiService.baseURL
  */
 class Axios extends Abstract{
 
-    postRequest({ baseURL, headers, url, data, params, responseType,withCredentials }: AxiosRequest){
-        console.log(data)
+    postRequest({ baseURL, headers, url, data, params, responseType,withCredentials }: AxiosRequest):Promise<CustomAxiosResponse>{
+
         return this.apiAxios({ baseURL, headers, method: 'POST', url, data, params, responseType,withCredentials });
     }
 

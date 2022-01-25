@@ -3,6 +3,11 @@
  */
 import React, {useReducer} from 'react'
 import {asrInitialState, AsrReducer, AuthReducer, initialState} from "./reducer";
+import dev_env from '../../src/config.env'
+import prod_env from '../../src/config.prod'
+
+const isDev = process.env.NODE_ENV === 'development';
+const configuration = isDev ? dev_env.cloud.huawei.accessKeyId : prod_env.cloud.huawei.accessKeyId;
 
 //  Auth 部分的 Context Wrapper
 const AuthStateContext = React.createContext(initialState);
@@ -31,7 +36,7 @@ export function useAsrState(){
 
 export function useAsrDispatch(){
     const context = React.useContext(AsrDispatchContext)
-    console.log('context: ',context)
+
     if(context === undefined){
         throw new Error('useAsrDispatch 必须在 AsrDispatchContext Provider中使用')
     }
@@ -71,7 +76,6 @@ export function useAuthDispatch() {
 export const AuthProvider = ({children}: { children: JSX.Element }) => {
     const [user, dispatch] = useReducer(AuthReducer, initialState);
 
-    console.log('Auth provider user: ', user)
 
     return (
         <AuthStateContext.Provider value={user}>
@@ -90,7 +94,7 @@ export const AuthProvider = ({children}: { children: JSX.Element }) => {
  */
 export const AsrProvider = ({children}:{children:JSX.Element})=>{
     const [asrStore,dispatch] = useReducer(AsrReducer, asrInitialState)
-    console.log('Auth provider user: ', dispatch)
+
     return (
         <AsrStateContext.Provider value={asrStore}>
             <AsrDispatchContext.Provider value={dispatch}>

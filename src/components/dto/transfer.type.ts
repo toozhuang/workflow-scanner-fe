@@ -1,5 +1,5 @@
 
-export interface TransferInterface {
+export type TransferType ={
     workServer:   string;
     id:           string;
     status:       string;

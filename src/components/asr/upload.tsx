@@ -17,25 +17,30 @@ const {Dragger} = Upload;
  * @param inProps
  * @constructor
  */
-const AsrUpload = (inProps: AsrUploadProps) => {
+const AsrUpload = () => {
 
     const globalStore = useAsrState()
     const dispatch = useAsrDispatch()   // 返回 asr 使用的 dispatch 在 async 中进行dispatch 操作
 
-    const [uploaded, setUploaded] = useState(false)
+    const [fileName, setFileName] = useState('')
 
     // TODO : 这里要考虑获取 signature 失败的情况
-    const preUpload = async (file: any, dispatch: any) => await getSignature(dispatch)
+    const preUpload = async (file: any, dispatch: any) =>{
+        console.log(file)
+        setFileName(file.name)
+        await getSignature(dispatch)
+    }
 
     const props = {
         name: 'file',
         multiple: false,
         action: globalStore.bucket.endpoint,
-        disabled: uploaded,
+        disabled: false,
         accept: 'audio/*',
         maxCount: 1,
         data: {
-            key: globalStore.bucket.key,
+            key: fileName,
+            // globalStore.bucket.key,
             'x-obs-acl': 'public-read',
             'content-type': 'audio/mpeg',
             policy: globalStore.bucket.Policy,

@@ -6,7 +6,7 @@
 import httpService from './intercept';
 import dev_env from '../../config.env'
 import prod_env from '../../config.prod'
-import {AxiosRequest} from "../dto/axios.type";
+import {AxiosRequest, CustomAxiosResponse} from "../dto/axios.type";
 import {message} from "antd";
 
 
@@ -19,7 +19,7 @@ class Abstract{
     protected baseURL:string = baseURL;
     protected headers:Object = {} // 'content-type': 'application/text', 取消设置默认的header
 
-    public apiAxios({baseURL=this.baseURL,headers=this.headers,method,url,data,params,responseType,withCredentials}:AxiosRequest){
+    public apiAxios({baseURL=this.baseURL,headers=this.headers,method,url,data,params,responseType,withCredentials}:AxiosRequest):Promise<CustomAxiosResponse>{
         return new Promise((resolve ,reject)=>{
             httpService({
                 baseURL,

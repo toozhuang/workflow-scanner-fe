@@ -3,39 +3,42 @@
  * 同时为了保证可用性，也会在前端的 localstorage
  * 中放置 一个key
  */
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useImperativeHandle, useState} from 'react'
 import {fileDownload, getASRStatus} from "../../api/asr.api";
 import {Button, Spin} from "antd";
+import {useAsrState} from "../../context/context";
 
-const TransformStatusStep = (inProps:any)=>{
+const TransformStatusStep = (inPros: any, ref: any) => {
 
+    const {setDownloadAble} = inPros;
     const [isLoading,setLoading] = useState(true)
     const [isFetch,setFetch] = useState(true)
+    const globalState = useAsrState()
+    const taskID = globalState.taskId
 
+    useImperativeHandle(ref, ()=>({
 
-    console.log('组件蛤？ ',isLoading,isFetch)
+        fileDownload:generateAsrFile,
+        isLoading:isLoading
 
-
-    // if(isLoading){
-    //     // statusCheck().then()
-    // }
+    }))
 
 
     useEffect(()=>{
-        console.log('use Effect active')
+
 
         const statusCheck = async ()=>{
-            const {data:{Data:data}} = await getASRStatus(inProps.taskId);
+            const {data:{Data:data}} = await getASRStatus(taskID);
             const {StatusStr} = data
-            console.log('来了吗？ StatusStr',isFetch, isLoading && isFetch)
+
             if(StatusStr === 'doing'||StatusStr === 'waiting'){
                 setLoading(true)
-                console.log( '---->',!isFetch)
                 setFetch(!isFetch)
             }
             if(StatusStr ==='success'){
                 setLoading(false)
                 setFetch(false)
+                setDownloadAble(true)
             }
             if(StatusStr ==='failed'){
                 setLoading(false)
@@ -50,16 +53,16 @@ const TransformStatusStep = (inProps:any)=>{
 
         return ()=>{
             // 修整 fetch 值
-            console.log('修整 fetch 值')
+
             // setFetch(true)
             }
 
 
-    },[isLoading,isFetch])
+    },[isLoading,isFetch,taskID])
 
     const generateAsrFile = ()=>{
-        console.log('会在这里创建文件')
-        fileDownload(inProps.taskId).then()
+
+        fileDownload(taskID,globalState.file.fileInfo.name).then()
     }
 
     return (
@@ -68,14 +71,14 @@ const TransformStatusStep = (inProps:any)=>{
              <h2> 翻译文件生成状态 </h2>
             <Spin spinning={isLoading} style={{margin:"40px"}}>
             </Spin>
-            {
-                !isLoading && <div>
-                    <Button style={{width:"130px"}} onClick={generateAsrFile}>下载文件</Button>
-                </div>
-            }
+            {/*{*/}
+            {/*    !isLoading && <div>*/}
+            {/*        <Button style={{width:"130px"}} onClick={generateAsrFile}>下载文件</Button>*/}
+            {/*    </div>*/}
+            {/*}*/}
         </div>
     )
 }
 
-export default TransformStatusStep
+export default React.forwardRef( TransformStatusStep)
 

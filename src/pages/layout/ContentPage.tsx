@@ -31,7 +31,7 @@ const ContentPage = ({children}: { children: JSX.Element }) => {
 
     const name = useCallback(
         (path)=>{
-            console.log('来了吗： ', path)
+
             return menus.filter(item=>item.path===path||path==='/')[0]
         },[]
     )

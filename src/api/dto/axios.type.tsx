@@ -1,9 +1,8 @@
-
 export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 export type ResponseType = 'arraybuffer' | 'blob' | 'document' | 'json' | 'text' | 'stream'
 
 
-export interface AxiosRequest {
+export type AxiosRequest ={
     baseURL?: string;
     url: string;
     data?: any;
@@ -12,5 +11,12 @@ export interface AxiosRequest {
     headers?: any;
     timeout?: number;
     responseType?: ResponseType;
-    withCredentials?:boolean;
+    withCredentials?: boolean;
+}
+
+export type CustomAxiosResponse ={
+    status: boolean,
+    message: string,
+    data: any,
+    origin?: object
 }

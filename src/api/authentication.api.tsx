@@ -1,11 +1,8 @@
 import axios from './axios/api'
-import type { loginForm } from '../components/dto/login.interface';
+import type { loginForm } from '../components/dto/login.type';
 
 export const login = (userDetail: loginForm):any => {
-
-    // return axios.postReq('/auth/login', {userDetail})
     return axios.postRequest({url:`/auth/login`, data:{userDetail}})
-    // return null;
 }
 
 /**
@@ -25,6 +22,5 @@ export const retrieveNewToken:any = async()=>{
         url:'/asr-service-api/signature',
         withCredentials: true,
     })
-    console.log('aoaojiao', result)
     return result
 }

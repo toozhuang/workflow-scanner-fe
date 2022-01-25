@@ -4,14 +4,12 @@
 
 import _ from 'lodash'
 import Cookies from "js-cookie";
-import {AsrActionType, AsrStateType} from "./dto/asr.types";
-import abstract from "../api/axios/abstract";
+import {ASR_COMMAND, AsrActionType, AsrStateType} from "./dto/asr.types";
 
 const userStringObject: string = localStorage.getItem('currentUser') || "{}"
-console.log('难道没有还？ ', JSON.parse(userStringObject).userInfo)
+
 // 做深一次的判断是因为我们的user对象的数据放在 localstorage 这个 currentUser 下的 user 字段中
 const user = !_.isEmpty(JSON.parse(userStringObject)) ? JSON.parse(userStringObject).userInfo : {};
-console.log(user)
 
 
 export enum AUTH_COMMAND {
@@ -21,20 +19,6 @@ export enum AUTH_COMMAND {
     LOGIN_ERROR = "LOGIN_ERROR",
 }
 
-export enum ASR_COMMAND {
-    REQUEST_SIGNATURE = 'REQUEST_SIGNATURE',
-    REQUEST_SIGNATURE_SUCCESS = 'REQUEST_SIGNATURE_SUCCESS',
-    REQUEST_SIGNATURE_ERROR = 'REQUEST_SIGNATURE_ERROR',
-    UPLOAD_REQUEST = 'UPLOAD_REQUEST',
-    UPLOAD_SUCCESS = 'UPLOAD_SUCCESS',
-    UPLOAD_ERROR = 'UPLOAD_ERROR',
-    SUBMIT_TRANSLATE_REQUEST = 'SUBMIT_TRANSLATE_REQUEST',
-    SUBMIT_TRANSLATE_SUCCESS = 'SUBMIT_TRANSLATE_SUCCESS',
-    SUBMIT_TRANSLATE_ERROR = 'SUBMIT_TRANSLATE_ERROR',
-    // 下面尝试少写两个状态
-    GET_TRANSLATE_RESULT = 'GET_TRANSLATE_RESULT',
-    DOWNLOAD_FILE = 'DOWNLOAD_FILE'
-}
 
 export type ActionType = {
     type: string,
@@ -64,9 +48,18 @@ export const initialState: StateType = {
  */
 export const asrInitialState: AsrStateType = {
     loading: false,
-    bucket: {},
+    bucket: {
+        endpoint: '',
+        key: '',
+        OriginPolicy: '',
+        Policy: '',
+        Signature: '',
+    },
     currentStep: 0,
-    filePath: "",
+    file: {
+        filePath: "",
+        fileInfo: null
+    },
     taskId: ""
 }
 
@@ -79,7 +72,7 @@ export const asrInitialState: AsrStateType = {
  * @constructor
  */
 export const AuthReducer = (initialState: StateType, action: ActionType) => {
-    console.log('难道是 auth reducer 吗 ')
+
     switch (action.type) {
         case AUTH_COMMAND.REQUEST_LOGIN:
             return {
@@ -115,20 +108,52 @@ export const AuthReducer = (initialState: StateType, action: ActionType) => {
     }
 }
 
-export const AsrReducer = (initialState: AsrStateType, action: AsrActionType) => {
-    console.log('是你把？？ ')
+export const AsrReducer = (previousState: AsrStateType, action: AsrActionType) => {
+
     switch (action.type) {
+        case ASR_COMMAND.CLEAN_UP_STATE:
+            return asrInitialState
         case ASR_COMMAND.REQUEST_SIGNATURE:
             return {
-                ...initialState,
+                ...previousState,
                 loading: true,
             };
         case ASR_COMMAND.REQUEST_SIGNATURE_SUCCESS:
             return {
-                ...initialState,
+                ...previousState,
                 bucket: action.payload.content,
                 loading: false,
-            }
+            };
+        case ASR_COMMAND.UPLOAD_SUCCESS:
+            return {
+                ...previousState,
+                file: {
+                    filePath: action.payload.content.filePath,
+                    fileInfo: action.payload.content.fileInfo,
+                },
+                currentStep: action.payload.currentStep,
+                loading: false
+            };
+
+        case ASR_COMMAND.SUBMIT_TRANSLATE_REQUEST:
+            return {
+                ...previousState,
+                loading: true,
+            };
+        case ASR_COMMAND.SUBMIT_TRANSLATE_SUCCESS:
+            console.log(' zheli ne : ',action.payload.currentStep)
+            return {
+                ...previousState,
+                loading: false,
+                taskId: action.payload.content,
+                currentStep: action.payload.currentStep,
+            };
+        case ASR_COMMAND.SUBMIT_TRANSLATE_ERROR:
+            // TODO: 没有做任何操作当前
+            return {
+                ...previousState,
+                loading: false,
+            };
         default:
             throw new Error(`Unhandled action type: ${action.type}`)
     }

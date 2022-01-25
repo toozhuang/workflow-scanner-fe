@@ -12,7 +12,7 @@ import {Form, Input, Button, Checkbox} from 'antd';
 import './AuthPage.scss'
 import {FundOutlined} from '@ant-design/icons';
 import AuthHook from '../common/AuthHook';
-import { loginForm } from './dto/login.interface';
+import { loginForm } from './dto/login.type';
 
 
 

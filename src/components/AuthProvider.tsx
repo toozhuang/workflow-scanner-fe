@@ -6,7 +6,7 @@ import React, { useState} from 'react'
 import {login} from "../api/authentication.api";
 import {AuthContext} from '../App';
 import Cookies from 'js-cookie'
-import { loginForm } from './dto/login.interface';
+import { loginForm } from './dto/login.type';
 
 
 function AuthProvider({userO, children}: { userO: any, children: JSX.Element }) {
