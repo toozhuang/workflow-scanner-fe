@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="refactor: login 登录页面逻辑优化">
-      <change beforePath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/transfer-scanner-fe.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/authentication.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/authentication.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/intercept.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/intercept.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/dto/axios.type.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/dto/axios.type.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransferPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransferPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/file.dto.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/file.dto.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/status.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/status.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dto/login.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dto/login.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dto/transfer.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dto/transfer.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/srt/SrtPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/srt/SrtPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/action.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/dto/asr.types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/dto/asr.types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/reducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +91,7 @@
       <workItem from="1642859806216" duration="275000" />
       <workItem from="1642860104307" duration="9338000" />
       <workItem from="1642988843882" duration="619000" />
+      <workItem from="1643204326648" duration="1314000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -265,6 +238,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
