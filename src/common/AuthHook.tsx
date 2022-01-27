@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react"
-import {auth} from "../api/authentication.api"
+import { useEffect, useState } from 'react';
+import { auth } from '../api/authentication.api';
 
 /**
  * 验证是否登录的 Hook；
@@ -11,42 +11,41 @@ import {auth} from "../api/authentication.api"
  * @constructor
  */
 const AuthHook = () => {
-    const [isError, setIsError] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-
-    useEffect(() => {
-        let didCancel = false;
-        const isLogin = async () => {
-            setIsError(false)
-            setIsLoading(true)
-            try {
-                const {data: {status}} = await auth()
-                if (!didCancel) {
-                    // @ts-ignore
-                    if (parseInt(status) < 0) {
-                        setIsError(true)
-                    }
-                    setIsLoading(false)
-                }
-
-            } catch (error) {
-                if (!didCancel) {
-                    setIsError(true)
-                    setIsLoading(false)
-                }
-
-            }
+  useEffect(() => {
+    let didCancel = false;
+    const isLogin = async () => {
+      setIsError(false);
+      setIsLoading(true);
+      try {
+        const {
+          data: { status },
+        } = await auth();
+        if (!didCancel) {
+          // @ts-ignore
+          if (parseInt(status) < 0) {
+            setIsError(true);
+          }
+          setIsLoading(false);
         }
-
-        isLogin()
-
-        return () => {
-            didCancel = true   //  也就是已经为 false 了
+      } catch (error) {
+        if (!didCancel) {
+          setIsError(true);
+          setIsLoading(false);
         }
-    }, [])
+      }
+    };
 
-    return [{isError, isLoading}]
-}
+    isLogin();
 
-export default AuthHook
+    return () => {
+      didCancel = true; //  也就是已经为 false 了
+    };
+  }, []);
+
+  return [{ isError, isLoading }];
+};
+
+export default AuthHook;

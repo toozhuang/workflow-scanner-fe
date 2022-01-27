@@ -1,49 +1,40 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, } from "react-router-dom"
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
-import {loginForm} from './components/dto/login.type';
-import {AuthProvider} from "./context/context";
+import { loginForm } from './components/dto/login.type';
+import { AuthProvider } from './context/context';
 
+import routes, { RouteType } from './config/routes';
 
-import routes, {RouteType} from "./config/routes";
-
-
-
-export type AuthContextType= {
-    user: any;
-    signIn: (user: loginForm, callback: VoidFunction) => void;
-    signOut: (callback: VoidFunction) => void;
-}
+export type AuthContextType = {
+  user: any;
+  signIn: (user: loginForm, callback: VoidFunction) => void;
+  signOut: (callback: VoidFunction) => void;
+};
 
 export const AuthContext = React.createContext<AuthContextType>(null!);
 
 function App() {
-    return (
-
-        <AuthProvider>
-            <BrowserRouter>
-                <Routes>
-                    {
-                        routes.map((route: RouteType) => {
-                                return (<Route path={route.path}
-                                               key={route.path}
-                                               element={
-                                                   (() => {
-                                                       return <route.component/>
-                                                   })()
-                                               }
-                                    >
-                                    </Route>
-                                )
-
-                        })
-                    }
-                </Routes>
-            </BrowserRouter>
-        </AuthProvider>
-    );
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {routes.map((route: RouteType) => {
+            return (
+              <Route
+                path={route.path}
+                key={route.path}
+                element={(() => {
+                  return <route.component />;
+                })()}
+              ></Route>
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
 export default App;

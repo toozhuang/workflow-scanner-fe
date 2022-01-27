@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="refactor: login 登录页面逻辑优化">
+    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +58,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/login" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -91,7 +99,8 @@
       <workItem from="1642859806216" duration="275000" />
       <workItem from="1642860104307" duration="9338000" />
       <workItem from="1642988843882" duration="619000" />
-      <workItem from="1643204326648" duration="1314000" />
+      <workItem from="1643204326648" duration="3887000" />
+      <workItem from="1643290264815" duration="739000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -212,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642387852679</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="config: remove simple eslint setting in package.json file">
+      <created>1643211350590</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1643211350590</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +275,8 @@
     <MESSAGE value="bug: message.error() 参数为 string" />
     <MESSAGE value="refactor: login 登录页面逻辑优化" />
     <MESSAGE value="refactor: Upload 上传组件逻辑和Redux绑定" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Upload 上传组件逻辑和Redux绑定" />
+    <MESSAGE value="config: remove simple eslint setting in package.json file" />
+    <option name="LAST_COMMIT_MESSAGE" value="config: remove simple eslint setting in package.json file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,3 +1,3 @@
 import axios from './api';
 
-export default axios
+export default axios;
