@@ -31,6 +31,16 @@ export async function loginUser(dispatch: any, loginPayload: any) {
   }
 }
 
+export function loginOut(dispatch: any) {
+  try {
+    localStorage.removeItem('currentUser');
+    dispatch({ type: AUTH_COMMAND.LOGOUT });
+  } catch (e) {
+    console.log('隐私模式下不存在这种操作');
+  }
+  return true;
+}
+
 /**
  * 获取 翻译的状态
  * @param taskId
