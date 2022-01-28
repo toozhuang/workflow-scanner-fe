@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/intercept.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/intercept.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +101,14 @@
       <workItem from="1642860104307" duration="9338000" />
       <workItem from="1642988843882" duration="619000" />
       <workItem from="1643204326648" duration="3887000" />
-      <workItem from="1643290264815" duration="739000" />
+      <workItem from="1643290264815" duration="1460000" />
+      <workItem from="1643298918713" duration="147000" />
+      <workItem from="1643299122605" duration="130000" />
+      <workItem from="1643299300281" duration="29000" />
+      <workItem from="1643299347029" duration="125000" />
+      <workItem from="1643299487201" duration="24000" />
+      <workItem from="1643299527451" duration="117000" />
+      <workItem from="1643359683700" duration="612000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -228,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643211350590</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="lint: eslint autofix files">
+      <created>1643291135182</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1643291135183</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +269,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -276,7 +290,8 @@
     <MESSAGE value="refactor: login 登录页面逻辑优化" />
     <MESSAGE value="refactor: Upload 上传组件逻辑和Redux绑定" />
     <MESSAGE value="config: remove simple eslint setting in package.json file" />
-    <option name="LAST_COMMIT_MESSAGE" value="config: remove simple eslint setting in package.json file" />
+    <MESSAGE value="lint: eslint autofix files" />
+    <option name="LAST_COMMIT_MESSAGE" value="lint: eslint autofix files" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

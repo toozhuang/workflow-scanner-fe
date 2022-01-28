@@ -60,6 +60,7 @@ const AsrUpload = () => {
     onChange: async (info: any) => {
       const { status } = info.file;
 
+      // eslint-disable-next-line no-empty
       if (status !== 'uploading') {
       }
       if (status === 'done') {
@@ -106,7 +107,7 @@ const AsrUpload = () => {
         <div className="ant-upload-text upload-format-small">
           <p className="upload-format-small ">(只能选择单个文件)</p>
         </div>
-        <p className="ant-upload-hint"></p>
+        <p className="ant-upload-hint" />
       </Dragger>
     </>
   );

@@ -5,7 +5,7 @@ type PendingType = {
   method?: Method;
   params: any;
   data: any;
-  cancel: Function;
+  cancel: (message: string) => void;
 };
 
 const pending: Array<PendingType> = []; // 全局 pending

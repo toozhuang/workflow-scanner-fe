@@ -27,6 +27,9 @@ const LoginPage = () => {
     try {
       await loginUser(auth, value);
       navigate('/asr', { replace: true });
+
+      // TODO: 要在这里添加 catch 的 error 业务逻辑
+      // eslint-disable-next-line no-empty
     } catch {}
   };
 

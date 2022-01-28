@@ -14,12 +14,12 @@ const { Step } = Steps;
 
 export type AsrUploadProps = {
   uploadFile: uploadFile;
-  upload: Function;
+  upload: any;
 };
 
 export type AsrTransformProps = {
   file: uploadFile;
-  setTaskId: Function;
+  setTaskId: any;
 };
 
 export type uploadFile = {
@@ -66,7 +66,7 @@ const AsrPage = () => {
   });
   const [taskId, setTaskId] = useState('');
 
-  useEffect(() => {});
+  // useEffect(() => {});
 
   const submitTask = async () => {
     await transformRef.current.transformAsr();

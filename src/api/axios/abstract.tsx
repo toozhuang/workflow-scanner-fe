@@ -17,7 +17,7 @@ const baseURL = isDev
 
 class Abstract {
   protected baseURL: string = baseURL;
-  protected headers: Object = {}; // 'content-type': 'application/text', 取消设置默认的header
+  protected headers: any = {}; // 'content-type': 'application/text', 取消设置默认的header
 
   public apiAxios({
     baseURL = this.baseURL,

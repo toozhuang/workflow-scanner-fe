@@ -34,7 +34,7 @@ export const fileDownload = (taskId: string, downloadFileName: string) => {
     // let type = result.type
     // const buf = Buffer.from(result, 'binary')
     console.log('res:::', res);
-    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     const blob = new Blob([res.data], { type });
     const fileName = `${downloadFileName}.srt`;
     if ('download' in document.createElement('a')) {
