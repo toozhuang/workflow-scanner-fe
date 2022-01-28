@@ -20,13 +20,13 @@ import { ColumnsType } from 'antd/es/table';
 import { AuthContext } from '../App';
 import { MenuInfo } from 'rc-menu/lib/interface';
 
-import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
 function TransferPage() {
   dayjs.extend(duration);
 
-  const userInfo = JSON.parse(Cookies.get('user') || '{}');
+  const userInfo = {}; //TODO: 改为从store 中拿取
+  // JSON.parse(Cookies.get('user') || '{}');
   const auth = React.useContext(AuthContext);
 
   const [user] = useState<any>(userInfo);
@@ -162,8 +162,6 @@ function TransferPage() {
   const navi = useNavigate();
   const confirmOut = () => {
     auth.signOut(() => {
-      Cookies.remove('user');
-      Cookies.remove('ticket');
       navi('/login', { replace: true });
     });
   };
@@ -178,18 +176,6 @@ function TransferPage() {
 
   return (
     <div className="Transfer-list">
-      {/*<Popconfirm*/}
-      {/*    placement="bottomRight"*/}
-      {/*    title={"确定要登出吗？"}*/}
-      {/*    onConfirm={confirmOut}*/}
-      {/*    okText="登出"*/}
-      {/*    cancelText="取消"*/}
-      {/*>*/}
-      {/*    <Avatar className="avatar-container" style={{cursor: "pointer"}}>*/}
-      {/*        {user.name}*/}
-      {/*    </Avatar>*/}
-      {/*</Popconfirm>*/}
-
       <Space align={'end'} style={{ float: 'right', marginBottom: '20px' }}>
         <Dropdown.Button
           type="primary"

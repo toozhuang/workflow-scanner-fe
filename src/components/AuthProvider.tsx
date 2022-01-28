@@ -5,7 +5,6 @@
 import React, { useState } from 'react';
 import { login } from '../api/authentication.api';
 import { AuthContext } from '../App';
-import Cookies from 'js-cookie';
 import { loginForm } from './dto/login.type';
 
 function AuthProvider({
@@ -26,15 +25,11 @@ function AuthProvider({
     delete userFromServer.detail;
     userFromServer.ticket = token;
     setUser(userFromServer);
-    // Note: Todo: 有一个问题是如果这个string太长了，cookie 存储是失败的
-    Cookies.set('user', JSON.stringify(userFromServer));
-    Cookies.set('ticket', token);
     // 全局 rolad 的时候可以直接用
     callback();
   };
 
   const signOut = (callback: VoidFunction) => {
-    Cookies.remove('user');
     callback();
   };
 
@@ -57,6 +52,7 @@ function AuthProvider({
   //     // 这里又可以引入： https://ithelp.ithome.com.tw/articles/10271802?sc=iThelpR 这个 useCallBack 来记住函数
   // )
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

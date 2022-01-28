@@ -28,7 +28,7 @@ function App() {
                 element={(() => {
                   return <route.component />;
                 })()}
-              ></Route>
+              />
             );
           })}
         </Routes>

@@ -3,7 +3,6 @@
  */
 
 import _ from 'lodash';
-import Cookies from 'js-cookie';
 import { ASR_COMMAND, AsrActionType, AsrStateType } from './dto/asr.types';
 
 const userStringObject: string = localStorage.getItem('currentUser') || '{}';
@@ -31,13 +30,11 @@ export type ActionType = {
 
 type StateType = {
   user: any;
-  cookie: any;
   loading: boolean;
 };
 
 export const initialState: StateType = {
   user: user,
-  cookie: '暂时没想到怎么用， 不过可能后期会使用',
   loading: false, // 控制全局的 loading
 };
 
@@ -78,9 +75,6 @@ export const AuthReducer = (initialState: StateType, action: ActionType) => {
         loading: true,
       };
     case AUTH_COMMAND.LOGIN_SUCCESS:
-      // TODO: 暂时先这么来一下吧
-      Cookies.set('user', JSON.stringify(action.payload.user));
-      Cookies.set('ticket', action.payload.token);
       return {
         ...initialState,
         user: action.payload.user,

@@ -16,9 +16,8 @@ export const auth = () => {
  * 返回最新的上传文件的token信息
  */
 export const retrieveNewToken: any = async () => {
-  const result = await axios.getRequest({
+  return await axios.getRequest({
     url: '/asr-service-api/signature',
     withCredentials: true,
   });
-  return result;
 };

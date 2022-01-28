@@ -24,6 +24,7 @@ const AuthHook = () => {
           data: { status },
         } = await auth();
         if (!didCancel) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           if (parseInt(status) < 0) {
             setIsError(true);

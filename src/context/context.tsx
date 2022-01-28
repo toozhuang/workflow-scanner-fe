@@ -8,13 +8,14 @@ import {
   AuthReducer,
   initialState,
 } from './reducer';
-import dev_env from '../../src/config.env';
-import prod_env from '../../src/config.prod';
 
-const isDev = process.env.NODE_ENV === 'development';
-const configuration = isDev
-  ? dev_env.cloud.huawei.accessKeyId
-  : prod_env.cloud.huawei.accessKeyId;
+// import dev_env from '../../src/config.env';
+// import prod_env from '../../src/config.prod';
+
+// const isDev = process.env.NODE_ENV === 'development';
+// const configuration = isDev
+//   ? dev_env.cloud.huawei.accessKeyId
+//   : prod_env.cloud.huawei.accessKeyId;
 
 //  Auth 部分的 Context Wrapper
 const AuthStateContext = React.createContext(initialState);
@@ -62,7 +63,7 @@ export function useAuthDispatch() {
 
   if (context === undefined) {
     throw new Error(
-      'useAuthDispath  必须要在 AuthDispatchContext Provider 中使用',
+      'useAuth Dispatch  必须要在 AuthDispatchContext Provider 中使用',
     );
   }
 
