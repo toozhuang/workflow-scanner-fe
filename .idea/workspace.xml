@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
+    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="lint: lint refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/intercept.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/intercept.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/asr/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/asr/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/layout/ContentPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +104,7 @@
       <workItem from="1643299347029" duration="125000" />
       <workItem from="1643299487201" duration="24000" />
       <workItem from="1643299527451" duration="117000" />
-      <workItem from="1643359683700" duration="612000" />
+      <workItem from="1643359683700" duration="1346000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -243,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643291135183</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="lint: lint refactor">
+      <created>1643373545151</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1643373545151</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +294,8 @@
     <MESSAGE value="refactor: Upload 上传组件逻辑和Redux绑定" />
     <MESSAGE value="config: remove simple eslint setting in package.json file" />
     <MESSAGE value="lint: eslint autofix files" />
-    <option name="LAST_COMMIT_MESSAGE" value="lint: eslint autofix files" />
+    <MESSAGE value="lint: lint refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="lint: lint refactor" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

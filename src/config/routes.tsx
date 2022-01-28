@@ -24,7 +24,7 @@ const routes: RouteType[] = [
       <RequireAuth>
         <ContentPage>
           <AsrProvider>
-            <AsrPage></AsrPage>
+            <AsrPage />
           </AsrProvider>
         </ContentPage>
       </RequireAuth>
@@ -37,7 +37,7 @@ const routes: RouteType[] = [
       <RequireAuth>
         <ContentPage>
           <AsrProvider>
-            <AsrPage></AsrPage>
+            <AsrPage />
           </AsrProvider>
         </ContentPage>
       </RequireAuth>

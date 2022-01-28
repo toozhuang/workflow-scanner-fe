@@ -11,11 +11,11 @@ const menus = [
     path: '/asr',
     icon: <FileOutlined></FileOutlined>,
   },
-  {
-    id: 2,
-    name: '工作流监控',
-    icon: <DesktopOutlined></DesktopOutlined>,
-  },
+  // {
+  //   id: 2,
+  //   name: '工作流监控',
+  //   icon: <DesktopOutlined></DesktopOutlined>,
+  // },
   {
     id: 3,
     name: '系统管理',
