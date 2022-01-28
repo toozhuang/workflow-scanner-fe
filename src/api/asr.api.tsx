@@ -1,6 +1,8 @@
 import Axios from './axios';
 
 import axios from 'axios';
+import dev_env from '../config.env';
+import prod_env from '../config.prod';
 
 export const createASRTask = (fileUrl: string) => {
   return Axios.postReq(
@@ -18,17 +20,16 @@ export const getASRStatus = (taskId: string) => {
 
 // TODO: 这里要替换一下
 export const fileDownload = (taskId: string, downloadFileName: string) => {
-  return axios(
-    `http://172.19.223.200:3230/asr-service-api/upload/generate/${taskId}`,
-    {
-      method: 'GET',
-      withCredentials: true,
-      headers: {
-        'content-type': 'application/text',
-        responseType: 'blob',
-      },
+  const isDev = process.env.NODE_ENV === 'development';
+  const baseURL = !isDev ? 'http://172.19.223.200' : 'http://localhost';
+  return axios(`${baseURL}:3230/asr-service-api/upload/generate/${taskId}`, {
+    method: 'GET',
+    withCredentials: true,
+    headers: {
+      'content-type': 'application/text',
+      responseType: 'blob',
     },
-  ).then(res => {
+  }).then(res => {
     // application/octet-stream
     const type = 'application/octet-stream';
     // let type = result.type

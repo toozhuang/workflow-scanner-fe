@@ -4,7 +4,7 @@
  *  Note: 有考虑是否这部分可以抽离成一个独立的hook
  *  但细想以后，感觉不需要
  */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App';
 import { Form, Input, Button, Checkbox } from 'antd';

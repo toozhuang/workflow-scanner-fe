@@ -3,13 +3,14 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { DesktopOutlined, FileOutlined, UserOutlined } from '@ant-design/icons';
 import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const menus = [
   {
     id: 1,
     name: '字幕服务',
     path: '/asr',
-    icon: <FileOutlined></FileOutlined>,
+    icon: <FileOutlined />,
   },
   // {
   //   id: 2,
@@ -17,9 +18,10 @@ const menus = [
   //   icon: <DesktopOutlined></DesktopOutlined>,
   // },
   {
-    id: 3,
+    id: 2,
     name: '系统管理',
-    icon: <UserOutlined></UserOutlined>,
+    path: '/setting',
+    icon: <UserOutlined />,
   },
 ];
 
@@ -27,6 +29,7 @@ const { Content, Footer, Sider } = Layout;
 
 const ContentPage = ({ children }: { children: JSX.Element }) => {
   const [collapsed, onCollapse] = useState(false);
+  const navigate = useNavigate();
 
   const { pathname: PATH_NAME } = useLocation();
 
@@ -42,7 +45,11 @@ const ContentPage = ({ children }: { children: JSX.Element }) => {
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             {menus.map(item => {
               return (
-                <Menu.Item key={'' + item.id} icon={item.icon}>
+                <Menu.Item
+                  key={'' + item.id}
+                  icon={item.icon}
+                  onClick={() => navigate(`${item.path}`)}
+                >
                   {item.name}
                 </Menu.Item>
               );
