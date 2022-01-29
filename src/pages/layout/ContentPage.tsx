@@ -37,12 +37,21 @@ const ContentPage = ({ children }: { children: JSX.Element }) => {
     return menus.filter(item => item.path === path || path === '/')[0];
   }, []);
 
+  const selectedKey = useCallback(path => {
+    return menus.filter(item => item.path === path || path === '/')[0].id + '';
+  }, []);
+
   return (
     <RequireAuth>
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={['1']}
+            selectedKeys={[selectedKey(PATH_NAME)]}
+            mode="inline"
+          >
             {menus.map(item => {
               return (
                 <Menu.Item
