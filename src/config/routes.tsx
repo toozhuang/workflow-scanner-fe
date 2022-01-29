@@ -46,6 +46,17 @@ const routes: RouteType[] = [
     isPrivate: true,
   },
   {
+    path: '/translate',
+    component: () => (
+      <RequireAuth>
+        <ContentPage>
+          <SettingPage />
+        </ContentPage>
+      </RequireAuth>
+    ),
+    isPrivate: true,
+  },
+  {
     path: '/setting',
     component: () => (
       <RequireAuth>
