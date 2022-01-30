@@ -3,8 +3,6 @@ import {
   Table,
   Tooltip,
   Space,
-  Avatar,
-  Popconfirm,
   Menu,
   Dropdown,
   message,
@@ -29,7 +27,6 @@ function TransferPage() {
   // JSON.parse(Cookies.get('user') || '{}');
   const auth = React.useContext(AuthContext);
 
-  const [user] = useState<any>(userInfo);
   const [transferList, setData] = useState<TransferType[]>([]);
 
   const columns: ColumnsType<TransferType> = [
@@ -101,7 +98,7 @@ function TransferPage() {
         const customMessgaeFromBackend = error.response.data.error;
 
         const displayError = () => {
-          message.error(customMessgaeFromBackend);
+          message.error(customMessgaeFromBackend).then();
         };
         displayError();
       });
@@ -127,7 +124,7 @@ function TransferPage() {
     setLoading(true);
 
     updateTransfer(selectedRowKeys[0], selecteAction.key)
-      .then(value => {
+      .then(() => {
         const getList = async () => {
           const { data } = await getTransferList();
           data.map((item: TransferType) => {
@@ -141,7 +138,7 @@ function TransferPage() {
         // // todo： 确定一下是否真的会刷新
         getList()
           .then()
-          .catch(error => {
+          .catch(() => {
             setLoading(false);
           });
       })
@@ -160,11 +157,11 @@ function TransferPage() {
     onChange: rowChangeYa,
   };
   const navi = useNavigate();
-  const confirmOut = () => {
-    auth.signOut(() => {
-      navi('/login', { replace: true });
-    });
-  };
+  // const confirmOut = () => {
+  //   auth.signOut(() => {
+  //     navi('/login', { replace: true });
+  //   });
+  // };
 
   const menu = (
     <Menu onClick={action}>

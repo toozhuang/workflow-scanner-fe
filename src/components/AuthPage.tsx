@@ -5,7 +5,7 @@
  *  但细想以后，感觉不需要
  */
 import React from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Location, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App';
 import { Form, Input, Button, Checkbox } from 'antd';
 
@@ -18,10 +18,8 @@ const AuthPage = () => {
   const [{ isError, isLoading }] = AuthHook();
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const location: Location = useLocation();
   const auth = React.useContext(AuthContext);
-
-  const from = location.state?.from?.pathname || '/';
 
   const onFinish = (value: loginForm) => {
     // setLoading(true)
