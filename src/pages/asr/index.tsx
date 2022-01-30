@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import './asr.scss';
 
-import { Button, Steps, Spin } from 'antd';
+import { Button, Steps, Spin, Divider, Row, Col, Card } from 'antd';
 import AsrUpload from '../../components/asr/upload';
 import TransformAsr from '../../components/asr/transform';
 import TransformStatusStep from '../../components/asr/status';
@@ -201,18 +201,27 @@ const AsrPage = () => {
               重新开始
             </Button>
           )}
-          {/* TODO: 完成什么时候 显示*/}
-          {/*{current === steps.length - 1 && (*/}
-          {/*    <Button type="primary" onClick={() => message.success('Processing complete!')}>*/}
-          {/*        Done*/}
-          {/*    </Button>*/}
-          {/*)}*/}
-          {/* TODO: 暂时禁用 previous 这个 */}
-          {/*{current > 0 && (*/}
-          {/*    <Button style={{margin: '0 8px'}} onClick={() => prev()}>*/}
-          {/*        Previous*/}
-          {/*    </Button>*/}
-          {/*)}*/}
+        </div>
+        <Divider />
+        <h1>最近转字幕记录</h1>
+        <div className="site-card-wrapper">
+          <Row gutter={16}>
+            <Col span={8}>
+              <Card title="Card title" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Card title" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Card title" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+          </Row>
         </div>
       </div>
     </div>
