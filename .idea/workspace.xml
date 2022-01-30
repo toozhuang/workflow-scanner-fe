@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/dto/indexeddb.type.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/indexed-db.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorBoundary.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/suspender.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/indexed-db.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/indexed-db.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/context.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +108,7 @@
       <workItem from="1643299487201" duration="24000" />
       <workItem from="1643299527451" duration="117000" />
       <workItem from="1643359683700" duration="4592000" />
-      <workItem from="1643535432481" duration="4963000" />
+      <workItem from="1643535432481" duration="10798000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -276,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643536545995</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: indexed create db init">
+      <created>1643540869212</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1643540869212</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +337,8 @@
     <MESSAGE value="refactor: 移出 cookie 验证" />
     <MESSAGE value="ui: 添加管理 panel" />
     <MESSAGE value="lint: 一些微小的lint工作" />
-    <option name="LAST_COMMIT_MESSAGE" value="lint: 一些微小的lint工作" />
+    <MESSAGE value="feat: indexed create db init" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: indexed create db init" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

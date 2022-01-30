@@ -75,7 +75,7 @@ const createDB = (
       //   });
       // }
 
-      resolve(db);
+      resolve([12]);
     };
   });
 };

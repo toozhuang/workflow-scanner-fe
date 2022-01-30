@@ -1,13 +1,15 @@
 /**
  * 存储当前整个系统中需要的集合数据
  */
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import {
   asrInitialState,
   AsrReducer,
   AuthReducer,
   initialState,
 } from './reducer';
+import suspender from '../common/suspender';
+import DB from '../common/indexed-db';
 
 // import dev_env from '../../src/config.env';
 // import prod_env from '../../src/config.prod';
@@ -70,6 +72,10 @@ export function useAuthDispatch() {
   return context;
 }
 
+const readMe = suspender(
+  DB.createDB('test', 1, [{ name: '', config: { keyPath: '' } }]),
+);
+
 /*
  * 一个普通通常的组件， 包裹 children
  * 唯一特别的地方是使用了 Context
@@ -77,6 +83,15 @@ export function useAuthDispatch() {
  */
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, dispatch] = useReducer(AuthReducer, initialState);
+
+  // const dd = readMe.data.read();
+  // console.log(dd);
+  //
+  // const [shuaibi, setShuaibi] = useState(dd);
+  //
+  // console.log('shuaibi: ', shuaibi);
+  //
+  // console.log('我是打刷币: ', shuaibi);
 
   return (
     <AuthStateContext.Provider value={user}>
