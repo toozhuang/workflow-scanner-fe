@@ -1,8 +1,8 @@
 import Axios from './axios';
 
 import axios from 'axios';
-import dev_env from '../config.env';
-import prod_env from '../config.prod';
+// import dev_env from '../config.env';
+// import prod_env from '../config.prod';
 
 export const createASRTask = (fileUrl: string) => {
   return Axios.postReq(

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import './asr.scss';
 
-import { Upload, message, Input, Button, Progress, Steps, Spin } from 'antd';
+import { Button, Steps, Spin } from 'antd';
 import AsrUpload from '../../components/asr/upload';
 import TransformAsr from '../../components/asr/transform';
 import TransformStatusStep from '../../components/asr/status';
