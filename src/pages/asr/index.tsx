@@ -2,7 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import './asr.scss';
 
-import { Upload, message, Input, Button, Progress, Steps, Spin } from 'antd';
+import {
+  Upload,
+  message,
+  Input,
+  Button,
+  Progress,
+  Steps,
+  Spin,
+  Divider,
+  Row,
+  Card,
+  Col,
+} from 'antd';
 import AsrUpload from '../../components/asr/upload';
 import TransformAsr from '../../components/asr/transform';
 import TransformStatusStep from '../../components/asr/status';
@@ -147,7 +159,7 @@ const AsrPage = () => {
    */
   return (
     <div>
-      <Spin spinning={asrState.loading}></Spin>
+      <Spin spinning={asrState.loading} />
       <h2> 语音转字幕服务 </h2>
       <div className="asr-container">
         {/*current={current}*/}
@@ -201,18 +213,27 @@ const AsrPage = () => {
               重新开始
             </Button>
           )}
-          {/* TODO: 完成什么时候 显示*/}
-          {/*{current === steps.length - 1 && (*/}
-          {/*    <Button type="primary" onClick={() => message.success('Processing complete!')}>*/}
-          {/*        Done*/}
-          {/*    </Button>*/}
-          {/*)}*/}
-          {/* TODO: 暂时禁用 previous 这个 */}
-          {/*{current > 0 && (*/}
-          {/*    <Button style={{margin: '0 8px'}} onClick={() => prev()}>*/}
-          {/*        Previous*/}
-          {/*    </Button>*/}
-          {/*)}*/}
+        </div>
+        <Divider />
+        <h1>最近转字幕记录</h1>
+        <div className="site-card-wrapper">
+          <Row gutter={16}>
+            <Col span={8}>
+              <Card title="Card title" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Card title" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+            <Col span={8}>
+              <Card title="Card title" bordered={false}>
+                Card content
+              </Card>
+            </Col>
+          </Row>
         </div>
       </div>
     </div>

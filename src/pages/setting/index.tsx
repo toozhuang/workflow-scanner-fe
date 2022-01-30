@@ -16,8 +16,8 @@ const SettingPage = () => {
 
   return (
     <div>
-      <Space>
-        Space
+      <Space size="large">
+        <h3>登出</h3>
         <Button type="primary" onClick={logout}>
           Logout
         </Button>

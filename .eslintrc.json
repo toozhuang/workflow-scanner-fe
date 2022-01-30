@@ -24,7 +24,7 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": [0]
     },
     "settings": {
         "react": {
