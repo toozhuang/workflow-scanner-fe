@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Suspense } from 'react';
 
 import './asr.scss';
 
@@ -9,6 +9,9 @@ import TransformStatusStep from '../../components/asr/status';
 import { File } from '../../components/asr/file.dto';
 import { useAsrDispatch, useAsrState } from '../../context/context';
 import { cleanUpAsrStore } from '../../context/action';
+import AsrHistory from '../../components/asr-history';
+import ErrorBoundary from '../../ErrorBoundary';
+import AsrHistoryProvider from '../../context/asr-history-context/asr-history-provider';
 
 const { Step } = Steps;
 
@@ -202,28 +205,14 @@ const AsrPage = () => {
             </Button>
           )}
         </div>
-        <Divider />
-        <h1>最近转字幕记录</h1>
-        <div className="site-card-wrapper">
-          <Row gutter={16}>
-            <Col span={8}>
-              <Card title="Card title" bordered={false}>
-                Card content
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="Card title" bordered={false}>
-                Card content
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="Card title" bordered={false}>
-                Card content
-              </Card>
-            </Col>
-          </Row>
-        </div>
       </div>
+      <ErrorBoundary>
+        <Suspense fallback={<p>loading....</p>}>
+          <AsrHistoryProvider>
+            <AsrHistory />
+          </AsrHistoryProvider>
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

@@ -85,11 +85,9 @@ const openDB = (name: string, version: number) => {
     openDBRequest.onsuccess = e => {
       // @ts-ignore
       let db = event.target.result;
-      console.log('难道能够随便拿到数据库吗？？？');
       resolve(db);
     };
     openDBRequest.onerror = e => {
-      console.log('这里有问题吗？？？');
       // @ts-ignore
       let error = event.target.error;
       reject(error);
@@ -126,7 +124,7 @@ const createDB = (
 
       if (stores) {
         // db.createObjectStore('toDoList', { keyPath: 'taskTitle' });
-
+        console.log('onupgradeneeded: open asrIDB');
         stores.forEach(store => {
           // 如果不存在这个 db 对象，那么就去创建一个以这个 key 的
           if (!db.objectStoreNames.contains(store.name)) {
@@ -179,11 +177,64 @@ const createDB = (
     };
   });
 };
+// @ts-ignore
+const transaction = (dbObject, stores, mode) => {
+  return {
+    tx: dbObject.transaction(stores, mode),
+    // @ts-ignore
+    getStore(name) {
+      return new Promise((resolve, reject) => {
+        const tx = dbObject.transaction(stores, mode);
+
+        let store = tx.objectStore(name);
+
+        resolve(store);
+
+        tx.onerror = (event: any) => {
+          reject(event.target.error);
+        };
+      });
+    },
+  };
+};
+// @ts-ignore
+const getAllObjectData = store => {
+  return new Promise((resolve, reject) => {
+    let dataRequest = store.getAll();
+    // @ts-ignore
+    dataRequest.onsuccess = event => {
+      resolve(event.target.result);
+    };
+    // @ts-ignore
+    dataRequest.onerror = event => {
+      reject(event.target.error);
+    };
+  });
+};
+
+// @ts-ignore
+const addObjectData = (store, dataBody) => {
+  return new Promise((resolve, reject) => {
+    let dataRequest = store.add(dataBody);
+
+    // @ts-ignore
+    dataRequest.onsuccess = event => {
+      // @ts-ignore
+      getAllObjectData(store).then(storeData => resolve(storeData));
+    };
+    // @ts-ignore
+    dataRequest.onerror = event => {
+      reject(event.target.error);
+    };
+  });
+};
 
 const DB = {
   createDB,
   openDB,
   existDB,
+  transaction,
+  addObjectData,
 };
 
 export default DB;

@@ -71,10 +71,10 @@ export function useAuthDispatch() {
 
   return context;
 }
-
-const readMe = suspender(
-  DB.createDB('test', 1, [{ name: '', config: { keyPath: '' } }]),
-);
+//
+// const readMe = suspender(
+//   DB.createDB('test', 1, [{ name: '', config: { keyPath: '' } }]),
+// );
 
 /*
  * 一个普通通常的组件， 包裹 children
