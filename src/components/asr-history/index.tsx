@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Button, Card, Col, Divider, Row, Tooltip } from 'antd';
 import suspender from '../../common/suspender';
 import DB from '../../common/indexed-db';
@@ -96,7 +96,7 @@ const asrHistory = () => {
   return (
     <>
       {asrHistoryList.length > 0 && (
-        <>
+        <div style={{ width: '90%', marginLeft: 'auto', marginRight: ' auto' }}>
           <Divider />
           <h1>最近转字幕记录</h1>
           <div className="site-card-wrapper">
@@ -177,7 +177,7 @@ const asrHistory = () => {
                 })}
             </Row>
           </div>
-        </>
+        </div>
       )}
     </>
   );
