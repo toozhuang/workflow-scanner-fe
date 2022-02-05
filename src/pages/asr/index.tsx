@@ -74,22 +74,7 @@ const AsrPage = () => {
 
   const submitTask = async () => {
     await transformRef.current.transformAsr();
-    const db = await DB.openDB('asrIDB', 1);
-    const menuStore = await DB.transaction(
-      db, // transaction on our DB
-      ['asrList'], // object stores we want to transact on
-      'readwrite', // transaction mode
-    ).getStore('asrList'); // retrieve the store we want
 
-    const result = await DB.addObjectData(menuStore, {
-      // set an unique ID
-      // object 的key 就是我们创建数据库的时候 config 的key
-      asrListKey: taskId,
-
-      // set name to be value of mealName state
-      taskID: taskId,
-      file: 'file',
-    });
     next();
   };
 
@@ -225,13 +210,13 @@ const AsrPage = () => {
           )}
         </div>
       </div>
-      <ErrorBoundary>
-        <Suspense fallback={<p>loading....</p>}>
-          <AsrHistoryProvider>
-            <AsrHistory />
-          </AsrHistoryProvider>
-        </Suspense>
-      </ErrorBoundary>
+      {/*<ErrorBoundary>*/}
+      {/*<Suspense fallback={<p>loading....</p>}>*/}
+      <AsrHistoryProvider>
+        <AsrHistory />
+      </AsrHistoryProvider>
+      {/*</Suspense>*/}
+      {/*</ErrorBoundary>*/}
     </div>
   );
 };

@@ -4,6 +4,7 @@
 
 import _ from 'lodash';
 import { ASR_COMMAND, AsrActionType, AsrStateType } from './dto/asr.types';
+import DB from '../common/indexed-db';
 
 const userStringObject: string = localStorage.getItem('currentUser') || '{}';
 
@@ -134,7 +135,7 @@ export const AsrReducer = (
         ...previousState,
         loading: true,
       };
-    case ASR_COMMAND.SUBMIT_TRANSLATE_SUCCESS:
+    case ASR_COMMAND.SUBMIT_TRANSLATE_SUCCESS: {
       console.log(' zheli ne : ', action.payload.currentStep);
       return {
         ...previousState,
@@ -142,6 +143,7 @@ export const AsrReducer = (
         taskId: action.payload.content,
         currentStep: action.payload.currentStep,
       };
+    }
     case ASR_COMMAND.SUBMIT_TRANSLATE_ERROR:
       // TODO: 没有做任何操作当前
       return {

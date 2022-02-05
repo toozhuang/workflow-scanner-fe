@@ -6,6 +6,7 @@ import RequireAuth from '../components/RequireAuth';
 import ContentPage from '../pages/layout/ContentPage';
 import { AsrProvider } from '../context/context';
 import SettingPage from '../pages/setting';
+import TransformStatusStep from '../components/asr/status';
 
 export type RouteType = {
   path: string;
@@ -39,6 +40,19 @@ const routes: RouteType[] = [
         <ContentPage>
           <AsrProvider>
             <AsrPage />
+          </AsrProvider>
+        </ContentPage>
+      </RequireAuth>
+    ),
+    isPrivate: true,
+  },
+  {
+    path: '/asr/:taskID',
+    component: () => (
+      <RequireAuth>
+        <ContentPage>
+          <AsrProvider>
+            <TransformStatusStep />
           </AsrProvider>
         </ContentPage>
       </RequireAuth>

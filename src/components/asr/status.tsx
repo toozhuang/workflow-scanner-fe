@@ -7,13 +7,18 @@ import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { fileDownload, getASRStatus } from '../../api/asr.api';
 import { Button, Spin } from 'antd';
 import { useAsrState } from '../../context/context';
+import { useLocation } from 'react-router';
+import DB from '../../common/indexed-db';
 
 const TransformStatusStep = (inPros: any, ref: any) => {
   const { setDownloadAble } = inPros;
   const [isLoading, setLoading] = useState(true);
   const [isFetch, setFetch] = useState(true);
+  const [errorMessage, setMsg] = useState('');
+  const [downloadAble, setAble] = useState(false);
   const globalState = useAsrState();
   const taskID = globalState.taskId;
+  const { pathname } = useLocation();
 
   useImperativeHandle(ref, () => ({
     fileDownload: generateAsrFile,
@@ -22,21 +27,32 @@ const TransformStatusStep = (inPros: any, ref: any) => {
 
   useEffect(() => {
     const statusCheck = async () => {
-      const {
-        data: { Data: data },
-      } = await getASRStatus(taskID);
-      const { StatusStr } = data;
+      let tid = taskID;
+      if (!taskID) {
+        tid = pathname.split('/')[2];
+      }
+      try {
+        const {
+          data: { Data: data },
+        } = await getASRStatus(tid);
+        const { StatusStr } = data;
 
-      if (StatusStr === 'doing' || StatusStr === 'waiting') {
-        setLoading(true);
-        setFetch(!isFetch);
-      }
-      if (StatusStr === 'success') {
-        setLoading(false);
-        setFetch(false);
-        setDownloadAble(true);
-      }
-      if (StatusStr === 'failed') {
+        if (StatusStr === 'doing' || StatusStr === 'waiting') {
+          setLoading(true);
+          setFetch(!isFetch);
+        }
+        if (StatusStr === 'success') {
+          setLoading(false);
+          setFetch(false);
+          if (setDownloadAble) setDownloadAble(true);
+          setAble(true);
+        }
+        if (StatusStr === 'failed') {
+          setLoading(false);
+        }
+      } catch (e: any) {
+        console.log('错误吗： ', e);
+        setMsg(e.data.error);
         setLoading(false);
       }
     };
@@ -53,19 +69,37 @@ const TransformStatusStep = (inPros: any, ref: any) => {
     };
   }, [isLoading, isFetch, taskID]);
 
-  const generateAsrFile = () => {
-    fileDownload(taskID, globalState.file.fileInfo.name).then();
+  const generateAsrFile = async () => {
+    let tid = taskID;
+    if (!taskID) {
+      tid = pathname.split('/')[2];
+    }
+    let name = '';
+    if (!globalState.file.fileInfo) {
+      const db = await DB.openDB('asrIDB', 1);
+      // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
+      // asrListKey
+      const menuStore = await DB.transaction(
+        db, // transaction on our DB
+        ['asrList'], // object stores we want to transact on
+        'readwrite', // transaction mode
+      ).getStore('asrList'); // retrieve the store we want
+
+      const res: any = await DB.getObjectData(menuStore, 1762717400);
+      console.log(res);
+      name = res.fileName;
+    } else {
+      name = globalState.file.fileInfo.name;
+    }
+    fileDownload(tid, name).then();
   };
 
   return (
     <div>
       <h2> 翻译文件生成状态 </h2>
-      <Spin spinning={isLoading} style={{ margin: '40px' }}></Spin>
-      {/*{*/}
-      {/*    !isLoading && <div>*/}
-      {/*        <Button style={{width:"130px"}} onClick={generateAsrFile}>下载文件</Button>*/}
-      {/*    </div>*/}
-      {/*}*/}
+      <Spin spinning={isLoading} style={{ margin: '40px' }} />
+      {errorMessage && <div>{errorMessage}</div>}
+      {downloadAble && <Button onClick={generateAsrFile}>下载</Button>}
     </div>
   );
 };

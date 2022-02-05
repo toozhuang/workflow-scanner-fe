@@ -219,6 +219,25 @@ const getAllObjectData = store => {
 };
 
 // @ts-ignore
+const getObjectData = (store, objectKeyPath) => {
+  return new Promise((resolve, reject) => {
+    console.log('key path: ', objectKeyPath);
+    let dataRequest = store.get(objectKeyPath);
+
+    // @ts-ignore
+    dataRequest.onsuccess = event => {
+      console.log('这里面是么裸： ', event);
+      resolve(event.target.result);
+    };
+
+    // @ts-ignore
+    dataRequest.onerror = event => {
+      reject(event.target.error);
+    };
+  });
+};
+
+// @ts-ignore
 const addObjectData = (store, dataBody) => {
   return new Promise((resolve, reject) => {
     let dataRequest = store.add(dataBody);
@@ -242,6 +261,7 @@ const DB = {
   transaction,
   addObjectData,
   getAllObjectData,
+  getObjectData,
 };
 
 export default DB;

@@ -45,7 +45,14 @@ const ContentPage = ({ children }: { children: JSX.Element }) => {
   }, []);
 
   const selectedKey = useCallback(path => {
-    return menus.filter(item => item.path === path || path === '/')[0].id + '';
+    return (
+      menus.filter(
+        item =>
+          item.path === path ||
+          item.path.split('/')[1] === path.split('/')[1] ||
+          path === '/',
+      )[0].id + ''
+    );
   }, []);
 
   return (
@@ -74,9 +81,9 @@ const ContentPage = ({ children }: { children: JSX.Element }) => {
         </Sider>
         <Layout className="site-layout">
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>/{name(PATH_NAME).name}</Breadcrumb.Item>
-            </Breadcrumb>
+            {/*<Breadcrumb style={{ margin: '16px 0' }}>*/}
+            {/*  <Breadcrumb.Item>/{name(PATH_NAME).name}</Breadcrumb.Item>*/}
+            {/*</Breadcrumb>*/}
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
