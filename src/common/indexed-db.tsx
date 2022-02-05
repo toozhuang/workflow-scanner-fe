@@ -217,6 +217,32 @@ const getAllObjectData = store => {
     };
   });
 };
+// @ts-ignore
+const deleteObjectData = (store, dataKey) => {
+  // @ts-ignore
+  function removeData(key) {
+    return new Promise((res, rej) => {
+      // @ts-ignore
+      let obj: any;
+      getObjectData(store, key).then(data => {
+        obj = data;
+      });
+
+      let deleteRequest = store.delete(key);
+      // @ts-ignore
+      deleteRequest.onsuccess = async e => {
+        res([obj, await getAllObjectData(store)]);
+      }; // @ts-ignore
+      deleteRequest.onerror = e => rej(e.target.error);
+    });
+  }
+
+  return new Promise((resolve, reject) => {
+    removeData(dataKey)
+      .then(deleted => resolve(deleted))
+      .catch(error => reject(error));
+  });
+};
 
 // @ts-ignore
 const getObjectData = (store, objectKeyPath) => {
@@ -262,6 +288,7 @@ const DB = {
   addObjectData,
   getAllObjectData,
   getObjectData,
+  deleteObjectData,
 };
 
 export default DB;

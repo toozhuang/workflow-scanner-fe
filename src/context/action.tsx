@@ -5,6 +5,8 @@ import { createASRTask } from '../api/asr.api';
 import { ASR_COMMAND } from './dto/asr.types';
 import DB from '../common/indexed-db';
 
+import dayjs from 'dayjs';
+
 /**
  * 定义了一套登录的流程， 以及该登录在整个数据流中和react redux 的互动
  * @param dispatch
@@ -113,6 +115,9 @@ export async function createAsrTask(file: uploadFile, dispatch: any) {
       // set name to be value of mealName state
       taskID: result.data.Data.TaskId,
       fileName: file.fileInfo.name,
+      fileSize: file.fileInfo.size,
+      fileLocation: file.filePath,
+      createdTime: dayjs().format(),
     });
     console.log('看一下 result： =>', result);
     dispatch({

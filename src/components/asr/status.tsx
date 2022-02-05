@@ -85,7 +85,7 @@ const TransformStatusStep = (inPros: any, ref: any) => {
         'readwrite', // transaction mode
       ).getStore('asrList'); // retrieve the store we want
 
-      const res: any = await DB.getObjectData(menuStore, 1762717400);
+      const res: any = await DB.getObjectData(menuStore, Number.parseInt(tid));
       console.log(res);
       name = res.fileName;
     } else {
@@ -97,9 +97,14 @@ const TransformStatusStep = (inPros: any, ref: any) => {
   return (
     <div>
       <h2> 翻译文件生成状态 </h2>
+      {downloadAble && <h3>完成转换</h3>}
+      {isLoading && <h3>转换中</h3>}
       <Spin spinning={isLoading} style={{ margin: '40px' }} />
+
       {errorMessage && <div>{errorMessage}</div>}
-      {downloadAble && <Button onClick={generateAsrFile}>下载</Button>}
+      {!setDownloadAble && downloadAble && (
+        <Button onClick={generateAsrFile}>下载</Button>
+      )}
     </div>
   );
 };
