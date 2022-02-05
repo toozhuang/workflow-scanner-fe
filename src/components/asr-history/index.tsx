@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col, Divider, Row } from 'antd';
 import suspender from '../../common/suspender';
 import DB from '../../common/indexed-db';
+import UniqueString from 'unique-string';
 // const db = suspender(
 //   DB.createDB('howare', 12, [{ name: '12', config: { keyPath: '' } }]),
 // ).data.read;
@@ -16,12 +17,13 @@ const asrHistory = () => {
       if (hasDB === 0) {
         // 没有的话 就创建一个
         await DB.createDB('asrIDB', 1, [
-          { name: 'asrList', config: { keyPath: 'asrKeyList' } },
+          { name: 'asrList', config: { keyPath: 'asrListKey' } },
         ]);
       } else {
-        console.log('已经存在该数据库, 下面demo 插入一个值试试看');
+        // 已经存在该数据库
         const db = await DB.openDB('asrIDB', 1);
-
+        // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
+        // asrListKey
         const menuStore = await DB.transaction(
           db, // transaction on our DB
           ['asrList'], // object stores we want to transact on
@@ -29,15 +31,19 @@ const asrHistory = () => {
         ).getStore('asrList'); // retrieve the store we want
 
         console.log('menuStore: ', menuStore);
-        await DB.addObjectData(menuStore, {
-          // set an unique ID
-          // object 的key 就是我们创建数据库的时候 config 的key
-          asrKeyList: '嗷嗷阿胶',
+        const newString = UniqueString();
+        // const result = await DB.addObjectData(menuStore, {
+        //   // set an unique ID
+        //   // object 的key 就是我们创建数据库的时候 config 的key
+        //   asrKeyList: newString,
+        //
+        //   // set name to be value of mealName state
+        //   name: '大帅比',
+        // });
 
-          // set name to be value of mealName state
-          name: '大帅比',
-        });
+        const result = await DB.getAllObjectData(menuStore);
         //   效果见： https://imgur.com/a/vXweuVW
+        console.log(result);
       }
     };
 

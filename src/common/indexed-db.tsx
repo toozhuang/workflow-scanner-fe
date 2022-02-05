@@ -177,6 +177,12 @@ const createDB = (
     };
   });
 };
+/**
+ * 用来返回store的
+ * @param dbObject
+ * @param stores
+ * @param mode
+ */
 // @ts-ignore
 const transaction = (dbObject, stores, mode) => {
   return {
@@ -235,6 +241,7 @@ const DB = {
   existDB,
   transaction,
   addObjectData,
+  getAllObjectData,
 };
 
 export default DB;

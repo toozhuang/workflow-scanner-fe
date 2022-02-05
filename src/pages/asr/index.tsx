@@ -12,6 +12,7 @@ import { cleanUpAsrStore } from '../../context/action';
 import AsrHistory from '../../components/asr-history';
 import ErrorBoundary from '../../ErrorBoundary';
 import AsrHistoryProvider from '../../context/asr-history-context/asr-history-provider';
+import DB from '../../common/indexed-db';
 
 const { Step } = Steps;
 
@@ -73,6 +74,22 @@ const AsrPage = () => {
 
   const submitTask = async () => {
     await transformRef.current.transformAsr();
+    const db = await DB.openDB('asrIDB', 1);
+    const menuStore = await DB.transaction(
+      db, // transaction on our DB
+      ['asrList'], // object stores we want to transact on
+      'readwrite', // transaction mode
+    ).getStore('asrList'); // retrieve the store we want
+
+    const result = await DB.addObjectData(menuStore, {
+      // set an unique ID
+      // object 的key 就是我们创建数据库的时候 config 的key
+      asrListKey: taskId,
+
+      // set name to be value of mealName state
+      taskID: taskId,
+      file: 'file',
+    });
     next();
   };
 
@@ -99,6 +116,8 @@ const AsrPage = () => {
 
   const setTransform = (taskId: string) => {
     setTaskId(taskId);
+    // 在这里写入文件信息
+
     setButtonClickable(false);
   };
 
