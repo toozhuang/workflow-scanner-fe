@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { asrHistoryReducer } from './reducer';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    asrHistoryReducer: asrHistoryReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
