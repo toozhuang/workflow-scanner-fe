@@ -18,15 +18,15 @@ const menus = [
   //   icon: <DesktopOutlined></DesktopOutlined>,
   // },
 
-  {
-    id: 2,
-    name: '翻译服务',
-    path: '/translate',
-    icon: <DesktopOutlined />,
-  },
+  // {
+  //   id: 2,
+  //   name: '翻译服务',
+  //   path: '/translate',
+  //   icon: <DesktopOutlined />,
+  // },
   {
     id: 3,
-    name: '系统管理',
+    name: '退出登录',
     path: '/setting',
     icon: <UserOutlined />,
   },
