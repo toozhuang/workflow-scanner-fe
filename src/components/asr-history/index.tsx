@@ -19,7 +19,7 @@ import {
 // const db = suspender(
 //   DB.createDB('howare', 12, [{ name: '12', config: { keyPath: '' } }]),
 // ).data.read;
-const asrHistory = () => {
+const asrHistory = (inProps: any) => {
   // const [ss, setSS] = useState(db());
   // console.log('ss: ', ss);
 
@@ -30,6 +30,7 @@ const asrHistory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('render history');
     //  查看是否存在 db
     const checkDB = async () => {
       const hasDB = await DB.existDB('asrIDB');
@@ -70,7 +71,7 @@ const asrHistory = () => {
     checkDB().then();
     // 如果存在就进行获取数据
     // 如果不存在就在这里创建 db
-  }, []);
+  }, [inProps.trigger]);
 
   const deleteHistoryItem = async (key: any) => {
     const db = await DB.openDB('asrIDB', 1);

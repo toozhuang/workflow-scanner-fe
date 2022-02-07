@@ -13,6 +13,7 @@ import AsrHistory from '../../components/asr-history';
 import ErrorBoundary from '../../ErrorBoundary';
 import AsrHistoryProvider from '../../context/asr-history-context/asr-history-provider';
 import DB from '../../common/indexed-db';
+import { useNavigate } from 'react-router-dom';
 
 const { Step } = Steps;
 
@@ -42,6 +43,7 @@ export type uploadFile = {
 
 const AsrPage = () => {
   const dispatch = useAsrDispatch();
+  const [triggerMe, setTrigger] = useState(false);
   const transformRef = useRef<any>();
   const downloadRef = useRef<any>({ isLoading: false });
   const asrState = useAsrState();
@@ -77,10 +79,12 @@ const AsrPage = () => {
 
     next();
   };
+  const navigate = useNavigate();
 
   const reStartTask = async () => {
     await cleanUpAsrStore(dispatch);
     setCurrent(0);
+    setTrigger(!triggerMe);
   };
 
   const next = () => {
@@ -213,7 +217,7 @@ const AsrPage = () => {
       {/*<ErrorBoundary>*/}
       {/*<Suspense fallback={<p>loading....</p>}>*/}
       <AsrHistoryProvider>
-        <AsrHistory />
+        <AsrHistory trigger={triggerMe} />
       </AsrHistoryProvider>
       {/*</Suspense>*/}
       {/*</ErrorBoundary>*/}

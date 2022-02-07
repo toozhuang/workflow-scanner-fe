@@ -98,7 +98,7 @@ const TransformStatusStep = (inPros: any, ref: any) => {
     <div>
       <h2> 翻译文件生成状态 </h2>
       {downloadAble && <h3>完成转换</h3>}
-      {isLoading && <h3>转换中</h3>}
+      {isLoading && <h3>查询中</h3>}
       <Spin spinning={isLoading} style={{ margin: '40px' }} />
 
       {errorMessage && <div>{errorMessage}</div>}
