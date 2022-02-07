@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr-history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr-history/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -105,7 +108,7 @@
       <workItem from="1643299527451" duration="117000" />
       <workItem from="1643359683700" duration="4592000" />
       <workItem from="1643535432481" duration="10798000" />
-      <workItem from="1643960039763" duration="23988000" />
+      <workItem from="1643960039763" duration="30706000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -317,7 +320,42 @@
       <option name="project" value="LOCAL" />
       <updated>1644071217328</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="ui: 一些微小的UI工作 ✓">
+      <created>1644071493516</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1644071493516</updated>
+    </task>
+    <task id="LOCAL-00032" summary="config: install redux tool-kit">
+      <created>1644149381405</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1644149381405</updated>
+    </task>
+    <task id="LOCAL-00033" summary="config: install react-redux">
+      <created>1644149757074</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1644149757074</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat: init redux store">
+      <created>1644150973881</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1644150973881</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat: init redux store and reducer">
+      <created>1644156685231</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1644156685231</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,11 +384,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add: 引入 ant design layout； 添加侧边栏UI" />
-    <MESSAGE value="add： 简单封装 axios" />
-    <MESSAGE value="add: 引入 context, reducer 配合 route 实现动态auth校验" />
-    <MESSAGE value="bug: 重写 route， 修复跳转异常" />
-    <MESSAGE value="bug: fix useEffect 没有返回清楚副作用的" />
     <MESSAGE value="add: UI微调" />
     <MESSAGE value="add: 上传文件-提交任务-获取状态流程跑通" />
     <MESSAGE value="add: 封装 axios 方法, 添加错误拦截" />
@@ -371,7 +404,12 @@
     <MESSAGE value="feat：创建文件 taskid 保存到 IndexedDB 流程" />
     <MESSAGE value="feat: 首页 - 字幕下载历史 ✓" />
     <MESSAGE value="feat: 创建任务-首页历史-删除记录 ✓" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 创建任务-首页历史-删除记录 ✓" />
+    <MESSAGE value="ui: 一些微小的UI工作 ✓" />
+    <MESSAGE value="config: install redux tool-kit" />
+    <MESSAGE value="config: install react-redux" />
+    <MESSAGE value="feat: init redux store" />
+    <MESSAGE value="feat: init redux store and reducer" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: init redux store and reducer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

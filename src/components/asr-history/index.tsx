@@ -15,6 +15,7 @@ import {
   ExclamationCircleOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
+import { useAsrHistorySelector } from '../../redux/store';
 
 // const db = suspender(
 //   DB.createDB('howare', 12, [{ name: '12', config: { keyPath: '' } }]),
@@ -28,6 +29,12 @@ const asrHistory = () => {
   const [store, setStore] = useState();
 
   const navigate = useNavigate();
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const demo = useAsrHistorySelector(state => state.asrHistoryList);
+
+  console.log('看看', demo);
 
   useEffect(() => {
     //  查看是否存在 db
