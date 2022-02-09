@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/action.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +36,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/config.prod.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/api/asr.api.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/asr/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/config.env.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/asr-history/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/asr/status.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -337,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644242299740</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="config: build for env">
+      <created>1644309469659</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1644309469659</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +382,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add: 引入 context, reducer 配合 route 实现动态auth校验" />
     <MESSAGE value="bug: 重写 route， 修复跳转异常" />
     <MESSAGE value="bug: fix useEffect 没有返回清楚副作用的" />
     <MESSAGE value="add: UI微调" />
@@ -391,7 +406,8 @@
     <MESSAGE value="feat: 创建任务-首页历史-删除记录 ✓" />
     <MESSAGE value="feat: 添加退出登录的功能" />
     <MESSAGE value="bump: 添加一个 trigger 来让子组件按需更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="bump: 添加一个 trigger 来让子组件按需更新" />
+    <MESSAGE value="config: build for env" />
+    <option name="LAST_COMMIT_MESSAGE" value="config: build for env" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
