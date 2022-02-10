@@ -36,7 +36,6 @@ const TransformStatusStep = (inPros: any, ref: any) => {
           data: { Data: data },
         } = await getASRStatus(tid);
         const { StatusStr } = data;
-
         if (StatusStr === 'doing' || StatusStr === 'waiting') {
           setLoading(true);
           setFetch(!isFetch);
@@ -49,9 +48,9 @@ const TransformStatusStep = (inPros: any, ref: any) => {
         }
         if (StatusStr === 'failed') {
           setLoading(false);
+          setMsg(data.ErrorMsg);
         }
       } catch (e: any) {
-        console.log('错误吗： ', e);
         setMsg(e.data.error);
         setLoading(false);
       }
