@@ -20,7 +20,20 @@ import { completeFileUpload, getSignature } from '../../context/action';
 
 const { Dragger } = Upload;
 
+//验证上传文件的文件名是否合法
+const validateFileName = (fileName: any) => {
+  //var fileName = 'a.html';
+  const reg = new RegExp('[\\\\/:*?"<>| ]');
+  if (reg.test(fileName)) {
+    //"上传的文件名不能包含【\\\\/:*?\"<>|】这些非法字符,请修改后重新上传!";
+    return false;
+  }
+  return true;
+};
+
 /**
+ * feng-online-sound (2).mp3
+ * feng-online-sound (2).mp3
  * 使用 dispatch
  * @param inProps
  * @constructor
@@ -33,7 +46,7 @@ const AsrUpload = () => {
 
   // TODO : 这里要考虑获取 signature 失败的情况
   const preUpload = async (file: any, dispatch: any) => {
-    console.log(file);
+    // console.log(file.name);
     setFileName(file.name);
     await getSignature(dispatch);
   };
@@ -55,7 +68,14 @@ const AsrUpload = () => {
       signature: globalStore.bucket.Signature,
     },
     beforeUpload: async (file: any) => {
-      await preUpload(file, dispatch);
+      if (validateFileName(file.name)) {
+        await preUpload(file, dispatch);
+      } else {
+        message.error(
+          `${file.name}  名称不合法，名称中不能有空格或者/:*?"<>|等符号`,
+        );
+        return false;
+      }
     },
     onChange: async (info: any) => {
       const { status } = info.file;
