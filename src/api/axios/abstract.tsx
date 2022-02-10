@@ -10,8 +10,8 @@ import { AxiosRequest, CustomAxiosResponse } from '../dto/axios.type';
 import { message } from 'antd';
 
 // 在这里组装 base url 基础 url 的设定
-const isDev = true;
-// process.env.NODE_ENV === 'development';
+
+const isDev = process.env.NODE_ENV === 'development';
 const baseURL = isDev
   ? dev_env.apiService.baseURL
   : prod_env.apiService.baseURL;

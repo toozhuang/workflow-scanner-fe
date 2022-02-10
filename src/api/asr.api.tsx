@@ -21,8 +21,6 @@ export const getASRStatus = (taskId: string) => {
 // TODO: 这里要替换一下
 export const fileDownload = (taskId: string, downloadFileName: string) => {
   const isDev = process.env.NODE_ENV === 'development';
-  console.log('isDev:', isDev, process.env.NODE_ENV);
-  // const baseURL = 'http://172.19.223.200';
   const baseURL = !isDev ? 'http://172.19.223.200' : 'http://localhost';
   return axios(`${baseURL}:3230/asr-service-api/upload/generate/${taskId}`, {
     method: 'GET',

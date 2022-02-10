@@ -25,7 +25,11 @@ const TransformAsr = (inPros: AsrTransformProps, ref: any) => {
 
   // TODO: 失败的情况如何处理
   const transformAsr = async () => {
-    await createAsrTask(inPros.file, dispatch);
+    try {
+      await createAsrTask(inPros.file, dispatch);
+    } catch (e) {
+      console.log('error: ', e);
+    }
   };
 
   return (

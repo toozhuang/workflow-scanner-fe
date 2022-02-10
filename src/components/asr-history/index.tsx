@@ -30,7 +30,6 @@ const asrHistory = (inProps: any) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('render history');
     //  查看是否存在 db
     const checkDB = async () => {
       const hasDB = await DB.existDB('asrIDB');
@@ -62,7 +61,7 @@ const asrHistory = (inProps: any) => {
 
         const result: any = await DB.getAllObjectData(menuStore);
         //   效果见： https://imgur.com/a/vXweuVW
-        console.log('result: ', result);
+        // console.log('result: ', result);
 
         setList(result);
       }
@@ -89,7 +88,6 @@ const asrHistory = (inProps: any) => {
   };
 
   const checkHistoryItem = (key: any) => {
-    console.log('来了吗：： ');
     const locationPart = `/asr/${key}`;
 
     navigate(locationPart, { replace: false });
@@ -104,7 +102,6 @@ const asrHistory = (inProps: any) => {
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               {asrHistoryList.length > 0 &&
                 asrHistoryList.map((item: any) => {
-                  console.log(item);
                   return (
                     <Col
                       xs={20}

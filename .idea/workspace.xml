@@ -4,8 +4,11 @@
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/asr.api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/asr.api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/abstract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/abstract.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr-history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr-history/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/transform.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/transform.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr/upload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr/upload.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/action.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/action.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +41,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/config.prod.ts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/api/asr.api.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/asr/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/config.env.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/asr-history/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/api/asr.api.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/asr/status.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/config.prod.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/config.env.ts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -121,6 +124,7 @@
       <workItem from="1643359683700" duration="4592000" />
       <workItem from="1643535432481" duration="10798000" />
       <workItem from="1643960039763" duration="23988000" />
+      <workItem from="1644457195794" duration="5717000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -353,7 +357,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644309469659</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="config: api logic change">
+      <created>1644413173471</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1644413173471</updated>
+    </task>
+    <task id="LOCAL-00035" summary=" bug: 后端 task 返回错误信息时候显示到页面">
+      <created>1644463166154</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1644463166154</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,8 +400,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug: 重写 route， 修复跳转异常" />
-    <MESSAGE value="bug: fix useEffect 没有返回清楚副作用的" />
     <MESSAGE value="add: UI微调" />
     <MESSAGE value="add: 上传文件-提交任务-获取状态流程跑通" />
     <MESSAGE value="add: 封装 axios 方法, 添加错误拦截" />
@@ -407,7 +423,9 @@
     <MESSAGE value="feat: 添加退出登录的功能" />
     <MESSAGE value="bump: 添加一个 trigger 来让子组件按需更新" />
     <MESSAGE value="config: build for env" />
-    <option name="LAST_COMMIT_MESSAGE" value="config: build for env" />
+    <MESSAGE value="config: api logic change" />
+    <MESSAGE value=" bug: 后端 task 返回错误信息时候显示到页面" />
+    <option name="LAST_COMMIT_MESSAGE" value=" bug: 后端 task 返回错误信息时候显示到页面" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
