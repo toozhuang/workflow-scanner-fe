@@ -101,24 +101,29 @@ export async function createAsrTask(file: uploadFile, dispatch: any) {
   dispatch({ type: ASR_COMMAND.SUBMIT_TRANSLATE_REQUEST });
   try {
     const result = await createASRTask(file.filePath);
-    const db = await DB.openDB('asrIDB', 1);
-    const menuStore = await DB.transaction(
-      db, // transaction on our DB
-      ['asrList'], // object stores we want to transact on
-      'readwrite', // transaction mode
-    ).getStore('asrList'); // retrieve the store we want
-    const addResult = await DB.addObjectData(menuStore, {
-      // set an unique ID
-      // object 的key 就是我们创建数据库的时候 config 的key
-      asrListKey: result.data.Data.TaskId,
+    console.log('看看这里有没有： ', result);
+    try {
+      const db = await DB.openDB('asrIDB', 1);
+      const menuStore = await DB.transaction(
+        db, // transaction on our DB
+        ['asrList'], // object stores we want to transact on
+        'readwrite', // transaction mode
+      ).getStore('asrList'); // retrieve the store we want
+      const addResult = await DB.addObjectData(menuStore, {
+        // set an unique ID
+        // object 的key 就是我们创建数据库的时候 config 的key
+        asrListKey: result.data.Data.TaskId,
 
-      // set name to be value of mealName state
-      taskID: result.data.Data.TaskId,
-      fileName: file.fileInfo.name,
-      fileSize: file.fileInfo.size,
-      fileLocation: file.filePath,
-      createdTime: dayjs().format(),
-    });
+        // set name to be value of mealName state
+        taskID: result.data.Data.TaskId,
+        fileName: file.fileInfo.name,
+        fileSize: file.fileInfo.size,
+        fileLocation: file.filePath,
+        createdTime: dayjs().format(),
+      });
+    } catch (e) {
+      console.log('error: in transaction not work', e);
+    }
     console.log('看一下 result： =>', result);
     dispatch({
       type: ASR_COMMAND.SUBMIT_TRANSLATE_SUCCESS,

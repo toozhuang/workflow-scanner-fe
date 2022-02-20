@@ -32,15 +32,31 @@ const asrHistory = (inProps: any) => {
   useEffect(() => {
     //  查看是否存在 db
     const checkDB = async () => {
-      const hasDB = await DB.existDB('asrIDB');
+      let hasDB;
+      try {
+        hasDB = await DB.existDB('asrIDB');
+        console.log(hasDB);
+      } catch (error) {
+        console.log('这就是 哈市DB, ', error);
+      }
       if (hasDB === 0) {
+        console.log('create db');
         // 没有的话 就创建一个
         await DB.createDB('asrIDB', 1, [
           { name: 'asrList', config: { keyPath: 'asrListKey' } },
         ]);
       } else {
+        console.log('transaction here');
         // 已经存在该数据库
-        const db = await DB.openDB('asrIDB', 1);
+        let db;
+        try {
+          db = await DB.openDB('asrIDB', 1);
+          console.log('db:', db);
+        } catch (e) {
+          console.log('error of open db');
+          console.log(e);
+        }
+
         // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
         // asrListKey
         const menuStore = await DB.transaction(
@@ -49,7 +65,6 @@ const asrHistory = (inProps: any) => {
           'readwrite', // transaction mode
         ).getStore('asrList'); // retrieve the store we want
         // console.log('menuStore: ', menuStore);
-        const newString = UniqueString();
         // const result = await DB.addObjectData(menuStore, {
         //   // set an unique ID
         //   // object 的key 就是我们创建数据库的时候 config 的key
