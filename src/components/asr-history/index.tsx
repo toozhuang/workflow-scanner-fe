@@ -130,11 +130,11 @@ const asrHistory = (inProps: any) => {
                     >
                       <AsrCard
                         title={item.fileName}
-                        hoverable
+                        keyItem={item.asrListKey}
+                        hoverAble
                         actions={{
-                          checkDetail: () => checkHistoryItem(item.asrListKey),
-                          deleteDetail: () =>
-                            deleteHistoryItem(item.asrListKey),
+                          checkDetail: checkHistoryItem,
+                          deleteDetail: deleteHistoryItem,
                         }}
                       >
                         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>

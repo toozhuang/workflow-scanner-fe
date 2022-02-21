@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/layout/asrCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/asr-history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr-history/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/layout/asrCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/layout/asrCard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
       <workItem from="1643960039763" duration="23988000" />
       <workItem from="1644457195794" duration="8382000" />
       <workItem from="1644547999092" duration="14000" />
-      <workItem from="1645276766185" duration="2263000" />
+      <workItem from="1645276766185" duration="6020000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -393,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644474968539</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="feat: 创建 asr Card 组件，负责显示 result 结果">
+      <created>1645433991221</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1645433991221</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,7 +429,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add: 封装 axios 方法, 添加错误拦截" />
     <MESSAGE value="add： 下载文件srt" />
     <MESSAGE value="add: asr 翻译工作流引入store redux 体系" />
     <MESSAGE value="bug: message.error() 参数为 string" />
@@ -447,7 +453,8 @@
     <MESSAGE value=" bug: 后端 task 返回错误信息时候显示到页面" />
     <MESSAGE value="feat: 添加文件名称的校验" />
     <MESSAGE value="update: 动态加载后端 url" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: 动态加载后端 url" />
+    <MESSAGE value="feat: 创建 asr Card 组件，负责显示 result 结果" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 创建 asr Card 组件，负责显示 result 结果" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
