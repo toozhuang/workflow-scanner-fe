@@ -27,29 +27,23 @@ const LoginPage = () => {
     try {
       await loginUser(auth, value);
       navigate('/asr', { replace: true });
-
-      // TODO: 要在这里添加 catch 的 error 业务逻辑
-      // eslint-disable-next-line no-empty
-    } catch {}
+    } catch (error) {
+      console.log('登录失败');
+    }
   };
 
   const onFinishFailed = () => {
-    message.error('请按照提示修改错误');
+    message.error('请按照提示修改错误').then();
   };
 
-  // 下面的两种跳转逻辑都 OK
   if (!_.isEmpty(userDetail.user)) {
-    // navigate('/', {replace: true});
     return <Navigate to="/" state={{ from: location }} />;
   }
 
   return (
     <div className="App">
       <div className="container">
-        <div
-          className="
-        loginPage"
-        >
+        <div className="loginPage">
           <div className="title">
             <FundOutlined />
             {/* TODO： 后期支持语言内部文字化*/}

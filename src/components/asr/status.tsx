@@ -36,7 +36,6 @@ const TransformStatusStep = (inPros: any, ref: any) => {
           data: { Data: data },
         } = await getASRStatus(tid);
         const { StatusStr } = data;
-
         if (StatusStr === 'doing' || StatusStr === 'waiting') {
           setLoading(true);
           setFetch(!isFetch);
@@ -49,9 +48,9 @@ const TransformStatusStep = (inPros: any, ref: any) => {
         }
         if (StatusStr === 'failed') {
           setLoading(false);
+          setMsg(data.ErrorMsg);
         }
       } catch (e: any) {
-        console.log('错误吗： ', e);
         setMsg(e.data.error);
         setLoading(false);
       }
@@ -98,7 +97,7 @@ const TransformStatusStep = (inPros: any, ref: any) => {
     <div>
       <h2> 翻译文件生成状态 </h2>
       {downloadAble && <h3>完成转换</h3>}
-      {isLoading && <h3>转换中</h3>}
+      {isLoading && <h3>查询中</h3>}
       <Spin spinning={isLoading} style={{ margin: '40px' }} />
 
       {errorMessage && <div>{errorMessage}</div>}

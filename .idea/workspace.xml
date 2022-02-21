@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr-history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr-history/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,12 +15,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
         <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="react-toolkit" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -32,6 +36,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/pages/asr/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/asr-history/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/api/asr.api.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/asr/status.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/config.prod.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/config.env.ts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,7 +74,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -70,6 +82,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/pages/login" />
       <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/layout" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -108,7 +123,10 @@
       <workItem from="1643299527451" duration="117000" />
       <workItem from="1643359683700" duration="4592000" />
       <workItem from="1643535432481" duration="10798000" />
-      <workItem from="1643960039763" duration="30706000" />
+      <workItem from="1643960039763" duration="23988000" />
+      <workItem from="1644457195794" duration="8382000" />
+      <workItem from="1644547999092" duration="14000" />
+      <workItem from="1645276766185" duration="10545000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -320,42 +338,84 @@
       <option name="project" value="LOCAL" />
       <updated>1644071217328</updated>
     </task>
-    <task id="LOCAL-00031" summary="ui: 一些微小的UI工作 ✓">
-      <created>1644071493516</created>
+    <task id="LOCAL-00031" summary="feat: 添加退出登录的功能">
+      <created>1644235690677</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1644071493516</updated>
+      <updated>1644235690677</updated>
     </task>
-    <task id="LOCAL-00032" summary="config: install redux tool-kit">
-      <created>1644149381405</created>
+    <task id="LOCAL-00032" summary="bump: 添加一个 trigger 来让子组件按需更新">
+      <created>1644242299740</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1644149381405</updated>
+      <updated>1644242299740</updated>
     </task>
-    <task id="LOCAL-00033" summary="config: install react-redux">
-      <created>1644149757074</created>
+    <task id="LOCAL-00033" summary="config: build for env">
+      <created>1644309469659</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1644149757074</updated>
+      <updated>1644309469659</updated>
     </task>
-    <task id="LOCAL-00034" summary="feat: init redux store">
-      <created>1644150973881</created>
+    <task id="LOCAL-00034" summary="config: api logic change">
+      <created>1644413173471</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1644150973881</updated>
+      <updated>1644413173471</updated>
     </task>
-    <task id="LOCAL-00035" summary="feat: init redux store and reducer">
-      <created>1644156685231</created>
+    <task id="LOCAL-00035" summary=" bug: 后端 task 返回错误信息时候显示到页面">
+      <created>1644463166154</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1644156685231</updated>
+      <updated>1644463166154</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="feat: 添加文件名称的校验">
+      <created>1644474660297</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1644474660297</updated>
+    </task>
+    <task id="LOCAL-00037" summary="update: 动态加载后端 url">
+      <created>1644474679144</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1644474679144</updated>
+    </task>
+    <task id="LOCAL-00038" summary="update: 动态加载后端 url">
+      <created>1644474968539</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1644474968539</updated>
+    </task>
+    <task id="LOCAL-00039" summary="feat: 创建 asr Card 组件，负责显示 result 结果">
+      <created>1645433991221</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1645433991221</updated>
+    </task>
+    <task id="LOCAL-00040" summary="bug： 移出 span造成的 计算不对的bug">
+      <created>1645445796129</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1645445796129</updated>
+    </task>
+    <task id="LOCAL-00041" summary="feat: 完善 result card 组件">
+      <created>1645447137629</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1645447137629</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,11 +444,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add: UI微调" />
-    <MESSAGE value="add: 上传文件-提交任务-获取状态流程跑通" />
-    <MESSAGE value="add: 封装 axios 方法, 添加错误拦截" />
-    <MESSAGE value="add： 下载文件srt" />
-    <MESSAGE value="add: asr 翻译工作流引入store redux 体系" />
     <MESSAGE value="bug: message.error() 参数为 string" />
     <MESSAGE value="refactor: login 登录页面逻辑优化" />
     <MESSAGE value="refactor: Upload 上传组件逻辑和Redux绑定" />
@@ -404,12 +459,17 @@
     <MESSAGE value="feat：创建文件 taskid 保存到 IndexedDB 流程" />
     <MESSAGE value="feat: 首页 - 字幕下载历史 ✓" />
     <MESSAGE value="feat: 创建任务-首页历史-删除记录 ✓" />
-    <MESSAGE value="ui: 一些微小的UI工作 ✓" />
-    <MESSAGE value="config: install redux tool-kit" />
-    <MESSAGE value="config: install react-redux" />
-    <MESSAGE value="feat: init redux store" />
-    <MESSAGE value="feat: init redux store and reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: init redux store and reducer" />
+    <MESSAGE value="feat: 添加退出登录的功能" />
+    <MESSAGE value="bump: 添加一个 trigger 来让子组件按需更新" />
+    <MESSAGE value="config: build for env" />
+    <MESSAGE value="config: api logic change" />
+    <MESSAGE value=" bug: 后端 task 返回错误信息时候显示到页面" />
+    <MESSAGE value="feat: 添加文件名称的校验" />
+    <MESSAGE value="update: 动态加载后端 url" />
+    <MESSAGE value="feat: 创建 asr Card 组件，负责显示 result 结果" />
+    <MESSAGE value="bug： 移出 span造成的 计算不对的bug" />
+    <MESSAGE value="feat: 完善 result card 组件" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 完善 result card 组件" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

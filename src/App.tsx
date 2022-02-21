@@ -11,12 +11,14 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 
 export type AuthContextType = {
-  user: any;
+  // user: {}; note： 之前为了安全添加了这些， 但如果在公司内部运行，则不需要这个了
   signIn: (user: loginForm, callback: VoidFunction) => void;
   signOut: (callback: VoidFunction) => void;
 };
 
-export const AuthContext = React.createContext<AuthContextType>(null!);
+export const AuthContext = React.createContext<AuthContextType>(
+  {} as AuthContextType,
+);
 
 function App() {
   return (
