@@ -9,3 +9,12 @@ export type TransferType = {
   type: string;
   errMsg: string;
 };
+
+export type FileType = {
+  createdTime: string;
+  asrListKey: number;
+  fileLocation: string;
+  fileName: number;
+  fileSize: number;
+  taskID: number;
+};

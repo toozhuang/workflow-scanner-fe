@@ -4,19 +4,22 @@
  * feature： 抽离了一个 asrCard 的组件， 并给予该组件一定的功能
  */
 import React from 'react';
-import { Card, Tooltip } from 'antd';
+import { Card, Col, Row, Tooltip } from 'antd';
 import { DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import PropTypes, { objectOf, Validator } from 'prop-types';
+import { FileType, TransferType } from '../../components/dto/transfer.type';
+import { getFilesize } from '../../common/util';
+import dayjs from 'dayjs';
 
 // 定义props， 约束输入
 export interface AsrCardProps {
-  title: string;
   keyItem: string;
   hoverAble: boolean;
   actions: {
     checkDetail: { (keyItem: string): void };
     deleteDetail: { (keyItem: string): void };
   };
+  item: FileType;
 }
 
 export interface AsCardForwardingComponent<P = unknown> {
@@ -42,17 +45,22 @@ const asrCardPropTypes = {
   actions: PropTypes.shape<ShapeAction>(objD),
 };
 
-const defaultProps = {
-  title: 'Card Title',
-};
+const defaultProps = {};
 
 const AsrCard: AsCardForwardingComponent<AsrCardProps> = React.forwardRef(
   (props: AsrCardProps, ref) => {
     console.log(props);
-    const { title, keyItem, actions, hoverAble = false, ...restProps } = props;
+    const {
+      keyItem,
+      actions,
+      item: { fileName, fileSize, fileLocation, createdTime },
+      hoverAble = false,
+      ...restProps
+    } = props;
+
     return (
       <Card
-        title={props.title}
+        title={fileName}
         bordered={true}
         hoverable={hoverAble}
         {...restProps}
@@ -70,7 +78,38 @@ const AsrCard: AsCardForwardingComponent<AsrCardProps> = React.forwardRef(
             />
           </Tooltip>,
         ]}
-      />
+      >
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col span={8}>文件名</Col>
+          <Col span={16} style={{ wordBreak: 'break-all' }}>
+            {fileName}
+          </Col>
+        </Row>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col span={8}>大小</Col>
+          <Col span={16} style={{ wordBreak: 'break-all' }}>
+            {getFilesize(fileSize)}
+          </Col>
+        </Row>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col span={8}>云端位置</Col>
+          <Col span={16} style={{ wordBreak: 'break-all' }}>
+            {fileLocation}
+          </Col>
+        </Row>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          <Col span={8}>创建时间</Col>
+          <Col
+            span={16}
+            style={{
+              wordBreak: 'break-all',
+              fontStyle: 'italic',
+            }}
+          >
+            {dayjs(createdTime).format('YY/MM/DD HH:mm:ss')}
+          </Col>
+        </Row>
+      </Card>
     );
   },
 );

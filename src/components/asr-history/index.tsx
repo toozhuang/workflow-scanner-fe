@@ -1,32 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Button, Card, Col, Divider, Row, Tooltip } from 'antd';
-import suspender from '../../common/suspender';
+import React, { useEffect, useState } from 'react';
 import AsrCard from '../../pages/layout/asrCard';
 import DB from '../../common/indexed-db';
-import UniqueString from 'unique-string';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './asrHistory.scss';
-import { getFilesize } from '../../common/util';
-import dayjs from 'dayjs';
-import {
-  DeleteOutlined,
-  EditOutlined,
-  EllipsisOutlined,
-  ExclamationCircleOutlined,
-  SettingOutlined,
-} from '@ant-design/icons';
+import { Col, Divider, Row } from 'antd';
 
-// const db = suspender(
-//   DB.createDB('howare', 12, [{ name: '12', config: { keyPath: '' } }]),
-// ).data.read;
 const asrHistory = (inProps: any) => {
-  // const [ss, setSS] = useState(db());
-  // console.log('ss: ', ss);
-
   const [asrHistoryList, setList] = useState([]);
-
-  const [store, setStore] = useState();
 
   const navigate = useNavigate();
 
@@ -65,15 +46,6 @@ const asrHistory = (inProps: any) => {
           ['asrList'], // object stores we want to transact on
           'readwrite', // transaction mode
         ).getStore('asrList'); // retrieve the store we want
-        // console.log('menuStore: ', menuStore);
-        // const result = await DB.addObjectData(menuStore, {
-        //   // set an unique ID
-        //   // object 的key 就是我们创建数据库的时候 config 的key
-        //   asrKeyList: newString,
-        //
-        //   // set name to be value of mealName state
-        //   name: '大帅比',
-        // });
 
         const result: any = await DB.getAllObjectData(menuStore);
         //   效果见： https://imgur.com/a/vXweuVW
@@ -129,48 +101,13 @@ const asrHistory = (inProps: any) => {
                       key={item.asrListKey}
                     >
                       <AsrCard
-                        title={item.fileName}
-                        keyItem={item.asrListKey}
+                        item={item}
                         hoverAble
                         actions={{
                           checkDetail: checkHistoryItem,
                           deleteDetail: deleteHistoryItem,
                         }}
-                      >
-                        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                          <Col span={6}>文件名</Col>
-                          <Col span={18} style={{ wordBreak: 'break-all' }}>
-                            {item.fileName}
-                          </Col>
-                        </Row>
-                        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                          <Col span={6}>大小</Col>
-                          <Col span={18} style={{ wordBreak: 'break-all' }}>
-                            {getFilesize(item.fileSize)}
-                          </Col>
-                        </Row>
-                        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                          <Col span={6}>云端位置</Col>
-                          <Col span={18} style={{ wordBreak: 'break-all' }}>
-                            {item.fileLocation}
-                          </Col>
-                        </Row>
-                        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                          <Col span={6}>创建时间</Col>
-                          <Col
-                            span={18}
-                            style={{
-                              wordBreak: 'break-all',
-                              fontStyle: 'italic',
-                            }}
-                          >
-                            {dayjs(item.createdTime).format(
-                              'YY/MM/DD HH:mm:ss',
-                            )}
-                          </Col>
-                        </Row>
-                        <p />
-                      </AsrCard>
+                      />
                     </Col>
                   );
                 })}
