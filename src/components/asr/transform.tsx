@@ -60,7 +60,7 @@ const TransformAsr = (inPros: AsrTransformProps, ref: any) => {
           <Descriptions.Item label="文件类型">
             {inPros.file.fileInfo.type}
           </Descriptions.Item>
-          <Descriptions.Item span={2} label="大小">
+          <Descriptions.Item label="大小">
             {getFilesize(inPros.file.fileInfo.size)}
           </Descriptions.Item>
           <Descriptions.Item label="位置">
