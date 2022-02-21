@@ -22,9 +22,7 @@ const AuthPage = () => {
   const auth = React.useContext(AuthContext);
 
   const onFinish = (value: loginForm) => {
-    // setLoading(true)
     auth.signIn(value, () => {
-      // setLoading(false)
       navigate('/', { replace: true });
     });
   };
@@ -33,9 +31,7 @@ const AuthPage = () => {
     console.log('Failed:', errorInfo);
   };
 
-  // 下面的两种跳转逻辑都 OK
   if (!isError && !isLoading) {
-    // navigate('/', {replace: true});
     return <Navigate to="/" state={{ from: location }} />;
   }
 

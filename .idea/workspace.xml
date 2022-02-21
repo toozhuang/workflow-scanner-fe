@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="feat: 创建 asr Card 组件，负责显示 result 结果">
+    <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asr-history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr-history/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dto/transfer.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dto/transfer.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/layout/asrCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/layout/asrCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -127,7 +126,7 @@
       <workItem from="1643960039763" duration="23988000" />
       <workItem from="1644457195794" duration="8382000" />
       <workItem from="1644547999092" duration="14000" />
-      <workItem from="1645276766185" duration="8565000" />
+      <workItem from="1645276766185" duration="10545000" />
     </task>
     <task id="LOCAL-00001" summary="feat：监控/更新 transfer item 功能完成">
       <created>1639464214376</created>
@@ -409,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645445796129</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="feat: 完善 result card 组件">
+      <created>1645447137629</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1645447137629</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +444,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add: asr 翻译工作流引入store redux 体系" />
     <MESSAGE value="bug: message.error() 参数为 string" />
     <MESSAGE value="refactor: login 登录页面逻辑优化" />
     <MESSAGE value="refactor: Upload 上传组件逻辑和Redux绑定" />
@@ -463,7 +468,8 @@
     <MESSAGE value="update: 动态加载后端 url" />
     <MESSAGE value="feat: 创建 asr Card 组件，负责显示 result 结果" />
     <MESSAGE value="bug： 移出 span造成的 计算不对的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug： 移出 span造成的 计算不对的bug" />
+    <MESSAGE value="feat: 完善 result card 组件" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 完善 result card 组件" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
