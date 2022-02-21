@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Button, Card, Col, Divider, Row, Tooltip } from 'antd';
 import suspender from '../../common/suspender';
+import AsrCard from '../../pages/layout/asrCard';
 import DB from '../../common/indexed-db';
 import UniqueString from 'unique-string';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -127,24 +128,14 @@ const asrHistory = (inProps: any) => {
                       className="gutter-row"
                       key={item.asrListKey}
                     >
-                      <Card
+                      <AsrCard
                         title={item.fileName}
-                        bordered={true}
                         hoverable
-                        actions={[
-                          <Tooltip title="详情" key="tooltips-info">
-                            <ExclamationCircleOutlined
-                              key="info"
-                              onClick={() => checkHistoryItem(item.asrListKey)}
-                            />
-                          </Tooltip>,
-                          <Tooltip title="删除" key="tooltips-delete">
-                            <DeleteOutlined
-                              key="delete"
-                              onClick={() => deleteHistoryItem(item.asrListKey)}
-                            />
-                          </Tooltip>,
-                        ]}
+                        actions={{
+                          checkDetail: () => checkHistoryItem(item.asrListKey),
+                          deleteDetail: () =>
+                            deleteHistoryItem(item.asrListKey),
+                        }}
                       >
                         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                           <Col span={6}>文件名</Col>
@@ -179,12 +170,7 @@ const asrHistory = (inProps: any) => {
                           </Col>
                         </Row>
                         <p />
-                        {/*<Button*/}
-                        {/*  onClick={() => checkHistoryItem(item.asrListKey)}*/}
-                        {/*>*/}
-                        {/*  查看*/}
-                        {/*</Button>*/}
-                      </Card>
+                      </AsrCard>
                     </Col>
                   );
                 })}
