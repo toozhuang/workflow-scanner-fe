@@ -72,11 +72,12 @@ const asrHistory = (inProps: any) => {
                   return (
                     item && (
                       <Col
-                        xs={20}
-                        sm={16}
-                        md={16}
-                        lg={6}
-                        xl={6}
+                        xs={16}
+                        sm={8}
+                        md={8}
+                        lg={12}
+                        xl={8}
+                        xxl={6}
                         className="gutter-row"
                         key={item.asrListKey}
                       >
