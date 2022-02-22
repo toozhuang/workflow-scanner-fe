@@ -11,37 +11,45 @@ import {
   asrHistoryAction,
   asrHistorySelectors,
   asrHistorySlice,
+  fetchRecords,
   newStateSelecter,
 } from '../../redux/asrHistory-slice';
 
 const asrHistory = (inProps: any) => {
   const [asrHistoryList, setList] = useState([]);
   const count = useSelector((state: RootState) => state[asrHistorySlice.name]);
-  const demo = useAppSelector((state: RootState) =>
-    asrHistorySelectors.selectById(state, '123'),
-  );
+  // const demo = useAppSelector((state: RootState) =>
+  //   asrHistorySelectors.selectById(state, '123'),
+  // );
 
   console.log(count);
-  console.log(demo);
+  // console.log(demo);
+
+  console.log(asrHistorySlice.actions);
 
   const appDispatch = useAppDispatch();
   const add = () =>
     appDispatch(asrHistoryAction.addCounter({ initialValue: 0 }));
+  const fetch = () => appDispatch(fetchRecords());
 
   const navigate = useNavigate();
-  const haha = useSelector((state: RootState) =>
-    newStateSelecter.selectById(
-      state[asrHistorySlice.name].asrHistories,
-      '123151',
-    ),
-  );
+  // const haha = useSelector((state: RootState) =>
+  //   newStateSelecter.selectById(
+  //     state[asrHistorySlice.name].asrHistories,
+  //     '123151',
+  //   ),
+  // );
 
   useEffect(() => {
-    add();
-    setTimeout(() => {
-      console.log(haha);
-    }, 1000);
+    // fetch();
+    // add();
+    // setTimeout(() => {
+    //   console.log(haha);
+    // }, 1000);
     //  查看是否存在 db
+
+    fetch().then();
+
     const checkDB = async () => {
       let hasDB;
       try {
@@ -78,7 +86,7 @@ const asrHistory = (inProps: any) => {
 
         const result: any = await DB.getAllObjectData(menuStore);
         //   效果见： https://imgur.com/a/vXweuVW
-        // console.log('result: ', result);
+        console.log('result: ', result);
 
         setList(result);
       }
