@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asr-history/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asr-history/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +87,9 @@
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="667f113c-f89f-415f-b854-ab13fa906a96" name="Changes" comment="" />

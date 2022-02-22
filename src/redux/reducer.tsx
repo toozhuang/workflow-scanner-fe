@@ -24,12 +24,14 @@ type AsrHistory = {
   taskID: number;
 };
 
-const asrHistoryInitState = {};
+const asrHistoryInitState = {
+  value: '嗷嗷',
+};
 
 /**
  * 获取 history
  */
-export const retrieveHistory = createAction('history/retrieve');
+export const retrieveHistory = createAction<string>('history/retrieve');
 /**
  * 删除 一个 history
  */
@@ -37,6 +39,6 @@ const deleteAHistory = createAction('history/deleteA');
 
 export const asrHistoryReducer = createReducer(asrHistoryInitState, builder => {
   builder.addCase(retrieveHistory, (state, action) => {
-    return '嗷嗷阿胶';
+    return { value: '嗷嗷阿胶' };
   });
 });

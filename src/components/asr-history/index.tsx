@@ -5,10 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 import './asrHistory.scss';
 import { Col, Divider, Row } from 'antd';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 const asrHistory = (inProps: any) => {
   const [asrHistoryList, setList] = useState([]);
-
+  const count = useSelector(
+    (state: RootState) => state.asrHistoryReducer.value,
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -86,6 +90,7 @@ const asrHistory = (inProps: any) => {
         <div style={{ width: '90%', marginLeft: 'auto', marginRight: ' auto' }}>
           <Divider />
           <h1>最近转字幕记录</h1>
+          {count}
           <div className="site-card-wrapper">
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               {asrHistoryList.length > 0 &&
