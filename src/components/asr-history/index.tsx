@@ -11,6 +11,7 @@ import {
   asrHistoryAction,
   asrHistorySelectors,
   asrHistorySlice,
+  deleteRecords,
   fetchRecords,
   newStateSelecter,
 } from '../../redux/asrHistory-slice';
@@ -21,97 +22,34 @@ const asrHistory = (inProps: any) => {
     (state: RootState) => state[asrHistorySlice.name],
   );
   const asrHistory = asrHistoryStore.asrHistories;
-  // const demo = useAppSelector((state: RootState) =>
-  //   asrHistorySelectors.selectById(state, '123'),
-  // );
-
-  // console.log(demo);
-
-  console.log(asrHistorySlice.actions);
 
   const appDispatch = useAppDispatch();
-  const add = () =>
-    appDispatch(asrHistoryAction.addCounter({ initialValue: 0 }));
+
   const fetch = () => appDispatch(fetchRecords());
+  const deleteARecord = () => appDispatch(deleteRecords());
 
   const navigate = useNavigate();
-  // const haha = useSelector((state: RootState) =>
-  //   newStateSelecter.selectById(
-  //     state[asrHistorySlice.name].asrHistories,
-  //     '123151',
-  //   ),
-  // );
 
   useEffect(() => {
-    // fetch();
-    // add();
-    // setTimeout(() => {
-    //   console.log(haha);
-    // }, 1000);
-    //  查看是否存在 db
-
     fetch().then();
-
-    const checkDB = async () => {
-      let hasDB;
-      try {
-        hasDB = await DB.existDB('asrIDB');
-        console.log(hasDB);
-      } catch (error) {
-        console.log('这就是 哈市DB, ', error);
-      }
-      if (hasDB === 0) {
-        console.log('create db');
-        // 没有的话 就创建一个
-        await DB.createDB('asrIDB', 1, [
-          { name: 'asrList', config: { keyPath: 'asrListKey' } },
-        ]);
-      } else {
-        console.log('transaction here');
-        // 已经存在该数据库
-        let db;
-        try {
-          db = await DB.openDB('asrIDB', 1);
-          console.log('db:', db);
-        } catch (e) {
-          console.log('error of open db');
-          console.log(e);
-        }
-
-        // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
-        // asrListKey
-        const menuStore = await DB.transaction(
-          db, // transaction on our DB
-          ['asrList'], // object stores we want to transact on
-          'readwrite', // transaction mode
-        ).getStore('asrList'); // retrieve the store we want
-
-        const result: any = await DB.getAllObjectData(menuStore);
-        //   效果见： https://imgur.com/a/vXweuVW
-        console.log('result: ', result);
-
-        // setList(result);
-      }
-    };
-
-    checkDB().then();
     // 如果存在就进行获取数据
     // 如果不存在就在这里创建 db
   }, [inProps.trigger]);
 
   const deleteHistoryItem = async (key: any) => {
-    const db = await DB.openDB('asrIDB', 1);
-    // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
-    // asrListKey
-    const menuStore = await DB.transaction(
-      db, // transaction on our DB
-      ['asrList'], // object stores we want to transact on
-      'readwrite', // transaction mode
-    ).getStore('asrList');
-    const result = await DB.deleteObjectData(menuStore, key);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    setList(result[1]);
+    deleteARecord().then();
+    // const db = await DB.openDB('asrIDB', 1);
+    // // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
+    // // asrListKey
+    // const menuStore = await DB.transaction(
+    //   db, // transaction on our DB
+    //   ['asrList'], // object stores we want to transact on
+    //   'readwrite', // transaction mode
+    // ).getStore('asrList');
+    // const result = await DB.deleteObjectData(menuStore, key);
+    // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // // @ts-ignore
+    // setList(result[1]);
   };
 
   const checkHistoryItem = (key: any) => {

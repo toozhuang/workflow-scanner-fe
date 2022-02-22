@@ -29,6 +29,13 @@ export interface AsrHistory {
   createTime?: string;
 }
 
+export const deleteRecords = createAsyncThunk(
+  'asr-history/delete',
+  async () => {
+    return '1791412296';
+  },
+);
+
 const asrHistoryEntity = createEntityAdapter<AsrHistory>({
   selectId: (asrHistoryItem: AsrHistory) => asrHistoryItem.asrListKey,
   // sortComparer: (a, b) => a.fileName.localeCompare(b.fileName),
@@ -50,6 +57,7 @@ export const fetchRecords = createAsyncThunk(
       await DB.createDB('asrIDB', 1, [
         { name: 'asrList', config: { keyPath: 'asrListKey' } },
       ]);
+      console.log('这里return 一下');
       return [];
     } else {
       console.log('transaction here');
@@ -99,19 +107,11 @@ export const asrHistorySlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchRecords.fulfilled, (state, action) => {
-      //state.asrHistories = action.payload;
-
-      asrHistoryEntity.addOne(state.asrHistories, {
-        id: '12222',
-        asrListKey: '123151',
-        fileName: '嗷嗷叫',
-      });
       asrHistoryEntity.removeAll(state.asrHistories);
-      asrHistoryEntity.addOne(state.asrHistories, {
-        id: '12223',
-        asrListKey: '123151a',
-        fileName: '嗷嗷叫',
-      });
+      asrHistoryEntity.addMany(state.asrHistories, action.payload);
+    });
+    builder.addCase(deleteRecords.fulfilled, (state, action) => {
+      asrHistoryEntity.removeOne(state.asrHistories, action.payload);
     });
   },
 });
