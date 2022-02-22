@@ -16,13 +16,15 @@ import {
 } from '../../redux/asrHistory-slice';
 
 const asrHistory = (inProps: any) => {
-  const [asrHistoryList, setList] = useState([]);
-  const count = useSelector((state: RootState) => state[asrHistorySlice.name]);
+  // const [asrHistoryList, setList] = useState([]);
+  const asrHistoryStore = useSelector(
+    (state: RootState) => state[asrHistorySlice.name],
+  );
+  const asrHistory = asrHistoryStore.asrHistories;
   // const demo = useAppSelector((state: RootState) =>
   //   asrHistorySelectors.selectById(state, '123'),
   // );
 
-  console.log(count);
   // console.log(demo);
 
   console.log(asrHistorySlice.actions);
@@ -88,7 +90,7 @@ const asrHistory = (inProps: any) => {
         //   效果见： https://imgur.com/a/vXweuVW
         console.log('result: ', result);
 
-        setList(result);
+        // setList(result);
       }
     };
 
@@ -119,34 +121,37 @@ const asrHistory = (inProps: any) => {
   };
   return (
     <>
-      {asrHistoryList.length > 0 && (
+      {asrHistory.ids.length > 0 && (
         <div style={{ width: '90%', marginLeft: 'auto', marginRight: ' auto' }}>
           <Divider />
           <h1>最近转字幕记录</h1>
           {/*{count}*/}
           <div className="site-card-wrapper">
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-              {asrHistoryList.length > 0 &&
-                asrHistoryList.map((item: any) => {
+              {asrHistory.ids.length > 0 &&
+                asrHistory.ids.map((id: any) => {
+                  const item = asrHistory.entities[id];
                   return (
-                    <Col
-                      xs={20}
-                      sm={16}
-                      md={16}
-                      lg={6}
-                      xl={6}
-                      className="gutter-row"
-                      key={item.asrListKey}
-                    >
-                      <AsrCard
-                        item={item}
-                        hoverAble
-                        actions={{
-                          checkDetail: checkHistoryItem,
-                          deleteDetail: deleteHistoryItem,
-                        }}
-                      />
-                    </Col>
+                    item && (
+                      <Col
+                        xs={20}
+                        sm={16}
+                        md={16}
+                        lg={6}
+                        xl={6}
+                        className="gutter-row"
+                        key={item.asrListKey}
+                      >
+                        <AsrCard
+                          item={item}
+                          hoverAble
+                          actions={{
+                            checkDetail: checkHistoryItem,
+                            deleteDetail: deleteHistoryItem,
+                          }}
+                        />
+                      </Col>
+                    )
                   );
                 })}
             </Row>
