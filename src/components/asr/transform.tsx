@@ -4,11 +4,9 @@
  * 但是通过 ref 拿到上传的这个方法在外面使用
  * TODO: 但是还没考虑 提交失败的情况
  */
-import React, { useEffect, useImperativeHandle, useState } from 'react';
-import { Button, Descriptions } from 'antd';
-import { createASRTask } from '../../api/asr.api';
+import React, { useImperativeHandle, useState } from 'react';
+import { Descriptions } from 'antd';
 import { AsrTransformProps } from '../../pages/asr';
-import { log } from 'util';
 import { useAsrDispatch } from '../../context/context';
 import { createAsrTask } from '../../context/action';
 import { getFilesize } from '../../common/util';
@@ -68,10 +66,6 @@ const TransformAsr = (inPros: AsrTransformProps, ref: any) => {
           </Descriptions.Item>
         </Descriptions>
       )}
-      {/*{display && <h3>提交成功</h3>}*/}
-      {/*{!display && <Button style={{width: "130px"}}*/}
-      {/*                     disabled={display}*/}
-      {/*                     onClick={transformAsr}>确认</Button>}*/}
     </div>
   );
 };
