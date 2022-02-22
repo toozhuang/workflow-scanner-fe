@@ -32,13 +32,24 @@ export interface AsrHistory {
 
 const asrHistoryEntity = createEntityAdapter<AsrHistory>({
   selectId: (asrHistoryItem: AsrHistory) => asrHistoryItem.asrListKey,
-  // sortComparer: (a, b) => a.fileName.localeCompare(b.fileName),
+  sortComparer: (a, b) => a.fileName.localeCompare(b.fileName),
 });
 
 export const deleteRecords = createAsyncThunk(
   'asr-history/delete',
-  async () => {
-    return '1791412296';
+  async (key: string) => {
+    console.log('真的来删除了', key);
+    const db = await DB.openDB('asrIDB', 1);
+    // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
+    // asrListKey
+    const menuStore = await DB.transaction(
+      db, // transaction on our DB
+      ['asrList'], // object stores we want to transact on
+      'readwrite', // transaction mode
+    ).getStore('asrList');
+    await DB.deleteObjectData(menuStore, Number.parseInt(key));
+
+    return key;
   },
 );
 

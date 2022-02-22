@@ -51,9 +51,14 @@ const AsrCard: AsCardForwardingComponent<AsrCardProps> = React.forwardRef(
   (props: AsrCardProps, ref) => {
     console.log(props);
     const {
-      keyItem,
       actions,
-      item: { fileName, fileSize, fileLocation, createdTime },
+      item: {
+        asrListKey: keyItem,
+        fileName,
+        fileSize,
+        fileLocation,
+        createdTime,
+      },
       hoverAble = false,
       ...restProps
     } = props;
@@ -68,13 +73,13 @@ const AsrCard: AsCardForwardingComponent<AsrCardProps> = React.forwardRef(
           <Tooltip title="详情" key="tooltips-info">
             <ExclamationCircleOutlined
               key="info"
-              onClick={() => actions.checkDetail(keyItem)}
+              onClick={() => actions.checkDetail('' + keyItem)}
             />
           </Tooltip>,
           <Tooltip title="删除" key="tooltips-delete">
             <DeleteOutlined
               key="delete"
-              onClick={() => actions.deleteDetail(keyItem)}
+              onClick={() => actions.deleteDetail('' + keyItem)}
             />
           </Tooltip>,
         ]}

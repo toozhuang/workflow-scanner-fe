@@ -26,7 +26,7 @@ const asrHistory = (inProps: any) => {
   const appDispatch = useAppDispatch();
 
   const fetch = () => appDispatch(fetchRecords());
-  const deleteARecord = () => appDispatch(deleteRecords());
+  const deleteARecord = (key: string) => appDispatch(deleteRecords(key));
 
   const navigate = useNavigate();
 
@@ -37,7 +37,8 @@ const asrHistory = (inProps: any) => {
   }, [inProps.trigger]);
 
   const deleteHistoryItem = async (key: any) => {
-    deleteARecord().then();
+    console.log('来了吗： ', key);
+    deleteARecord(key).then();
     // const db = await DB.openDB('asrIDB', 1);
     // // 判断是否存在 对应的 list ， 如果不存在就创建一个 TODO:
     // // asrListKey
