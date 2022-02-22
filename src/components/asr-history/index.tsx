@@ -6,16 +6,30 @@ import { useNavigate } from 'react-router-dom';
 import './asrHistory.scss';
 import { Col, Divider, Row } from 'antd';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store';
+import {
+  asrHistoryAction,
+  asrHistorySelectors,
+  asrHistorySlice,
+} from '../../redux/asrHistory-slice';
 
 const asrHistory = (inProps: any) => {
   const [asrHistoryList, setList] = useState([]);
-  const count = useSelector(
-    (state: RootState) => state.asrHistoryReducer.value,
+  const count = useSelector((state: RootState) => state[asrHistorySlice.name]);
+  const demo = useAppSelector((state: RootState) =>
+    asrHistorySelectors.selectById(state, '123'),
   );
+  console.log(count);
+  console.log(demo);
+
+  const appDispatch = useAppDispatch();
+  const add = () =>
+    appDispatch(asrHistoryAction.addCounter({ initialValue: 0 }));
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    add();
     //  查看是否存在 db
     const checkDB = async () => {
       let hasDB;
@@ -90,7 +104,7 @@ const asrHistory = (inProps: any) => {
         <div style={{ width: '90%', marginLeft: 'auto', marginRight: ' auto' }}>
           <Divider />
           <h1>最近转字幕记录</h1>
-          {count}
+          {/*{count}*/}
           <div className="site-card-wrapper">
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               {asrHistoryList.length > 0 &&
