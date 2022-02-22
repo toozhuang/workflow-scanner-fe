@@ -11,6 +11,7 @@ import {
   asrHistoryAction,
   asrHistorySelectors,
   asrHistorySlice,
+  newStateSelecter,
 } from '../../redux/asrHistory-slice';
 
 const asrHistory = (inProps: any) => {
@@ -19,6 +20,7 @@ const asrHistory = (inProps: any) => {
   const demo = useAppSelector((state: RootState) =>
     asrHistorySelectors.selectById(state, '123'),
   );
+
   console.log(count);
   console.log(demo);
 
@@ -27,9 +29,18 @@ const asrHistory = (inProps: any) => {
     appDispatch(asrHistoryAction.addCounter({ initialValue: 0 }));
 
   const navigate = useNavigate();
+  const haha = useSelector((state: RootState) =>
+    newStateSelecter.selectById(
+      state[asrHistorySlice.name].asrHistories,
+      '123151',
+    ),
+  );
 
   useEffect(() => {
     add();
+    setTimeout(() => {
+      console.log(haha);
+    }, 1000);
     //  查看是否存在 db
     const checkDB = async () => {
       let hasDB;

@@ -53,6 +53,8 @@ export type AsrHistorySlice = {
   [asrHistorySlice.name]: ReturnType<typeof asrHistorySlice['reducer']>;
 };
 
+export const newStateSelecter = asrHistoryEntity.getSelectors();
+
 export const asrHistorySelectors =
   asrHistoryEntity.getSelectors<AsrHistorySlice>(
     state => state[asrHistorySlice.name].asrHistories,
