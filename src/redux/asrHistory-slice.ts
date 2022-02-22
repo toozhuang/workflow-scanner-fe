@@ -18,6 +18,7 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 import DB from '../common/indexed-db';
+import dayjs from 'dayjs';
 
 export interface AsrHistory {
   id: string;
@@ -29,6 +30,11 @@ export interface AsrHistory {
   createTime?: string;
 }
 
+const asrHistoryEntity = createEntityAdapter<AsrHistory>({
+  selectId: (asrHistoryItem: AsrHistory) => asrHistoryItem.asrListKey,
+  // sortComparer: (a, b) => a.fileName.localeCompare(b.fileName),
+});
+
 export const deleteRecords = createAsyncThunk(
   'asr-history/delete',
   async () => {
@@ -36,10 +42,37 @@ export const deleteRecords = createAsyncThunk(
   },
 );
 
-const asrHistoryEntity = createEntityAdapter<AsrHistory>({
-  selectId: (asrHistoryItem: AsrHistory) => asrHistoryItem.asrListKey,
-  // sortComparer: (a, b) => a.fileName.localeCompare(b.fileName),
-});
+export const addRecords = createAsyncThunk(
+  'asr-history/add',
+  async ({ result, file }: any) => {
+    console.log('看看来了些什么,');
+    console.log(result);
+    console.log(file);
+    const db = await DB.openDB('asrIDB', 1);
+    const menuStore = await DB.transaction(
+      db, // transaction on our DB
+      ['asrList'], // object stores we want to transact on
+      'readwrite', // transaction mode
+    ).getStore('asrList'); // retrieve the store we want
+    await DB.addObjectData(menuStore, {
+      // set an unique ID
+      // object 的key 就是我们创建数据库的时候 config 的key
+      asrListKey: result.data.Data.TaskId,
+
+      // set name to be value of mealName state
+      taskID: result.data.Data.TaskId,
+      fileName: file.fileInfo.name,
+      fileSize: file.fileInfo.size,
+      fileLocation: file.filePath,
+      createdTime: dayjs().format(),
+    });
+
+    const ixi: any = await DB.getAllObjectData(menuStore);
+    ixi[0].name = '嗷嗷叫吗';
+    return ixi[0];
+    // return result.data.Data.TaskId;
+  },
+);
 
 export const fetchRecords = createAsyncThunk(
   'asr-history/fetchAll',
@@ -112,6 +145,9 @@ export const asrHistorySlice = createSlice({
     });
     builder.addCase(deleteRecords.fulfilled, (state, action) => {
       asrHistoryEntity.removeOne(state.asrHistories, action.payload);
+    });
+    builder.addCase(addRecords.fulfilled, (state, action) => {
+      asrHistoryEntity.addOne(state.asrHistories, action.payload);
     });
   },
 });

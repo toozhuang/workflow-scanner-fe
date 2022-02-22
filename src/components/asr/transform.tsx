@@ -10,11 +10,13 @@ import { AsrTransformProps } from '../../pages/asr';
 import { useAsrDispatch } from '../../context/context';
 import { createAsrTask } from '../../context/action';
 import { getFilesize } from '../../common/util';
+import { useAppDispatch } from '../../redux/store';
 
 const TransformAsr = (inPros: AsrTransformProps, ref: any) => {
   const [display, setDisplay] = useState(false);
 
   const dispatch = useAsrDispatch();
+  const appDispatch = useAppDispatch();
 
   // 选择要暴露的方法给外界
   useImperativeHandle(ref, () => ({
@@ -24,7 +26,7 @@ const TransformAsr = (inPros: AsrTransformProps, ref: any) => {
   // TODO: 失败的情况如何处理
   const transformAsr = async () => {
     try {
-      await createAsrTask(inPros.file, dispatch);
+      await createAsrTask(inPros.file, dispatch, appDispatch);
     } catch (e) {
       console.log('error: ', e);
     }

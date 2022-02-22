@@ -6,6 +6,7 @@ import { ASR_COMMAND } from './dto/asr.types';
 import DB from '../common/indexed-db';
 
 import dayjs from 'dayjs';
+import { addRecords } from '../redux/asrHistory-slice';
 
 /**
  * 定义了一套登录的流程， 以及该登录在整个数据流中和react redux 的互动
@@ -97,10 +98,15 @@ export async function getSignature(dispatch: any) {
   }
 }
 
-export async function createAsrTask(file: uploadFile, dispatch: any) {
+export async function createAsrTask(
+  file: uploadFile,
+  dispatch: any,
+  appDispatch?: any,
+) {
   dispatch({ type: ASR_COMMAND.SUBMIT_TRANSLATE_REQUEST });
   try {
     const result = await createASRTask(file.filePath);
+    appDispatch(addRecords({ result: result, file: file }));
     console.log('看看这里有没有： ', result);
     try {
       const db = await DB.openDB('asrIDB', 1);
