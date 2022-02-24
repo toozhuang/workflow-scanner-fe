@@ -13,7 +13,6 @@ import dayjs from 'dayjs';
 
 // 定义props， 约束输入
 export interface AsrCardProps {
-  keyItem: string;
   hoverAble: boolean;
   actions: {
     checkDetail: { (keyItem: string): void };
