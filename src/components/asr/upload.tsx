@@ -1,15 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { InboxOutlined } from '@ant-design/icons';
-import {
-  Upload,
-  message,
-  Input,
-  Button,
-  Progress,
-  Steps,
-  Divider,
-  UploadProps,
-} from 'antd';
+import { Upload, message, Divider } from 'antd';
 import { retrieveNewToken } from '../../api/authentication.api';
 
 import './upload.scss';
@@ -32,8 +23,6 @@ const validateFileName = (fileName: any) => {
 };
 
 /**
- * feng-online-sound (2).mp3
- * feng-online-sound (2).mp3
  * 使用 dispatch
  * @param inProps
  * @constructor

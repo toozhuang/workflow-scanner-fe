@@ -10,9 +10,7 @@ import { File } from '../../components/asr/file.dto';
 import { useAsrDispatch, useAsrState } from '../../context/context';
 import { cleanUpAsrStore } from '../../context/action';
 import AsrHistory from '../../components/asr-history';
-import ErrorBoundary from '../../ErrorBoundary';
 import AsrHistoryProvider from '../../context/asr-history-context/asr-history-provider';
-import DB from '../../common/indexed-db';
 import { useNavigate } from 'react-router-dom';
 
 const { Step } = Steps;
@@ -71,7 +69,6 @@ const AsrPage = () => {
     },
   });
   const [taskId, setTaskId] = useState('');
-
   // useEffect(() => {});
 
   const submitTask = async () => {
